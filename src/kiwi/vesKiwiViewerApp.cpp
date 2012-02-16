@@ -198,9 +198,13 @@ vesKiwiViewerApp::vesKiwiViewerApp()
 
   this->addBuiltinDataset("KiwiViewer Logo", "kiwi.png");
 
-  // These depend on external data, so are commented out for now.
-  //this->addBuiltinDataset("SPL-PNL Brain Atlas", "model_info.txt");
-  //this->addBuiltinDataset("Can Simulation", "can0000.vtp");
+  this->addBuiltinDataset("SPL-PNL Brain Atlas", "model_info.txt");
+  this->Internal->BuiltinDatasetCameraParameters.back().setParameters(
+    vesVector3f(-1.,0.,0.), vesVector3f(0.,0.,1.));
+
+  this->addBuiltinDataset("Can Simulation", "can0000.vtp");
+  this->Internal->BuiltinDatasetCameraParameters.back().setParameters(
+    vesVector3f(0.,1.,0.), vesVector3f(0.,0.,1.));
 
   this->initBlinnPhongShader(
     vesBuiltinShaders::vesBlinnPhong_vert(),
@@ -798,13 +802,12 @@ bool vesKiwiViewerApp::loadBlueMarble(const std::string& filename)
 //----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename)
 {
-  // These demos are currently disabled because they depend on external data 
-  //if (vtksys::SystemTools::GetFilenameName(filename) == "model_info.txt") {
-  //  return loadBrainAtlas(filename);
-  //}
-  //else if (vtksys::SystemTools::GetFilenameName(filename) == "can0000.vtp") {
-  //  return loadCanSimulation(filename);
-  //}
+  if (vtksys::SystemTools::GetFilenameName(filename) == "model_info.txt") {
+    return loadBrainAtlas(filename);
+  }
+  else if (vtksys::SystemTools::GetFilenameName(filename) == "can0000.vtp") {
+    return loadCanSimulation(filename);
+  }
   if (vtksys::SystemTools::GetFilenameName(filename) == "textured_sphere.vtp") {
     return loadBlueMarble(filename);
   }
