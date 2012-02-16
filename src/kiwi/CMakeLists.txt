@@ -39,6 +39,13 @@ set(deps
   vtkRenderingFreeType
   )
 
+set(VES_USE_CURL TRUE)
+if(VES_USE_CURL)
+  find_package(CURL REQUIRED)
+  include_directories(${CURL_INCLUDE_DIRS})
+  list(APPEND deps ${CURL_LIBRARIES})
+endif()
+
 # Configure version file
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/vesKiwiVersion.h.in
   ${CMAKE_CURRENT_BINARY_DIR}/vesKiwiVersion.h @ONLY)
