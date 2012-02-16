@@ -38,6 +38,8 @@ class vtkPolyData;
 class vtkScalarsToColors;
 class vtkDataArray;
 
+class vesPVWebDataSet;
+
 class vesKiwiPolyDataRepresentation : public vesKiwiDataRepresentation
 {
 public:
@@ -50,6 +52,8 @@ public:
   void initializeWithShader(vesSharedPtr<vesShaderProgram> shaderProgram);
 
   void setPolyData(vtkPolyData* polyData, vtkScalarsToColors* scalarsToColors=NULL);
+
+  void setPVWebData(const vesSharedPtr<vesPVWebDataSet> dataset);
 
   void addTextureCoordinates(vtkDataArray* textureCoordinates);
 
