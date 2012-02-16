@@ -42,6 +42,7 @@ class vesRenderer;
 class vesShaderProgram;
 class vesTexture;
 class vesUniform;
+class vesPVWebClient;
 
 class vtkDataSet;
 class vtkPolyData;
@@ -54,6 +55,8 @@ public:
   typedef vesKiwiBaseApp Superclass;
   vesKiwiViewerApp();
   ~vesKiwiViewerApp();
+
+  bool doPVWebTest(const std::string& host, const std::string& sessionId);
 
   /// Downloads a file using cURL.
   /// Returns the absolute path to the downloaded file if successful,
@@ -157,6 +160,8 @@ protected:
   void setErrorMessage(const std::string& errorTitle, const std::string& errorMessage);
   void resetErrorMessage();
   void handleLoadDatasetError();
+
+  bool checkForPVWebError(vesSharedPtr<vesPVWebClient> client);
 
   bool renameFile(const std::string& srcFile, const std::string& destFile);
 

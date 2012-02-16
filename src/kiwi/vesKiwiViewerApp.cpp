@@ -49,6 +49,9 @@
 #include "vesOpenGLSupport.h"
 #include "vesBuiltinShaders.h"
 
+#include "vesPVWebClient.h"
+#include "vesPVWebDataSet.h"
+
 #include <vtkNew.h>
 #include <vtkPolyData.h>
 #include <vtkImageData.h>
@@ -209,6 +212,8 @@ vesKiwiViewerApp::vesKiwiViewerApp()
   this->Internal->BuiltinDatasetCameraParameters.back().setParameters(
     vesVector3f(0.,1.,0.), vesVector3f(0.,0.,1.));
 
+  this->addBuiltinDataset("ParaView Web", "pvweb");
+
   this->initBlinnPhongShader(
     vesBuiltinShaders::vesBlinnPhong_vert(),
     vesBuiltinShaders::vesBlinnPhong_frag());
@@ -243,6 +248,85 @@ void vesKiwiViewerApp::initGL()
 {
   this->vesKiwiBaseApp::initGL();
   this->Internal->DataLoader.setErrorOnMoreThan65kVertices(!this->glSupport()->isSupportedIndexUnsignedInt());
+}
+
+bool vesKiwiViewerApp::checkForPVWebError(vesPVWebClient::Ptr client)
+{
+  this->setErrorMessage(client->errorTitle(), client->errorMessage());
+  return !client->errorMessage().empty();
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiViewerApp::doPVWebTest(const std::string& host, const std::string& sessionId)
+{
+  this->resetScene();
+
+  vesPVWebClient::Ptr client(new vesPVWebClient);
+  client->setHost(host);
+
+  if (sessionId.empty()) {
+
+    if (!client->createVisualization()) {
+      this->checkForPVWebError(client);
+      return false;
+    }
+
+    client->configureOff();
+    
+    if (client->createView()) {
+      client->executeCommand("Sphere");
+      client->executeCommand("Show");
+      client->executeCommand("Render");
+      client->executeCommand("ResetCamera");
+      client->configureOn();
+      client->executeCommand("Render");
+      client->pollSceneMetaData();
+      client->downloadObjects();
+    }
+
+    client->endVisualization();
+
+  }
+  else {
+
+    client->setSessionId(sessionId);
+
+    if (client->createView()) {
+      client->configureOn();
+      client->executeCommand("Render");
+      client->executeCommand("GetProxy");
+      client->pollSceneMetaData();
+      client->downloadObjects();
+    }
+  }
+
+  if (this->checkForPVWebError(client)) {
+    return false;
+  }
+
+  for (size_t i = 0; i < client->datasets().size(); ++i) {
+
+    const vesPVWebDataSet::Ptr dataset = client->datasets()[i];
+
+    if (dataset->m_datasetType == 'P')
+      continue;
+
+    if (dataset->m_layer != 0)
+      continue;
+
+    if (dataset->m_numberOfVerts == 0)
+      continue;
+
+    vesKiwiPolyDataRepresentation* rep = new vesKiwiPolyDataRepresentation();
+    rep->initializeWithShader(this->shaderProgram());
+    rep->setPVWebData(dataset);
+    rep->addSelfToRenderer(this->renderer());
+    this->Internal->DataRepresentations.push_back(rep);
+  }
+
+  this->resetView();
+
+  return true;
 }
 
 //----------------------------------------------------------------------------

@@ -21,6 +21,10 @@ set(sources
   vesKiwiText2DRepresentation.cpp
   vesKiwiViewerApp.cpp
   vesKiwiWidgetRepresentation.cpp
+
+  vesPVWebClient.cpp
+  vesPVWebDataSet.cpp
+  cJSON.c
   )
 
 set(deps
