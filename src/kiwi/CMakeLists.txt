@@ -9,6 +9,7 @@ set(sources
   vesKiwiBrainAtlasRepresentation.cpp
   vesKiwiCameraSpinner.cpp
   vesKiwiCameraInteractor.cpp
+  vesKiwiCurlDownloader.cpp
   vesKiwiDataConversionTools.cpp
   vesKiwiDataLoader.cpp
   vesKiwiDataRepresentation.cpp
@@ -28,6 +29,7 @@ set(deps
   vtkIOGeometry
   vtkIOXML
   vtkIOImage
+  vtkIOInfovis
   vtkIOLegacy
   vtkIOPLY
   vtkFiltersCore

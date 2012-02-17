@@ -39,6 +39,7 @@ set(module_defaults
   -DModule_vtkIOXML:BOOL=ON
   -DModule_vtkIOImage:BOOL=ON
   -DModule_vtkIOPLY:BOOL=ON
+  -DModule_vtkIOInfovis:BOOL=ON
   -DModule_vtkImagingCore:BOOL=ON
   -DModule_vtkParallelCore:BOOL=ON
   -DModule_vtkRenderingCore:BOOL=ON

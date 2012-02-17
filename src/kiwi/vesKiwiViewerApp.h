@@ -55,6 +55,11 @@ public:
   vesKiwiViewerApp();
   ~vesKiwiViewerApp();
 
+  /// Downloads a file using cURL.
+  /// Returns the absolute path to the downloaded file if successful,
+  /// otherwise returns the empty string.
+  std::string downloadFile(const std::string& url, const std::string& downloadDir);
+
   int numberOfBuiltinDatasets() const;
   int defaultBuiltinDatasetIndex() const;
   std::string builtinDatasetName(int index);
@@ -146,11 +151,14 @@ protected:
   bool loadBrainAtlas(const std::string& filename);
   bool loadCanSimulation(const std::string& filename);
   bool loadBlueMarble(const std::string& filename);
+  bool loadKiwiScene(const std::string& filename);
   void setDefaultBackgroundColor();
 
   void setErrorMessage(const std::string& errorTitle, const std::string& errorMessage);
   void resetErrorMessage();
   void handleLoadDatasetError();
+
+  bool renameFile(const std::string& srcFile, const std::string& destFile);
 
 private:
 
