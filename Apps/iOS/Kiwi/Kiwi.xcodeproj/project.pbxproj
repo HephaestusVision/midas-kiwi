@@ -19,6 +19,216 @@
 		431FC64E1408B7A5006B9246 /* TitleBarViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 431FC64C1408B7A5006B9246 /* TitleBarViewContainer.m */; };
 		431FC64F1408B7A5006B9246 /* TitleBarViewContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 431FC64D1408B7A5006B9246 /* TitleBarViewContainer.xib */; };
 		432A52191495B6D50010EB71 /* libvesShaders.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 432A52181495B6D50010EB71 /* libvesShaders.a */; };
+		432D23CA15379CC100FB65D2 /* can0043.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D239E15379CC100FB65D2 /* can0043.vtp */; };
+		432D23CB15379CC100FB65D2 /* can0042.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D239F15379CC100FB65D2 /* can0042.vtp */; };
+		432D23CC15379CC100FB65D2 /* can0041.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A015379CC100FB65D2 /* can0041.vtp */; };
+		432D23CD15379CC100FB65D2 /* can0040.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A115379CC100FB65D2 /* can0040.vtp */; };
+		432D23CE15379CC100FB65D2 /* can0039.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A215379CC100FB65D2 /* can0039.vtp */; };
+		432D23CF15379CC100FB65D2 /* can0038.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A315379CC100FB65D2 /* can0038.vtp */; };
+		432D23D015379CC100FB65D2 /* can0037.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A415379CC100FB65D2 /* can0037.vtp */; };
+		432D23D115379CC100FB65D2 /* can0036.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A515379CC100FB65D2 /* can0036.vtp */; };
+		432D23D215379CC100FB65D2 /* can0035.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A615379CC100FB65D2 /* can0035.vtp */; };
+		432D23D315379CC100FB65D2 /* can0034.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A715379CC100FB65D2 /* can0034.vtp */; };
+		432D23D415379CC100FB65D2 /* can0033.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A815379CC100FB65D2 /* can0033.vtp */; };
+		432D23D515379CC100FB65D2 /* can0032.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23A915379CC100FB65D2 /* can0032.vtp */; };
+		432D23D615379CC100FB65D2 /* can0031.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23AA15379CC100FB65D2 /* can0031.vtp */; };
+		432D23D715379CC100FB65D2 /* can0030.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23AB15379CC100FB65D2 /* can0030.vtp */; };
+		432D23D815379CC100FB65D2 /* can0029.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23AC15379CC100FB65D2 /* can0029.vtp */; };
+		432D23D915379CC100FB65D2 /* can0028.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23AD15379CC100FB65D2 /* can0028.vtp */; };
+		432D23DA15379CC100FB65D2 /* can0027.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23AE15379CC100FB65D2 /* can0027.vtp */; };
+		432D23DB15379CC100FB65D2 /* can0026.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23AF15379CC100FB65D2 /* can0026.vtp */; };
+		432D23DC15379CC100FB65D2 /* can0025.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B015379CC100FB65D2 /* can0025.vtp */; };
+		432D23DD15379CC100FB65D2 /* can0024.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B115379CC100FB65D2 /* can0024.vtp */; };
+		432D23DE15379CC100FB65D2 /* can0023.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B215379CC100FB65D2 /* can0023.vtp */; };
+		432D23DF15379CC100FB65D2 /* can0022.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B315379CC100FB65D2 /* can0022.vtp */; };
+		432D23E015379CC100FB65D2 /* can0021.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B415379CC100FB65D2 /* can0021.vtp */; };
+		432D23E115379CC100FB65D2 /* can0020.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B515379CC100FB65D2 /* can0020.vtp */; };
+		432D23E215379CC100FB65D2 /* can0019.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B615379CC100FB65D2 /* can0019.vtp */; };
+		432D23E315379CC100FB65D2 /* can0018.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B715379CC100FB65D2 /* can0018.vtp */; };
+		432D23E415379CC100FB65D2 /* can0017.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B815379CC100FB65D2 /* can0017.vtp */; };
+		432D23E515379CC100FB65D2 /* can0016.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23B915379CC100FB65D2 /* can0016.vtp */; };
+		432D23E615379CC100FB65D2 /* can0015.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23BA15379CC100FB65D2 /* can0015.vtp */; };
+		432D23E715379CC100FB65D2 /* can0014.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23BB15379CC100FB65D2 /* can0014.vtp */; };
+		432D23E815379CC100FB65D2 /* can0013.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23BC15379CC100FB65D2 /* can0013.vtp */; };
+		432D23E915379CC100FB65D2 /* can0012.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23BD15379CC100FB65D2 /* can0012.vtp */; };
+		432D23EA15379CC100FB65D2 /* can0011.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23BE15379CC100FB65D2 /* can0011.vtp */; };
+		432D23EB15379CC100FB65D2 /* can0010.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23BF15379CC100FB65D2 /* can0010.vtp */; };
+		432D23EC15379CC100FB65D2 /* can0009.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C015379CC100FB65D2 /* can0009.vtp */; };
+		432D23ED15379CC100FB65D2 /* can0008.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C115379CC100FB65D2 /* can0008.vtp */; };
+		432D23EE15379CC100FB65D2 /* can0007.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C215379CC100FB65D2 /* can0007.vtp */; };
+		432D23EF15379CC100FB65D2 /* can0006.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C315379CC100FB65D2 /* can0006.vtp */; };
+		432D23F015379CC100FB65D2 /* can0005.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C415379CC100FB65D2 /* can0005.vtp */; };
+		432D23F115379CC100FB65D2 /* can0004.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C515379CC100FB65D2 /* can0004.vtp */; };
+		432D23F215379CC100FB65D2 /* can0003.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C615379CC100FB65D2 /* can0003.vtp */; };
+		432D23F315379CC100FB65D2 /* can0002.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C715379CC100FB65D2 /* can0002.vtp */; };
+		432D23F415379CC100FB65D2 /* can0001.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C815379CC100FB65D2 /* can0001.vtp */; };
+		432D23F515379CC100FB65D2 /* can0000.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23C915379CC100FB65D2 /* can0000.vtp */; };
+		432D249D15379CF000FB65D2 /* VPM_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23F715379CF000FB65D2 /* VPM_thalamic_nucleus_R.vtp */; };
+		432D249E15379CF000FB65D2 /* VPM_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23F815379CF000FB65D2 /* VPM_thalamic_nucleus_L.vtp */; };
+		432D249F15379CF000FB65D2 /* VPL_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23F915379CF000FB65D2 /* VPL_thalamic_nucleus_R.vtp */; };
+		432D24A015379CF000FB65D2 /* VPL_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23FA15379CF000FB65D2 /* VPL_thalamic_nucleus_L.vtp */; };
+		432D24A115379CF000FB65D2 /* vestibulocochlear_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23FB15379CF000FB65D2 /* vestibulocochlear_nerve_R.vtp */; };
+		432D24A215379CF000FB65D2 /* vestibulocochlear_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23FC15379CF000FB65D2 /* vestibulocochlear_nerve_L.vtp */; };
+		432D24A315379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23FD15379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_R.vtp */; };
+		432D24A415379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23FE15379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_L.vtp */; };
+		432D24A515379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D23FF15379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_R.vtp */; };
+		432D24A615379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240015379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_L.vtp */; };
+		432D24A715379CF000FB65D2 /* vagal_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240115379CF000FB65D2 /* vagal_nerve_R.vtp */; };
+		432D24A815379CF000FB65D2 /* vagal_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240215379CF000FB65D2 /* vagal_nerve_L.vtp */; };
+		432D24A915379CF000FB65D2 /* trochlearis_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240315379CF000FB65D2 /* trochlearis_nerve_R.vtp */; };
+		432D24AA15379CF000FB65D2 /* trochlearis_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240415379CF000FB65D2 /* trochlearis_nerve_L.vtp */; };
+		432D24AB15379CF000FB65D2 /* trigeminal_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240515379CF000FB65D2 /* trigeminal_nerve_R.vtp */; };
+		432D24AC15379CF000FB65D2 /* trigeminal_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240615379CF000FB65D2 /* trigeminal_nerve_L.vtp */; };
+		432D24AD15379CF000FB65D2 /* third_ventricle.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240715379CF000FB65D2 /* third_ventricle.vtp */; };
+		432D24AE15379CF000FB65D2 /* temporal_pole_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240815379CF000FB65D2 /* temporal_pole_R.vtp */; };
+		432D24AF15379CF000FB65D2 /* temporal_pole_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240915379CF000FB65D2 /* temporal_pole_L.vtp */; };
+		432D24B015379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240A15379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_R.vtp */; };
+		432D24B115379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240B15379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_L.vtp */; };
+		432D24B215379CF000FB65D2 /* superior_temporal_gyrus_post_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240C15379CF000FB65D2 /* superior_temporal_gyrus_post_R.vtp */; };
+		432D24B315379CF000FB65D2 /* superior_temporal_gyrus_post_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240D15379CF000FB65D2 /* superior_temporal_gyrus_post_L.vtp */; };
+		432D24B415379CF000FB65D2 /* superior_temporal_gyrus_ant_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240E15379CF000FB65D2 /* superior_temporal_gyrus_ant_R.vtp */; };
+		432D24B515379CF000FB65D2 /* superior_temporal_gyrus_ant_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D240F15379CF000FB65D2 /* superior_temporal_gyrus_ant_L.vtp */; };
+		432D24B615379CF000FB65D2 /* superior_parietal_lobule_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241015379CF000FB65D2 /* superior_parietal_lobule_R.vtp */; };
+		432D24B715379CF000FB65D2 /* superior_parietal_lobule_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241115379CF000FB65D2 /* superior_parietal_lobule_L.vtp */; };
+		432D24B815379CF000FB65D2 /* superior_medullar_velum.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241215379CF000FB65D2 /* superior_medullar_velum.vtp */; };
+		432D24B915379CF000FB65D2 /* superior_frontal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241315379CF000FB65D2 /* superior_frontal_gyrus_R.vtp */; };
+		432D24BA15379CF000FB65D2 /* superior_frontal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241415379CF000FB65D2 /* superior_frontal_gyrus_L.vtp */; };
+		432D24BB15379CF000FB65D2 /* superior_colliculus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241515379CF000FB65D2 /* superior_colliculus_R.vtp */; };
+		432D24BC15379CF000FB65D2 /* superior_colliculus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241615379CF000FB65D2 /* superior_colliculus_L.vtp */; };
+		432D24BD15379CF000FB65D2 /* superior_cerebellar_peduncle_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241715379CF000FB65D2 /* superior_cerebellar_peduncle_R.vtp */; };
+		432D24BE15379CF000FB65D2 /* superior_cerebellar_peduncle_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241815379CF000FB65D2 /* superior_cerebellar_peduncle_L.vtp */; };
+		432D24BF15379CF000FB65D2 /* substantia_nigra_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241915379CF000FB65D2 /* substantia_nigra_R.vtp */; };
+		432D24C015379CF000FB65D2 /* substantia_nigra_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241A15379CF000FB65D2 /* substantia_nigra_L.vtp */; };
+		432D24C115379CF000FB65D2 /* skull_bone.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241B15379CF000FB65D2 /* skull_bone.vtp */; };
+		432D24C215379CF000FB65D2 /* Skin.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241C15379CF000FB65D2 /* Skin.vtp */; };
+		432D24C315379CF000FB65D2 /* septal_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241D15379CF000FB65D2 /* septal_nucleus_R.vtp */; };
+		432D24C415379CF000FB65D2 /* septal_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241E15379CF000FB65D2 /* septal_nucleus_L.vtp */; };
+		432D24C515379CF000FB65D2 /* red_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D241F15379CF000FB65D2 /* red_nucleus_R.vtp */; };
+		432D24C615379CF000FB65D2 /* red_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242015379CF000FB65D2 /* red_nucleus_L.vtp */; };
+		432D24C715379CF000FB65D2 /* putamen_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242115379CF000FB65D2 /* putamen_R.vtp */; };
+		432D24C815379CF000FB65D2 /* putamen_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242215379CF000FB65D2 /* putamen_L.vtp */; };
+		432D24C915379CF000FB65D2 /* pulvinar_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242315379CF000FB65D2 /* pulvinar_R.vtp */; };
+		432D24CA15379CF000FB65D2 /* pulvinar_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242415379CF000FB65D2 /* pulvinar_L.vtp */; };
+		432D24CB15379CF000FB65D2 /* precentral_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242515379CF000FB65D2 /* precentral_gyrus_R.vtp */; };
+		432D24CC15379CF000FB65D2 /* precentral_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242615379CF000FB65D2 /* precentral_gyrus_L.vtp */; };
+		432D24CD15379CF000FB65D2 /* posterior_substantia_perforata.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242715379CF000FB65D2 /* posterior_substantia_perforata.vtp */; };
+		432D24CE15379CF000FB65D2 /* posterior_commissure.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242815379CF000FB65D2 /* posterior_commissure.vtp */; };
+		432D24CF15379CF000FB65D2 /* postcentral_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242915379CF000FB65D2 /* postcentral_gyrus_R.vtp */; };
+		432D24D015379CF000FB65D2 /* postcentral_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242A15379CF000FB65D2 /* postcentral_gyrus_L.vtp */; };
+		432D24D115379CF000FB65D2 /* pons.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242B15379CF000FB65D2 /* pons.vtp */; };
+		432D24D215379CF000FB65D2 /* pituitary_gland.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242C15379CF000FB65D2 /* pituitary_gland.vtp */; };
+		432D24D315379CF000FB65D2 /* pineal_body.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242D15379CF000FB65D2 /* pineal_body.vtp */; };
+		432D24D415379CF000FB65D2 /* pellucid_septum.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242E15379CF000FB65D2 /* pellucid_septum.vtp */; };
+		432D24D515379CF000FB65D2 /* orbital_gyri_gyrus_rectus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D242F15379CF000FB65D2 /* orbital_gyri_gyrus_rectus_R.vtp */; };
+		432D24D615379CF000FB65D2 /* orbital_gyri_gyrus_rectus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243015379CF000FB65D2 /* orbital_gyri_gyrus_rectus_L.vtp */; };
+		432D24D715379CF000FB65D2 /* optic_tract_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243115379CF000FB65D2 /* optic_tract_R.vtp */; };
+		432D24D815379CF000FB65D2 /* optic_tract_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243215379CF000FB65D2 /* optic_tract_L.vtp */; };
+		432D24D915379CF000FB65D2 /* optic_radiation_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243315379CF000FB65D2 /* optic_radiation_R.vtp */; };
+		432D24DA15379CF000FB65D2 /* optic_radiation_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243415379CF000FB65D2 /* optic_radiation_L.vtp */; };
+		432D24DB15379CF000FB65D2 /* optic_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243515379CF000FB65D2 /* optic_nerve_R.vtp */; };
+		432D24DC15379CF000FB65D2 /* optic_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243615379CF000FB65D2 /* optic_nerve_L.vtp */; };
+		432D24DD15379CF000FB65D2 /* optic_chiasm.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243715379CF000FB65D2 /* optic_chiasm.vtp */; };
+		432D24DE15379CF000FB65D2 /* occulomotor_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243815379CF000FB65D2 /* occulomotor_nerve_R.vtp */; };
+		432D24DF15379CF000FB65D2 /* occulomotor_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243915379CF000FB65D2 /* occulomotor_nerve_L.vtp */; };
+		432D24E015379CF000FB65D2 /* occipital_lobe_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243A15379CF000FB65D2 /* occipital_lobe_R.vtp */; };
+		432D24E115379CF000FB65D2 /* occipital_lobe_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243B15379CF000FB65D2 /* occipital_lobe_L.vtp */; };
+		432D24E215379CF000FB65D2 /* nucleus_habenulae_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243C15379CF000FB65D2 /* nucleus_habenulae_R.vtp */; };
+		432D24E315379CF000FB65D2 /* nucleus_habenulae_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243D15379CF000FB65D2 /* nucleus_habenulae_L.vtp */; };
+		432D24E415379CF000FB65D2 /* nucleus_accumbens_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243E15379CF000FB65D2 /* nucleus_accumbens_R.vtp */; };
+		432D24E515379CF000FB65D2 /* nucleus_accumbens_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D243F15379CF000FB65D2 /* nucleus_accumbens_L.vtp */; };
+		432D24E615379CF000FB65D2 /* model_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 432D244015379CF000FB65D2 /* model_info.txt */; };
+		432D24E715379CF000FB65D2 /* middle_temporal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244115379CF000FB65D2 /* middle_temporal_gyrus_R.vtp */; };
+		432D24E815379CF000FB65D2 /* middle_temporal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244215379CF000FB65D2 /* middle_temporal_gyrus_L.vtp */; };
+		432D24E915379CF000FB65D2 /* middle_frontal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244315379CF000FB65D2 /* middle_frontal_gyrus_R.vtp */; };
+		432D24EA15379CF000FB65D2 /* middle_frontal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244415379CF000FB65D2 /* middle_frontal_gyrus_L.vtp */; };
+		432D24EB15379CF000FB65D2 /* middle_cerebellar_peduncle_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244515379CF000FB65D2 /* middle_cerebellar_peduncle_R.vtp */; };
+		432D24EC15379CF000FB65D2 /* middle_cerebellar_peduncle_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244615379CF000FB65D2 /* middle_cerebellar_peduncle_L.vtp */; };
+		432D24ED15379CF000FB65D2 /* midbrain.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244715379CF000FB65D2 /* midbrain.vtp */; };
+		432D24EE15379CF000FB65D2 /* medulla_oblongata.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244815379CF000FB65D2 /* medulla_oblongata.vtp */; };
+		432D24EF15379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244915379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_R.vtp */; };
+		432D24F015379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244A15379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_L.vtp */; };
+		432D24F115379CF000FB65D2 /* medial_geniculate_body_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244B15379CF000FB65D2 /* medial_geniculate_body_R.vtp */; };
+		432D24F215379CF000FB65D2 /* medial_geniculate_body_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244C15379CF000FB65D2 /* medial_geniculate_body_L.vtp */; };
+		432D24F315379CF000FB65D2 /* mamillary_body_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244D15379CF000FB65D2 /* mamillary_body_R.vtp */; };
+		432D24F415379CF000FB65D2 /* mamillary_body_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244E15379CF000FB65D2 /* mamillary_body_L.vtp */; };
+		432D24F515379CF000FB65D2 /* lateral_ventricle_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D244F15379CF000FB65D2 /* lateral_ventricle_R.vtp */; };
+		432D24F615379CF000FB65D2 /* lateral_ventricle_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245015379CF000FB65D2 /* lateral_ventricle_L.vtp */; };
+		432D24F715379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245115379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_R.vtp */; };
+		432D24F815379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245215379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_L.vtp */; };
+		432D24F915379CF000FB65D2 /* lateral_occipitotemporal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245315379CF000FB65D2 /* lateral_occipitotemporal_gyrus_R.vtp */; };
+		432D24FA15379CF000FB65D2 /* lateral_occipitotemporal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245415379CF000FB65D2 /* lateral_occipitotemporal_gyrus_L.vtp */; };
+		432D24FB15379CF000FB65D2 /* lateral_geniculate_body_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245515379CF000FB65D2 /* lateral_geniculate_body_R.vtp */; };
+		432D24FC15379CF000FB65D2 /* lateral_geniculate_body_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245615379CF000FB65D2 /* lateral_geniculate_body_L.vtp */; };
+		432D24FD15379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245715379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_R.vtp */; };
+		432D24FE15379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245815379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_L.vtp */; };
+		432D24FF15379CF000FB65D2 /* internal_medullar_lamina_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245915379CF000FB65D2 /* internal_medullar_lamina_R.vtp */; };
+		432D250015379CF000FB65D2 /* internal_medullar_lamina_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245A15379CF000FB65D2 /* internal_medullar_lamina_L.vtp */; };
+		432D250115379CF000FB65D2 /* internal_capsule_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245B15379CF000FB65D2 /* internal_capsule_R.vtp */; };
+		432D250215379CF000FB65D2 /* internal_capsule_post_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245C15379CF000FB65D2 /* internal_capsule_post_R.vtp */; };
+		432D250315379CF000FB65D2 /* internal_capsule_post_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245D15379CF000FB65D2 /* internal_capsule_post_L.vtp */; };
+		432D250415379CF000FB65D2 /* internal_capsule_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245E15379CF000FB65D2 /* internal_capsule_L.vtp */; };
+		432D250515379CF000FB65D2 /* insula_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D245F15379CF000FB65D2 /* insula_R.vtp */; };
+		432D250615379CF000FB65D2 /* insula_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246015379CF000FB65D2 /* insula_L.vtp */; };
+		432D250715379CF000FB65D2 /* inferior_temporal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246115379CF000FB65D2 /* inferior_temporal_gyrus_R.vtp */; };
+		432D250815379CF000FB65D2 /* inferior_temporal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246215379CF000FB65D2 /* inferior_temporal_gyrus_L.vtp */; };
+		432D250915379CF000FB65D2 /* inferior_frontal_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246315379CF000FB65D2 /* inferior_frontal_gyrus_R.vtp */; };
+		432D250A15379CF000FB65D2 /* inferior_frontal_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246415379CF000FB65D2 /* inferior_frontal_gyrus_L.vtp */; };
+		432D250B15379CF000FB65D2 /* inferior_colliculus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246515379CF000FB65D2 /* inferior_colliculus_R.vtp */; };
+		432D250C15379CF000FB65D2 /* inferior_colliculus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246615379CF000FB65D2 /* inferior_colliculus_L.vtp */; };
+		432D250D15379CF000FB65D2 /* inferior_cerebellar_peduncle_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246715379CF000FB65D2 /* inferior_cerebellar_peduncle_R.vtp */; };
+		432D250E15379CF000FB65D2 /* inferior_cerebellar_peduncle_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246815379CF000FB65D2 /* inferior_cerebellar_peduncle_L.vtp */; };
+		432D250F15379CF000FB65D2 /* hypothalamus.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246915379CF000FB65D2 /* hypothalamus.vtp */; };
+		432D251015379CF000FB65D2 /* hypoglossal_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246A15379CF000FB65D2 /* hypoglossal_nerve_R.vtp */; };
+		432D251115379CF000FB65D2 /* hypoglossal_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246B15379CF000FB65D2 /* hypoglossal_nerve_L.vtp */; };
+		432D251215379CF000FB65D2 /* hippocampus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246C15379CF000FB65D2 /* hippocampus_R.vtp */; };
+		432D251315379CF000FB65D2 /* hippocampus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246D15379CF000FB65D2 /* hippocampus_L.vtp */; };
+		432D251415379CF000FB65D2 /* hemispheric_white_matter.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246E15379CF000FB65D2 /* hemispheric_white_matter.vtp */; };
+		432D251515379CF000FB65D2 /* glossopharyngeal_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D246F15379CF000FB65D2 /* glossopharyngeal_nerve_R.vtp */; };
+		432D251615379CF000FB65D2 /* glossopharyngeal_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247015379CF000FB65D2 /* glossopharyngeal_nerve_L.vtp */; };
+		432D251715379CF000FB65D2 /* globus_pallidus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247115379CF000FB65D2 /* globus_pallidus_R.vtp */; };
+		432D251815379CF000FB65D2 /* globus_pallidus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247215379CF000FB65D2 /* globus_pallidus_L.vtp */; };
+		432D251915379CF000FB65D2 /* fourth_ventricle_aqueduct.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247315379CF000FB65D2 /* fourth_ventricle_aqueduct.vtp */; };
+		432D251A15379CF000FB65D2 /* fornix.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247415379CF000FB65D2 /* fornix.vtp */; };
+		432D251B15379CF000FB65D2 /* facial_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247515379CF000FB65D2 /* facial_nerve_R.vtp */; };
+		432D251C15379CF000FB65D2 /* facial_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247615379CF000FB65D2 /* facial_nerve_L.vtp */; };
+		432D251D15379CF000FB65D2 /* eyeball_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247715379CF000FB65D2 /* eyeball_R.vtp */; };
+		432D251E15379CF000FB65D2 /* eyeball_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247815379CF000FB65D2 /* eyeball_L.vtp */; };
+		432D251F15379CF000FB65D2 /* external_capsule_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247915379CF000FB65D2 /* external_capsule_R.vtp */; };
+		432D252015379CF000FB65D2 /* external_capsule_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247A15379CF000FB65D2 /* external_capsule_L.vtp */; };
+		432D252115379CF000FB65D2 /* dorsomedial_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247B15379CF000FB65D2 /* dorsomedial_thalamic_nucleus_R.vtp */; };
+		432D252215379CF000FB65D2 /* dorsomedial_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247C15379CF000FB65D2 /* dorsomedial_thalamic_nucleus_L.vtp */; };
+		432D252315379CF000FB65D2 /* dentate_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247D15379CF000FB65D2 /* dentate_nucleus_R.vtp */; };
+		432D252415379CF000FB65D2 /* dentate_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247E15379CF000FB65D2 /* dentate_nucleus_L.vtp */; };
+		432D252515379CF000FB65D2 /* corticospinal_tract_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D247F15379CF000FB65D2 /* corticospinal_tract_R.vtp */; };
+		432D252615379CF000FB65D2 /* corticospinal_tract_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248015379CF000FB65D2 /* corticospinal_tract_L.vtp */; };
+		432D252715379CF000FB65D2 /* corpus_callosum.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248115379CF000FB65D2 /* corpus_callosum.vtp */; };
+		432D252815379CF000FB65D2 /* cingulate_gyrus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248215379CF000FB65D2 /* cingulate_gyrus_R.vtp */; };
+		432D252915379CF000FB65D2 /* cingulate_gyrus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248315379CF000FB65D2 /* cingulate_gyrus_L.vtp */; };
+		432D252A15379CF000FB65D2 /* cerebellar_white_matter.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248415379CF000FB65D2 /* cerebellar_white_matter.vtp */; };
+		432D252B15379CF000FB65D2 /* cerebellar_vermis.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248515379CF000FB65D2 /* cerebellar_vermis.vtp */; };
+		432D252C15379CF000FB65D2 /* cerebellar_tonsil_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248615379CF000FB65D2 /* cerebellar_tonsil_R.vtp */; };
+		432D252D15379CF000FB65D2 /* cerebellar_tonsil_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248715379CF000FB65D2 /* cerebellar_tonsil_L.vtp */; };
+		432D252E15379CF000FB65D2 /* cerebellar_hemisphere_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248815379CF000FB65D2 /* cerebellar_hemisphere_R.vtp */; };
+		432D252F15379CF000FB65D2 /* cerebellar_hemisphere_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248915379CF000FB65D2 /* cerebellar_hemisphere_L.vtp */; };
+		432D253015379CF000FB65D2 /* centromedian_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248A15379CF000FB65D2 /* centromedian_thalamic_nucleus_R.vtp */; };
+		432D253115379CF000FB65D2 /* centromedian_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248B15379CF000FB65D2 /* centromedian_thalamic_nucleus_L.vtp */; };
+		432D253215379CF000FB65D2 /* caudate_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248C15379CF000FB65D2 /* caudate_nucleus_R.vtp */; };
+		432D253315379CF000FB65D2 /* caudate_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248D15379CF000FB65D2 /* caudate_nucleus_L.vtp */; };
+		432D253415379CF000FB65D2 /* axis.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248E15379CF000FB65D2 /* axis.vtp */; };
+		432D253515379CF000FB65D2 /* atlas.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D248F15379CF000FB65D2 /* atlas.vtp */; };
+		432D253615379CF000FB65D2 /* anterior_thalamic_nucleus_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249015379CF000FB65D2 /* anterior_thalamic_nucleus_R.vtp */; };
+		432D253715379CF000FB65D2 /* anterior_thalamic_nucleus_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249115379CF000FB65D2 /* anterior_thalamic_nucleus_L.vtp */; };
+		432D253815379CF000FB65D2 /* anterior_substantia_perforata_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249215379CF000FB65D2 /* anterior_substantia_perforata_R.vtp */; };
+		432D253915379CF000FB65D2 /* anterior_substantia_perforata_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249315379CF000FB65D2 /* anterior_substantia_perforata_L.vtp */; };
+		432D253A15379CF000FB65D2 /* anterior_commissure.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249415379CF000FB65D2 /* anterior_commissure.vtp */; };
+		432D253B15379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249515379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_R.vtp */; };
+		432D253C15379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249615379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_L.vtp */; };
+		432D253D15379CF000FB65D2 /* amygdaloid_body_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249715379CF000FB65D2 /* amygdaloid_body_R.vtp */; };
+		432D253E15379CF000FB65D2 /* amygdaloid_body_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249815379CF000FB65D2 /* amygdaloid_body_L.vtp */; };
+		432D253F15379CF000FB65D2 /* accessory_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249915379CF000FB65D2 /* accessory_nerve_R.vtp */; };
+		432D254015379CF000FB65D2 /* accessory_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249A15379CF000FB65D2 /* accessory_nerve_L.vtp */; };
+		432D254115379CF000FB65D2 /* abducent_nerve_R.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249B15379CF000FB65D2 /* abducent_nerve_R.vtp */; };
+		432D254215379CF000FB65D2 /* abducent_nerve_L.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 432D249C15379CF000FB65D2 /* abducent_nerve_L.vtp */; };
 		432DE16D13D15E1C000F8EC0 /* libves.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 432DE16C13D15E1C000F8EC0 /* libves.a */; };
 		435026EF140E93C9000C315D /* caffeine.pdb in Resources */ = {isa = PBXBuildFile; fileRef = 435026ED140E93C9000C315D /* caffeine.pdb */; };
 		436B34B413C802D500C5726C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 436B34AF13C802D500C5726C /* Default-Landscape~ipad.png */; };
@@ -107,6 +317,216 @@
 		431FC64C1408B7A5006B9246 /* TitleBarViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBarViewContainer.m; sourceTree = "<group>"; };
 		431FC64D1408B7A5006B9246 /* TitleBarViewContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBarViewContainer.xib; sourceTree = "<group>"; };
 		432A52181495B6D50010EB71 /* libvesShaders.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvesShaders.a; path = "../../../../build/CMakeExternals/Build/ves-ios-device/lib/libvesShaders.a"; sourceTree = "<group>"; };
+		432D239E15379CC100FB65D2 /* can0043.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0043.vtp; path = can/can0043.vtp; sourceTree = "<group>"; };
+		432D239F15379CC100FB65D2 /* can0042.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0042.vtp; path = can/can0042.vtp; sourceTree = "<group>"; };
+		432D23A015379CC100FB65D2 /* can0041.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0041.vtp; path = can/can0041.vtp; sourceTree = "<group>"; };
+		432D23A115379CC100FB65D2 /* can0040.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0040.vtp; path = can/can0040.vtp; sourceTree = "<group>"; };
+		432D23A215379CC100FB65D2 /* can0039.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0039.vtp; path = can/can0039.vtp; sourceTree = "<group>"; };
+		432D23A315379CC100FB65D2 /* can0038.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0038.vtp; path = can/can0038.vtp; sourceTree = "<group>"; };
+		432D23A415379CC100FB65D2 /* can0037.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0037.vtp; path = can/can0037.vtp; sourceTree = "<group>"; };
+		432D23A515379CC100FB65D2 /* can0036.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0036.vtp; path = can/can0036.vtp; sourceTree = "<group>"; };
+		432D23A615379CC100FB65D2 /* can0035.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0035.vtp; path = can/can0035.vtp; sourceTree = "<group>"; };
+		432D23A715379CC100FB65D2 /* can0034.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0034.vtp; path = can/can0034.vtp; sourceTree = "<group>"; };
+		432D23A815379CC100FB65D2 /* can0033.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0033.vtp; path = can/can0033.vtp; sourceTree = "<group>"; };
+		432D23A915379CC100FB65D2 /* can0032.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0032.vtp; path = can/can0032.vtp; sourceTree = "<group>"; };
+		432D23AA15379CC100FB65D2 /* can0031.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0031.vtp; path = can/can0031.vtp; sourceTree = "<group>"; };
+		432D23AB15379CC100FB65D2 /* can0030.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0030.vtp; path = can/can0030.vtp; sourceTree = "<group>"; };
+		432D23AC15379CC100FB65D2 /* can0029.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0029.vtp; path = can/can0029.vtp; sourceTree = "<group>"; };
+		432D23AD15379CC100FB65D2 /* can0028.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0028.vtp; path = can/can0028.vtp; sourceTree = "<group>"; };
+		432D23AE15379CC100FB65D2 /* can0027.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0027.vtp; path = can/can0027.vtp; sourceTree = "<group>"; };
+		432D23AF15379CC100FB65D2 /* can0026.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0026.vtp; path = can/can0026.vtp; sourceTree = "<group>"; };
+		432D23B015379CC100FB65D2 /* can0025.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0025.vtp; path = can/can0025.vtp; sourceTree = "<group>"; };
+		432D23B115379CC100FB65D2 /* can0024.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0024.vtp; path = can/can0024.vtp; sourceTree = "<group>"; };
+		432D23B215379CC100FB65D2 /* can0023.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0023.vtp; path = can/can0023.vtp; sourceTree = "<group>"; };
+		432D23B315379CC100FB65D2 /* can0022.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0022.vtp; path = can/can0022.vtp; sourceTree = "<group>"; };
+		432D23B415379CC100FB65D2 /* can0021.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0021.vtp; path = can/can0021.vtp; sourceTree = "<group>"; };
+		432D23B515379CC100FB65D2 /* can0020.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0020.vtp; path = can/can0020.vtp; sourceTree = "<group>"; };
+		432D23B615379CC100FB65D2 /* can0019.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0019.vtp; path = can/can0019.vtp; sourceTree = "<group>"; };
+		432D23B715379CC100FB65D2 /* can0018.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0018.vtp; path = can/can0018.vtp; sourceTree = "<group>"; };
+		432D23B815379CC100FB65D2 /* can0017.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0017.vtp; path = can/can0017.vtp; sourceTree = "<group>"; };
+		432D23B915379CC100FB65D2 /* can0016.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0016.vtp; path = can/can0016.vtp; sourceTree = "<group>"; };
+		432D23BA15379CC100FB65D2 /* can0015.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0015.vtp; path = can/can0015.vtp; sourceTree = "<group>"; };
+		432D23BB15379CC100FB65D2 /* can0014.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0014.vtp; path = can/can0014.vtp; sourceTree = "<group>"; };
+		432D23BC15379CC100FB65D2 /* can0013.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0013.vtp; path = can/can0013.vtp; sourceTree = "<group>"; };
+		432D23BD15379CC100FB65D2 /* can0012.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0012.vtp; path = can/can0012.vtp; sourceTree = "<group>"; };
+		432D23BE15379CC100FB65D2 /* can0011.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0011.vtp; path = can/can0011.vtp; sourceTree = "<group>"; };
+		432D23BF15379CC100FB65D2 /* can0010.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0010.vtp; path = can/can0010.vtp; sourceTree = "<group>"; };
+		432D23C015379CC100FB65D2 /* can0009.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0009.vtp; path = can/can0009.vtp; sourceTree = "<group>"; };
+		432D23C115379CC100FB65D2 /* can0008.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0008.vtp; path = can/can0008.vtp; sourceTree = "<group>"; };
+		432D23C215379CC100FB65D2 /* can0007.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0007.vtp; path = can/can0007.vtp; sourceTree = "<group>"; };
+		432D23C315379CC100FB65D2 /* can0006.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0006.vtp; path = can/can0006.vtp; sourceTree = "<group>"; };
+		432D23C415379CC100FB65D2 /* can0005.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0005.vtp; path = can/can0005.vtp; sourceTree = "<group>"; };
+		432D23C515379CC100FB65D2 /* can0004.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0004.vtp; path = can/can0004.vtp; sourceTree = "<group>"; };
+		432D23C615379CC100FB65D2 /* can0003.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0003.vtp; path = can/can0003.vtp; sourceTree = "<group>"; };
+		432D23C715379CC100FB65D2 /* can0002.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0002.vtp; path = can/can0002.vtp; sourceTree = "<group>"; };
+		432D23C815379CC100FB65D2 /* can0001.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0001.vtp; path = can/can0001.vtp; sourceTree = "<group>"; };
+		432D23C915379CC100FB65D2 /* can0000.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = can0000.vtp; path = can/can0000.vtp; sourceTree = "<group>"; };
+		432D23F715379CF000FB65D2 /* VPM_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VPM_thalamic_nucleus_R.vtp; path = brain_atlas/VPM_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D23F815379CF000FB65D2 /* VPM_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VPM_thalamic_nucleus_L.vtp; path = brain_atlas/VPM_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D23F915379CF000FB65D2 /* VPL_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VPL_thalamic_nucleus_R.vtp; path = brain_atlas/VPL_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D23FA15379CF000FB65D2 /* VPL_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VPL_thalamic_nucleus_L.vtp; path = brain_atlas/VPL_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D23FB15379CF000FB65D2 /* vestibulocochlear_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vestibulocochlear_nerve_R.vtp; path = brain_atlas/vestibulocochlear_nerve_R.vtp; sourceTree = "<group>"; };
+		432D23FC15379CF000FB65D2 /* vestibulocochlear_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vestibulocochlear_nerve_L.vtp; path = brain_atlas/vestibulocochlear_nerve_L.vtp; sourceTree = "<group>"; };
+		432D23FD15379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ventral_lateral_thalamic_nucleus_R.vtp; path = brain_atlas/ventral_lateral_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D23FE15379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ventral_lateral_thalamic_nucleus_L.vtp; path = brain_atlas/ventral_lateral_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D23FF15379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ventral_anterior_thalamic_nucleus_R.vtp; path = brain_atlas/ventral_anterior_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D240015379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ventral_anterior_thalamic_nucleus_L.vtp; path = brain_atlas/ventral_anterior_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D240115379CF000FB65D2 /* vagal_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vagal_nerve_R.vtp; path = brain_atlas/vagal_nerve_R.vtp; sourceTree = "<group>"; };
+		432D240215379CF000FB65D2 /* vagal_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vagal_nerve_L.vtp; path = brain_atlas/vagal_nerve_L.vtp; sourceTree = "<group>"; };
+		432D240315379CF000FB65D2 /* trochlearis_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = trochlearis_nerve_R.vtp; path = brain_atlas/trochlearis_nerve_R.vtp; sourceTree = "<group>"; };
+		432D240415379CF000FB65D2 /* trochlearis_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = trochlearis_nerve_L.vtp; path = brain_atlas/trochlearis_nerve_L.vtp; sourceTree = "<group>"; };
+		432D240515379CF000FB65D2 /* trigeminal_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = trigeminal_nerve_R.vtp; path = brain_atlas/trigeminal_nerve_R.vtp; sourceTree = "<group>"; };
+		432D240615379CF000FB65D2 /* trigeminal_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = trigeminal_nerve_L.vtp; path = brain_atlas/trigeminal_nerve_L.vtp; sourceTree = "<group>"; };
+		432D240715379CF000FB65D2 /* third_ventricle.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = third_ventricle.vtp; path = brain_atlas/third_ventricle.vtp; sourceTree = "<group>"; };
+		432D240815379CF000FB65D2 /* temporal_pole_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = temporal_pole_R.vtp; path = brain_atlas/temporal_pole_R.vtp; sourceTree = "<group>"; };
+		432D240915379CF000FB65D2 /* temporal_pole_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = temporal_pole_L.vtp; path = brain_atlas/temporal_pole_L.vtp; sourceTree = "<group>"; };
+		432D240A15379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = supramarginal_gyrus_inferior_parietal_lobule_R.vtp; path = brain_atlas/supramarginal_gyrus_inferior_parietal_lobule_R.vtp; sourceTree = "<group>"; };
+		432D240B15379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = supramarginal_gyrus_inferior_parietal_lobule_L.vtp; path = brain_atlas/supramarginal_gyrus_inferior_parietal_lobule_L.vtp; sourceTree = "<group>"; };
+		432D240C15379CF000FB65D2 /* superior_temporal_gyrus_post_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_temporal_gyrus_post_R.vtp; path = brain_atlas/superior_temporal_gyrus_post_R.vtp; sourceTree = "<group>"; };
+		432D240D15379CF000FB65D2 /* superior_temporal_gyrus_post_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_temporal_gyrus_post_L.vtp; path = brain_atlas/superior_temporal_gyrus_post_L.vtp; sourceTree = "<group>"; };
+		432D240E15379CF000FB65D2 /* superior_temporal_gyrus_ant_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_temporal_gyrus_ant_R.vtp; path = brain_atlas/superior_temporal_gyrus_ant_R.vtp; sourceTree = "<group>"; };
+		432D240F15379CF000FB65D2 /* superior_temporal_gyrus_ant_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_temporal_gyrus_ant_L.vtp; path = brain_atlas/superior_temporal_gyrus_ant_L.vtp; sourceTree = "<group>"; };
+		432D241015379CF000FB65D2 /* superior_parietal_lobule_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_parietal_lobule_R.vtp; path = brain_atlas/superior_parietal_lobule_R.vtp; sourceTree = "<group>"; };
+		432D241115379CF000FB65D2 /* superior_parietal_lobule_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_parietal_lobule_L.vtp; path = brain_atlas/superior_parietal_lobule_L.vtp; sourceTree = "<group>"; };
+		432D241215379CF000FB65D2 /* superior_medullar_velum.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_medullar_velum.vtp; path = brain_atlas/superior_medullar_velum.vtp; sourceTree = "<group>"; };
+		432D241315379CF000FB65D2 /* superior_frontal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_frontal_gyrus_R.vtp; path = brain_atlas/superior_frontal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D241415379CF000FB65D2 /* superior_frontal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_frontal_gyrus_L.vtp; path = brain_atlas/superior_frontal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D241515379CF000FB65D2 /* superior_colliculus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_colliculus_R.vtp; path = brain_atlas/superior_colliculus_R.vtp; sourceTree = "<group>"; };
+		432D241615379CF000FB65D2 /* superior_colliculus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_colliculus_L.vtp; path = brain_atlas/superior_colliculus_L.vtp; sourceTree = "<group>"; };
+		432D241715379CF000FB65D2 /* superior_cerebellar_peduncle_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_cerebellar_peduncle_R.vtp; path = brain_atlas/superior_cerebellar_peduncle_R.vtp; sourceTree = "<group>"; };
+		432D241815379CF000FB65D2 /* superior_cerebellar_peduncle_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = superior_cerebellar_peduncle_L.vtp; path = brain_atlas/superior_cerebellar_peduncle_L.vtp; sourceTree = "<group>"; };
+		432D241915379CF000FB65D2 /* substantia_nigra_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = substantia_nigra_R.vtp; path = brain_atlas/substantia_nigra_R.vtp; sourceTree = "<group>"; };
+		432D241A15379CF000FB65D2 /* substantia_nigra_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = substantia_nigra_L.vtp; path = brain_atlas/substantia_nigra_L.vtp; sourceTree = "<group>"; };
+		432D241B15379CF000FB65D2 /* skull_bone.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = skull_bone.vtp; path = brain_atlas/skull_bone.vtp; sourceTree = "<group>"; };
+		432D241C15379CF000FB65D2 /* Skin.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Skin.vtp; path = brain_atlas/Skin.vtp; sourceTree = "<group>"; };
+		432D241D15379CF000FB65D2 /* septal_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = septal_nucleus_R.vtp; path = brain_atlas/septal_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D241E15379CF000FB65D2 /* septal_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = septal_nucleus_L.vtp; path = brain_atlas/septal_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D241F15379CF000FB65D2 /* red_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = red_nucleus_R.vtp; path = brain_atlas/red_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D242015379CF000FB65D2 /* red_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = red_nucleus_L.vtp; path = brain_atlas/red_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D242115379CF000FB65D2 /* putamen_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = putamen_R.vtp; path = brain_atlas/putamen_R.vtp; sourceTree = "<group>"; };
+		432D242215379CF000FB65D2 /* putamen_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = putamen_L.vtp; path = brain_atlas/putamen_L.vtp; sourceTree = "<group>"; };
+		432D242315379CF000FB65D2 /* pulvinar_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pulvinar_R.vtp; path = brain_atlas/pulvinar_R.vtp; sourceTree = "<group>"; };
+		432D242415379CF000FB65D2 /* pulvinar_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pulvinar_L.vtp; path = brain_atlas/pulvinar_L.vtp; sourceTree = "<group>"; };
+		432D242515379CF000FB65D2 /* precentral_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = precentral_gyrus_R.vtp; path = brain_atlas/precentral_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D242615379CF000FB65D2 /* precentral_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = precentral_gyrus_L.vtp; path = brain_atlas/precentral_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D242715379CF000FB65D2 /* posterior_substantia_perforata.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = posterior_substantia_perforata.vtp; path = brain_atlas/posterior_substantia_perforata.vtp; sourceTree = "<group>"; };
+		432D242815379CF000FB65D2 /* posterior_commissure.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = posterior_commissure.vtp; path = brain_atlas/posterior_commissure.vtp; sourceTree = "<group>"; };
+		432D242915379CF000FB65D2 /* postcentral_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = postcentral_gyrus_R.vtp; path = brain_atlas/postcentral_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D242A15379CF000FB65D2 /* postcentral_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = postcentral_gyrus_L.vtp; path = brain_atlas/postcentral_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D242B15379CF000FB65D2 /* pons.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pons.vtp; path = brain_atlas/pons.vtp; sourceTree = "<group>"; };
+		432D242C15379CF000FB65D2 /* pituitary_gland.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pituitary_gland.vtp; path = brain_atlas/pituitary_gland.vtp; sourceTree = "<group>"; };
+		432D242D15379CF000FB65D2 /* pineal_body.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pineal_body.vtp; path = brain_atlas/pineal_body.vtp; sourceTree = "<group>"; };
+		432D242E15379CF000FB65D2 /* pellucid_septum.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pellucid_septum.vtp; path = brain_atlas/pellucid_septum.vtp; sourceTree = "<group>"; };
+		432D242F15379CF000FB65D2 /* orbital_gyri_gyrus_rectus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = orbital_gyri_gyrus_rectus_R.vtp; path = brain_atlas/orbital_gyri_gyrus_rectus_R.vtp; sourceTree = "<group>"; };
+		432D243015379CF000FB65D2 /* orbital_gyri_gyrus_rectus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = orbital_gyri_gyrus_rectus_L.vtp; path = brain_atlas/orbital_gyri_gyrus_rectus_L.vtp; sourceTree = "<group>"; };
+		432D243115379CF000FB65D2 /* optic_tract_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_tract_R.vtp; path = brain_atlas/optic_tract_R.vtp; sourceTree = "<group>"; };
+		432D243215379CF000FB65D2 /* optic_tract_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_tract_L.vtp; path = brain_atlas/optic_tract_L.vtp; sourceTree = "<group>"; };
+		432D243315379CF000FB65D2 /* optic_radiation_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_radiation_R.vtp; path = brain_atlas/optic_radiation_R.vtp; sourceTree = "<group>"; };
+		432D243415379CF000FB65D2 /* optic_radiation_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_radiation_L.vtp; path = brain_atlas/optic_radiation_L.vtp; sourceTree = "<group>"; };
+		432D243515379CF000FB65D2 /* optic_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_nerve_R.vtp; path = brain_atlas/optic_nerve_R.vtp; sourceTree = "<group>"; };
+		432D243615379CF000FB65D2 /* optic_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_nerve_L.vtp; path = brain_atlas/optic_nerve_L.vtp; sourceTree = "<group>"; };
+		432D243715379CF000FB65D2 /* optic_chiasm.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = optic_chiasm.vtp; path = brain_atlas/optic_chiasm.vtp; sourceTree = "<group>"; };
+		432D243815379CF000FB65D2 /* occulomotor_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = occulomotor_nerve_R.vtp; path = brain_atlas/occulomotor_nerve_R.vtp; sourceTree = "<group>"; };
+		432D243915379CF000FB65D2 /* occulomotor_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = occulomotor_nerve_L.vtp; path = brain_atlas/occulomotor_nerve_L.vtp; sourceTree = "<group>"; };
+		432D243A15379CF000FB65D2 /* occipital_lobe_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = occipital_lobe_R.vtp; path = brain_atlas/occipital_lobe_R.vtp; sourceTree = "<group>"; };
+		432D243B15379CF000FB65D2 /* occipital_lobe_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = occipital_lobe_L.vtp; path = brain_atlas/occipital_lobe_L.vtp; sourceTree = "<group>"; };
+		432D243C15379CF000FB65D2 /* nucleus_habenulae_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nucleus_habenulae_R.vtp; path = brain_atlas/nucleus_habenulae_R.vtp; sourceTree = "<group>"; };
+		432D243D15379CF000FB65D2 /* nucleus_habenulae_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nucleus_habenulae_L.vtp; path = brain_atlas/nucleus_habenulae_L.vtp; sourceTree = "<group>"; };
+		432D243E15379CF000FB65D2 /* nucleus_accumbens_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nucleus_accumbens_R.vtp; path = brain_atlas/nucleus_accumbens_R.vtp; sourceTree = "<group>"; };
+		432D243F15379CF000FB65D2 /* nucleus_accumbens_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = nucleus_accumbens_L.vtp; path = brain_atlas/nucleus_accumbens_L.vtp; sourceTree = "<group>"; };
+		432D244015379CF000FB65D2 /* model_info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = model_info.txt; path = brain_atlas/model_info.txt; sourceTree = "<group>"; };
+		432D244115379CF000FB65D2 /* middle_temporal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middle_temporal_gyrus_R.vtp; path = brain_atlas/middle_temporal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D244215379CF000FB65D2 /* middle_temporal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middle_temporal_gyrus_L.vtp; path = brain_atlas/middle_temporal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D244315379CF000FB65D2 /* middle_frontal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middle_frontal_gyrus_R.vtp; path = brain_atlas/middle_frontal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D244415379CF000FB65D2 /* middle_frontal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middle_frontal_gyrus_L.vtp; path = brain_atlas/middle_frontal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D244515379CF000FB65D2 /* middle_cerebellar_peduncle_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middle_cerebellar_peduncle_R.vtp; path = brain_atlas/middle_cerebellar_peduncle_R.vtp; sourceTree = "<group>"; };
+		432D244615379CF000FB65D2 /* middle_cerebellar_peduncle_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middle_cerebellar_peduncle_L.vtp; path = brain_atlas/middle_cerebellar_peduncle_L.vtp; sourceTree = "<group>"; };
+		432D244715379CF000FB65D2 /* midbrain.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = midbrain.vtp; path = brain_atlas/midbrain.vtp; sourceTree = "<group>"; };
+		432D244815379CF000FB65D2 /* medulla_oblongata.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = medulla_oblongata.vtp; path = brain_atlas/medulla_oblongata.vtp; sourceTree = "<group>"; };
+		432D244915379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = medial_occipitotemporal_parahippocampal_gyrus_R.vtp; path = brain_atlas/medial_occipitotemporal_parahippocampal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D244A15379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = medial_occipitotemporal_parahippocampal_gyrus_L.vtp; path = brain_atlas/medial_occipitotemporal_parahippocampal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D244B15379CF000FB65D2 /* medial_geniculate_body_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = medial_geniculate_body_R.vtp; path = brain_atlas/medial_geniculate_body_R.vtp; sourceTree = "<group>"; };
+		432D244C15379CF000FB65D2 /* medial_geniculate_body_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = medial_geniculate_body_L.vtp; path = brain_atlas/medial_geniculate_body_L.vtp; sourceTree = "<group>"; };
+		432D244D15379CF000FB65D2 /* mamillary_body_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mamillary_body_R.vtp; path = brain_atlas/mamillary_body_R.vtp; sourceTree = "<group>"; };
+		432D244E15379CF000FB65D2 /* mamillary_body_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mamillary_body_L.vtp; path = brain_atlas/mamillary_body_L.vtp; sourceTree = "<group>"; };
+		432D244F15379CF000FB65D2 /* lateral_ventricle_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_ventricle_R.vtp; path = brain_atlas/lateral_ventricle_R.vtp; sourceTree = "<group>"; };
+		432D245015379CF000FB65D2 /* lateral_ventricle_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_ventricle_L.vtp; path = brain_atlas/lateral_ventricle_L.vtp; sourceTree = "<group>"; };
+		432D245115379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_posterior_thalamic_nucleus_R.vtp; path = brain_atlas/lateral_posterior_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D245215379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_posterior_thalamic_nucleus_L.vtp; path = brain_atlas/lateral_posterior_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D245315379CF000FB65D2 /* lateral_occipitotemporal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_occipitotemporal_gyrus_R.vtp; path = brain_atlas/lateral_occipitotemporal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D245415379CF000FB65D2 /* lateral_occipitotemporal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_occipitotemporal_gyrus_L.vtp; path = brain_atlas/lateral_occipitotemporal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D245515379CF000FB65D2 /* lateral_geniculate_body_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_geniculate_body_R.vtp; path = brain_atlas/lateral_geniculate_body_R.vtp; sourceTree = "<group>"; };
+		432D245615379CF000FB65D2 /* lateral_geniculate_body_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_geniculate_body_L.vtp; path = brain_atlas/lateral_geniculate_body_L.vtp; sourceTree = "<group>"; };
+		432D245715379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_dorsal_thalamic_nucleus_R.vtp; path = brain_atlas/lateral_dorsal_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D245815379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lateral_dorsal_thalamic_nucleus_L.vtp; path = brain_atlas/lateral_dorsal_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D245915379CF000FB65D2 /* internal_medullar_lamina_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = internal_medullar_lamina_R.vtp; path = brain_atlas/internal_medullar_lamina_R.vtp; sourceTree = "<group>"; };
+		432D245A15379CF000FB65D2 /* internal_medullar_lamina_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = internal_medullar_lamina_L.vtp; path = brain_atlas/internal_medullar_lamina_L.vtp; sourceTree = "<group>"; };
+		432D245B15379CF000FB65D2 /* internal_capsule_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = internal_capsule_R.vtp; path = brain_atlas/internal_capsule_R.vtp; sourceTree = "<group>"; };
+		432D245C15379CF000FB65D2 /* internal_capsule_post_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = internal_capsule_post_R.vtp; path = brain_atlas/internal_capsule_post_R.vtp; sourceTree = "<group>"; };
+		432D245D15379CF000FB65D2 /* internal_capsule_post_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = internal_capsule_post_L.vtp; path = brain_atlas/internal_capsule_post_L.vtp; sourceTree = "<group>"; };
+		432D245E15379CF000FB65D2 /* internal_capsule_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = internal_capsule_L.vtp; path = brain_atlas/internal_capsule_L.vtp; sourceTree = "<group>"; };
+		432D245F15379CF000FB65D2 /* insula_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = insula_R.vtp; path = brain_atlas/insula_R.vtp; sourceTree = "<group>"; };
+		432D246015379CF000FB65D2 /* insula_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = insula_L.vtp; path = brain_atlas/insula_L.vtp; sourceTree = "<group>"; };
+		432D246115379CF000FB65D2 /* inferior_temporal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_temporal_gyrus_R.vtp; path = brain_atlas/inferior_temporal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D246215379CF000FB65D2 /* inferior_temporal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_temporal_gyrus_L.vtp; path = brain_atlas/inferior_temporal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D246315379CF000FB65D2 /* inferior_frontal_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_frontal_gyrus_R.vtp; path = brain_atlas/inferior_frontal_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D246415379CF000FB65D2 /* inferior_frontal_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_frontal_gyrus_L.vtp; path = brain_atlas/inferior_frontal_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D246515379CF000FB65D2 /* inferior_colliculus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_colliculus_R.vtp; path = brain_atlas/inferior_colliculus_R.vtp; sourceTree = "<group>"; };
+		432D246615379CF000FB65D2 /* inferior_colliculus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_colliculus_L.vtp; path = brain_atlas/inferior_colliculus_L.vtp; sourceTree = "<group>"; };
+		432D246715379CF000FB65D2 /* inferior_cerebellar_peduncle_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_cerebellar_peduncle_R.vtp; path = brain_atlas/inferior_cerebellar_peduncle_R.vtp; sourceTree = "<group>"; };
+		432D246815379CF000FB65D2 /* inferior_cerebellar_peduncle_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = inferior_cerebellar_peduncle_L.vtp; path = brain_atlas/inferior_cerebellar_peduncle_L.vtp; sourceTree = "<group>"; };
+		432D246915379CF000FB65D2 /* hypothalamus.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hypothalamus.vtp; path = brain_atlas/hypothalamus.vtp; sourceTree = "<group>"; };
+		432D246A15379CF000FB65D2 /* hypoglossal_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hypoglossal_nerve_R.vtp; path = brain_atlas/hypoglossal_nerve_R.vtp; sourceTree = "<group>"; };
+		432D246B15379CF000FB65D2 /* hypoglossal_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hypoglossal_nerve_L.vtp; path = brain_atlas/hypoglossal_nerve_L.vtp; sourceTree = "<group>"; };
+		432D246C15379CF000FB65D2 /* hippocampus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hippocampus_R.vtp; path = brain_atlas/hippocampus_R.vtp; sourceTree = "<group>"; };
+		432D246D15379CF000FB65D2 /* hippocampus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hippocampus_L.vtp; path = brain_atlas/hippocampus_L.vtp; sourceTree = "<group>"; };
+		432D246E15379CF000FB65D2 /* hemispheric_white_matter.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = hemispheric_white_matter.vtp; path = brain_atlas/hemispheric_white_matter.vtp; sourceTree = "<group>"; };
+		432D246F15379CF000FB65D2 /* glossopharyngeal_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = glossopharyngeal_nerve_R.vtp; path = brain_atlas/glossopharyngeal_nerve_R.vtp; sourceTree = "<group>"; };
+		432D247015379CF000FB65D2 /* glossopharyngeal_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = glossopharyngeal_nerve_L.vtp; path = brain_atlas/glossopharyngeal_nerve_L.vtp; sourceTree = "<group>"; };
+		432D247115379CF000FB65D2 /* globus_pallidus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = globus_pallidus_R.vtp; path = brain_atlas/globus_pallidus_R.vtp; sourceTree = "<group>"; };
+		432D247215379CF000FB65D2 /* globus_pallidus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = globus_pallidus_L.vtp; path = brain_atlas/globus_pallidus_L.vtp; sourceTree = "<group>"; };
+		432D247315379CF000FB65D2 /* fourth_ventricle_aqueduct.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fourth_ventricle_aqueduct.vtp; path = brain_atlas/fourth_ventricle_aqueduct.vtp; sourceTree = "<group>"; };
+		432D247415379CF000FB65D2 /* fornix.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fornix.vtp; path = brain_atlas/fornix.vtp; sourceTree = "<group>"; };
+		432D247515379CF000FB65D2 /* facial_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = facial_nerve_R.vtp; path = brain_atlas/facial_nerve_R.vtp; sourceTree = "<group>"; };
+		432D247615379CF000FB65D2 /* facial_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = facial_nerve_L.vtp; path = brain_atlas/facial_nerve_L.vtp; sourceTree = "<group>"; };
+		432D247715379CF000FB65D2 /* eyeball_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eyeball_R.vtp; path = brain_atlas/eyeball_R.vtp; sourceTree = "<group>"; };
+		432D247815379CF000FB65D2 /* eyeball_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = eyeball_L.vtp; path = brain_atlas/eyeball_L.vtp; sourceTree = "<group>"; };
+		432D247915379CF000FB65D2 /* external_capsule_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = external_capsule_R.vtp; path = brain_atlas/external_capsule_R.vtp; sourceTree = "<group>"; };
+		432D247A15379CF000FB65D2 /* external_capsule_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = external_capsule_L.vtp; path = brain_atlas/external_capsule_L.vtp; sourceTree = "<group>"; };
+		432D247B15379CF000FB65D2 /* dorsomedial_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dorsomedial_thalamic_nucleus_R.vtp; path = brain_atlas/dorsomedial_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D247C15379CF000FB65D2 /* dorsomedial_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dorsomedial_thalamic_nucleus_L.vtp; path = brain_atlas/dorsomedial_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D247D15379CF000FB65D2 /* dentate_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dentate_nucleus_R.vtp; path = brain_atlas/dentate_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D247E15379CF000FB65D2 /* dentate_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dentate_nucleus_L.vtp; path = brain_atlas/dentate_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D247F15379CF000FB65D2 /* corticospinal_tract_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corticospinal_tract_R.vtp; path = brain_atlas/corticospinal_tract_R.vtp; sourceTree = "<group>"; };
+		432D248015379CF000FB65D2 /* corticospinal_tract_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corticospinal_tract_L.vtp; path = brain_atlas/corticospinal_tract_L.vtp; sourceTree = "<group>"; };
+		432D248115379CF000FB65D2 /* corpus_callosum.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = corpus_callosum.vtp; path = brain_atlas/corpus_callosum.vtp; sourceTree = "<group>"; };
+		432D248215379CF000FB65D2 /* cingulate_gyrus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cingulate_gyrus_R.vtp; path = brain_atlas/cingulate_gyrus_R.vtp; sourceTree = "<group>"; };
+		432D248315379CF000FB65D2 /* cingulate_gyrus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cingulate_gyrus_L.vtp; path = brain_atlas/cingulate_gyrus_L.vtp; sourceTree = "<group>"; };
+		432D248415379CF000FB65D2 /* cerebellar_white_matter.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cerebellar_white_matter.vtp; path = brain_atlas/cerebellar_white_matter.vtp; sourceTree = "<group>"; };
+		432D248515379CF000FB65D2 /* cerebellar_vermis.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cerebellar_vermis.vtp; path = brain_atlas/cerebellar_vermis.vtp; sourceTree = "<group>"; };
+		432D248615379CF000FB65D2 /* cerebellar_tonsil_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cerebellar_tonsil_R.vtp; path = brain_atlas/cerebellar_tonsil_R.vtp; sourceTree = "<group>"; };
+		432D248715379CF000FB65D2 /* cerebellar_tonsil_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cerebellar_tonsil_L.vtp; path = brain_atlas/cerebellar_tonsil_L.vtp; sourceTree = "<group>"; };
+		432D248815379CF000FB65D2 /* cerebellar_hemisphere_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cerebellar_hemisphere_R.vtp; path = brain_atlas/cerebellar_hemisphere_R.vtp; sourceTree = "<group>"; };
+		432D248915379CF000FB65D2 /* cerebellar_hemisphere_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cerebellar_hemisphere_L.vtp; path = brain_atlas/cerebellar_hemisphere_L.vtp; sourceTree = "<group>"; };
+		432D248A15379CF000FB65D2 /* centromedian_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = centromedian_thalamic_nucleus_R.vtp; path = brain_atlas/centromedian_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D248B15379CF000FB65D2 /* centromedian_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = centromedian_thalamic_nucleus_L.vtp; path = brain_atlas/centromedian_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D248C15379CF000FB65D2 /* caudate_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = caudate_nucleus_R.vtp; path = brain_atlas/caudate_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D248D15379CF000FB65D2 /* caudate_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = caudate_nucleus_L.vtp; path = brain_atlas/caudate_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D248E15379CF000FB65D2 /* axis.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = axis.vtp; path = brain_atlas/axis.vtp; sourceTree = "<group>"; };
+		432D248F15379CF000FB65D2 /* atlas.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = atlas.vtp; path = brain_atlas/atlas.vtp; sourceTree = "<group>"; };
+		432D249015379CF000FB65D2 /* anterior_thalamic_nucleus_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = anterior_thalamic_nucleus_R.vtp; path = brain_atlas/anterior_thalamic_nucleus_R.vtp; sourceTree = "<group>"; };
+		432D249115379CF000FB65D2 /* anterior_thalamic_nucleus_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = anterior_thalamic_nucleus_L.vtp; path = brain_atlas/anterior_thalamic_nucleus_L.vtp; sourceTree = "<group>"; };
+		432D249215379CF000FB65D2 /* anterior_substantia_perforata_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = anterior_substantia_perforata_R.vtp; path = brain_atlas/anterior_substantia_perforata_R.vtp; sourceTree = "<group>"; };
+		432D249315379CF000FB65D2 /* anterior_substantia_perforata_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = anterior_substantia_perforata_L.vtp; path = brain_atlas/anterior_substantia_perforata_L.vtp; sourceTree = "<group>"; };
+		432D249415379CF000FB65D2 /* anterior_commissure.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = anterior_commissure.vtp; path = brain_atlas/anterior_commissure.vtp; sourceTree = "<group>"; };
+		432D249515379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = angular_gyrus_inferior_parietal_lobule_R.vtp; path = brain_atlas/angular_gyrus_inferior_parietal_lobule_R.vtp; sourceTree = "<group>"; };
+		432D249615379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = angular_gyrus_inferior_parietal_lobule_L.vtp; path = brain_atlas/angular_gyrus_inferior_parietal_lobule_L.vtp; sourceTree = "<group>"; };
+		432D249715379CF000FB65D2 /* amygdaloid_body_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = amygdaloid_body_R.vtp; path = brain_atlas/amygdaloid_body_R.vtp; sourceTree = "<group>"; };
+		432D249815379CF000FB65D2 /* amygdaloid_body_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = amygdaloid_body_L.vtp; path = brain_atlas/amygdaloid_body_L.vtp; sourceTree = "<group>"; };
+		432D249915379CF000FB65D2 /* accessory_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = accessory_nerve_R.vtp; path = brain_atlas/accessory_nerve_R.vtp; sourceTree = "<group>"; };
+		432D249A15379CF000FB65D2 /* accessory_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = accessory_nerve_L.vtp; path = brain_atlas/accessory_nerve_L.vtp; sourceTree = "<group>"; };
+		432D249B15379CF000FB65D2 /* abducent_nerve_R.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = abducent_nerve_R.vtp; path = brain_atlas/abducent_nerve_R.vtp; sourceTree = "<group>"; };
+		432D249C15379CF000FB65D2 /* abducent_nerve_L.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = abducent_nerve_L.vtp; path = brain_atlas/abducent_nerve_L.vtp; sourceTree = "<group>"; };
 		432DE16C13D15E1C000F8EC0 /* libves.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libves.a; path = "../CMakeBuild/build/CMakeExternals/Build/ves-ios-device/lib/libves.a"; sourceTree = "<group>"; };
 		435026ED140E93C9000C315D /* caffeine.pdb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = caffeine.pdb; sourceTree = "<group>"; };
 		436B34AF13C802D500C5726C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -291,6 +711,230 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		432D239C15379CB400FB65D2 /* can */ = {
+			isa = PBXGroup;
+			children = (
+				432D239E15379CC100FB65D2 /* can0043.vtp */,
+				432D239F15379CC100FB65D2 /* can0042.vtp */,
+				432D23A015379CC100FB65D2 /* can0041.vtp */,
+				432D23A115379CC100FB65D2 /* can0040.vtp */,
+				432D23A215379CC100FB65D2 /* can0039.vtp */,
+				432D23A315379CC100FB65D2 /* can0038.vtp */,
+				432D23A415379CC100FB65D2 /* can0037.vtp */,
+				432D23A515379CC100FB65D2 /* can0036.vtp */,
+				432D23A615379CC100FB65D2 /* can0035.vtp */,
+				432D23A715379CC100FB65D2 /* can0034.vtp */,
+				432D23A815379CC100FB65D2 /* can0033.vtp */,
+				432D23A915379CC100FB65D2 /* can0032.vtp */,
+				432D23AA15379CC100FB65D2 /* can0031.vtp */,
+				432D23AB15379CC100FB65D2 /* can0030.vtp */,
+				432D23AC15379CC100FB65D2 /* can0029.vtp */,
+				432D23AD15379CC100FB65D2 /* can0028.vtp */,
+				432D23AE15379CC100FB65D2 /* can0027.vtp */,
+				432D23AF15379CC100FB65D2 /* can0026.vtp */,
+				432D23B015379CC100FB65D2 /* can0025.vtp */,
+				432D23B115379CC100FB65D2 /* can0024.vtp */,
+				432D23B215379CC100FB65D2 /* can0023.vtp */,
+				432D23B315379CC100FB65D2 /* can0022.vtp */,
+				432D23B415379CC100FB65D2 /* can0021.vtp */,
+				432D23B515379CC100FB65D2 /* can0020.vtp */,
+				432D23B615379CC100FB65D2 /* can0019.vtp */,
+				432D23B715379CC100FB65D2 /* can0018.vtp */,
+				432D23B815379CC100FB65D2 /* can0017.vtp */,
+				432D23B915379CC100FB65D2 /* can0016.vtp */,
+				432D23BA15379CC100FB65D2 /* can0015.vtp */,
+				432D23BB15379CC100FB65D2 /* can0014.vtp */,
+				432D23BC15379CC100FB65D2 /* can0013.vtp */,
+				432D23BD15379CC100FB65D2 /* can0012.vtp */,
+				432D23BE15379CC100FB65D2 /* can0011.vtp */,
+				432D23BF15379CC100FB65D2 /* can0010.vtp */,
+				432D23C015379CC100FB65D2 /* can0009.vtp */,
+				432D23C115379CC100FB65D2 /* can0008.vtp */,
+				432D23C215379CC100FB65D2 /* can0007.vtp */,
+				432D23C315379CC100FB65D2 /* can0006.vtp */,
+				432D23C415379CC100FB65D2 /* can0005.vtp */,
+				432D23C515379CC100FB65D2 /* can0004.vtp */,
+				432D23C615379CC100FB65D2 /* can0003.vtp */,
+				432D23C715379CC100FB65D2 /* can0002.vtp */,
+				432D23C815379CC100FB65D2 /* can0001.vtp */,
+				432D23C915379CC100FB65D2 /* can0000.vtp */,
+			);
+			name = can;
+			sourceTree = "<group>";
+		};
+		432D23F615379CC800FB65D2 /* brain atlas */ = {
+			isa = PBXGroup;
+			children = (
+				432D23F715379CF000FB65D2 /* VPM_thalamic_nucleus_R.vtp */,
+				432D23F815379CF000FB65D2 /* VPM_thalamic_nucleus_L.vtp */,
+				432D23F915379CF000FB65D2 /* VPL_thalamic_nucleus_R.vtp */,
+				432D23FA15379CF000FB65D2 /* VPL_thalamic_nucleus_L.vtp */,
+				432D23FB15379CF000FB65D2 /* vestibulocochlear_nerve_R.vtp */,
+				432D23FC15379CF000FB65D2 /* vestibulocochlear_nerve_L.vtp */,
+				432D23FD15379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_R.vtp */,
+				432D23FE15379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_L.vtp */,
+				432D23FF15379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_R.vtp */,
+				432D240015379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_L.vtp */,
+				432D240115379CF000FB65D2 /* vagal_nerve_R.vtp */,
+				432D240215379CF000FB65D2 /* vagal_nerve_L.vtp */,
+				432D240315379CF000FB65D2 /* trochlearis_nerve_R.vtp */,
+				432D240415379CF000FB65D2 /* trochlearis_nerve_L.vtp */,
+				432D240515379CF000FB65D2 /* trigeminal_nerve_R.vtp */,
+				432D240615379CF000FB65D2 /* trigeminal_nerve_L.vtp */,
+				432D240715379CF000FB65D2 /* third_ventricle.vtp */,
+				432D240815379CF000FB65D2 /* temporal_pole_R.vtp */,
+				432D240915379CF000FB65D2 /* temporal_pole_L.vtp */,
+				432D240A15379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_R.vtp */,
+				432D240B15379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_L.vtp */,
+				432D240C15379CF000FB65D2 /* superior_temporal_gyrus_post_R.vtp */,
+				432D240D15379CF000FB65D2 /* superior_temporal_gyrus_post_L.vtp */,
+				432D240E15379CF000FB65D2 /* superior_temporal_gyrus_ant_R.vtp */,
+				432D240F15379CF000FB65D2 /* superior_temporal_gyrus_ant_L.vtp */,
+				432D241015379CF000FB65D2 /* superior_parietal_lobule_R.vtp */,
+				432D241115379CF000FB65D2 /* superior_parietal_lobule_L.vtp */,
+				432D241215379CF000FB65D2 /* superior_medullar_velum.vtp */,
+				432D241315379CF000FB65D2 /* superior_frontal_gyrus_R.vtp */,
+				432D241415379CF000FB65D2 /* superior_frontal_gyrus_L.vtp */,
+				432D241515379CF000FB65D2 /* superior_colliculus_R.vtp */,
+				432D241615379CF000FB65D2 /* superior_colliculus_L.vtp */,
+				432D241715379CF000FB65D2 /* superior_cerebellar_peduncle_R.vtp */,
+				432D241815379CF000FB65D2 /* superior_cerebellar_peduncle_L.vtp */,
+				432D241915379CF000FB65D2 /* substantia_nigra_R.vtp */,
+				432D241A15379CF000FB65D2 /* substantia_nigra_L.vtp */,
+				432D241B15379CF000FB65D2 /* skull_bone.vtp */,
+				432D241C15379CF000FB65D2 /* Skin.vtp */,
+				432D241D15379CF000FB65D2 /* septal_nucleus_R.vtp */,
+				432D241E15379CF000FB65D2 /* septal_nucleus_L.vtp */,
+				432D241F15379CF000FB65D2 /* red_nucleus_R.vtp */,
+				432D242015379CF000FB65D2 /* red_nucleus_L.vtp */,
+				432D242115379CF000FB65D2 /* putamen_R.vtp */,
+				432D242215379CF000FB65D2 /* putamen_L.vtp */,
+				432D242315379CF000FB65D2 /* pulvinar_R.vtp */,
+				432D242415379CF000FB65D2 /* pulvinar_L.vtp */,
+				432D242515379CF000FB65D2 /* precentral_gyrus_R.vtp */,
+				432D242615379CF000FB65D2 /* precentral_gyrus_L.vtp */,
+				432D242715379CF000FB65D2 /* posterior_substantia_perforata.vtp */,
+				432D242815379CF000FB65D2 /* posterior_commissure.vtp */,
+				432D242915379CF000FB65D2 /* postcentral_gyrus_R.vtp */,
+				432D242A15379CF000FB65D2 /* postcentral_gyrus_L.vtp */,
+				432D242B15379CF000FB65D2 /* pons.vtp */,
+				432D242C15379CF000FB65D2 /* pituitary_gland.vtp */,
+				432D242D15379CF000FB65D2 /* pineal_body.vtp */,
+				432D242E15379CF000FB65D2 /* pellucid_septum.vtp */,
+				432D242F15379CF000FB65D2 /* orbital_gyri_gyrus_rectus_R.vtp */,
+				432D243015379CF000FB65D2 /* orbital_gyri_gyrus_rectus_L.vtp */,
+				432D243115379CF000FB65D2 /* optic_tract_R.vtp */,
+				432D243215379CF000FB65D2 /* optic_tract_L.vtp */,
+				432D243315379CF000FB65D2 /* optic_radiation_R.vtp */,
+				432D243415379CF000FB65D2 /* optic_radiation_L.vtp */,
+				432D243515379CF000FB65D2 /* optic_nerve_R.vtp */,
+				432D243615379CF000FB65D2 /* optic_nerve_L.vtp */,
+				432D243715379CF000FB65D2 /* optic_chiasm.vtp */,
+				432D243815379CF000FB65D2 /* occulomotor_nerve_R.vtp */,
+				432D243915379CF000FB65D2 /* occulomotor_nerve_L.vtp */,
+				432D243A15379CF000FB65D2 /* occipital_lobe_R.vtp */,
+				432D243B15379CF000FB65D2 /* occipital_lobe_L.vtp */,
+				432D243C15379CF000FB65D2 /* nucleus_habenulae_R.vtp */,
+				432D243D15379CF000FB65D2 /* nucleus_habenulae_L.vtp */,
+				432D243E15379CF000FB65D2 /* nucleus_accumbens_R.vtp */,
+				432D243F15379CF000FB65D2 /* nucleus_accumbens_L.vtp */,
+				432D244015379CF000FB65D2 /* model_info.txt */,
+				432D244115379CF000FB65D2 /* middle_temporal_gyrus_R.vtp */,
+				432D244215379CF000FB65D2 /* middle_temporal_gyrus_L.vtp */,
+				432D244315379CF000FB65D2 /* middle_frontal_gyrus_R.vtp */,
+				432D244415379CF000FB65D2 /* middle_frontal_gyrus_L.vtp */,
+				432D244515379CF000FB65D2 /* middle_cerebellar_peduncle_R.vtp */,
+				432D244615379CF000FB65D2 /* middle_cerebellar_peduncle_L.vtp */,
+				432D244715379CF000FB65D2 /* midbrain.vtp */,
+				432D244815379CF000FB65D2 /* medulla_oblongata.vtp */,
+				432D244915379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_R.vtp */,
+				432D244A15379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_L.vtp */,
+				432D244B15379CF000FB65D2 /* medial_geniculate_body_R.vtp */,
+				432D244C15379CF000FB65D2 /* medial_geniculate_body_L.vtp */,
+				432D244D15379CF000FB65D2 /* mamillary_body_R.vtp */,
+				432D244E15379CF000FB65D2 /* mamillary_body_L.vtp */,
+				432D244F15379CF000FB65D2 /* lateral_ventricle_R.vtp */,
+				432D245015379CF000FB65D2 /* lateral_ventricle_L.vtp */,
+				432D245115379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_R.vtp */,
+				432D245215379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_L.vtp */,
+				432D245315379CF000FB65D2 /* lateral_occipitotemporal_gyrus_R.vtp */,
+				432D245415379CF000FB65D2 /* lateral_occipitotemporal_gyrus_L.vtp */,
+				432D245515379CF000FB65D2 /* lateral_geniculate_body_R.vtp */,
+				432D245615379CF000FB65D2 /* lateral_geniculate_body_L.vtp */,
+				432D245715379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_R.vtp */,
+				432D245815379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_L.vtp */,
+				432D245915379CF000FB65D2 /* internal_medullar_lamina_R.vtp */,
+				432D245A15379CF000FB65D2 /* internal_medullar_lamina_L.vtp */,
+				432D245B15379CF000FB65D2 /* internal_capsule_R.vtp */,
+				432D245C15379CF000FB65D2 /* internal_capsule_post_R.vtp */,
+				432D245D15379CF000FB65D2 /* internal_capsule_post_L.vtp */,
+				432D245E15379CF000FB65D2 /* internal_capsule_L.vtp */,
+				432D245F15379CF000FB65D2 /* insula_R.vtp */,
+				432D246015379CF000FB65D2 /* insula_L.vtp */,
+				432D246115379CF000FB65D2 /* inferior_temporal_gyrus_R.vtp */,
+				432D246215379CF000FB65D2 /* inferior_temporal_gyrus_L.vtp */,
+				432D246315379CF000FB65D2 /* inferior_frontal_gyrus_R.vtp */,
+				432D246415379CF000FB65D2 /* inferior_frontal_gyrus_L.vtp */,
+				432D246515379CF000FB65D2 /* inferior_colliculus_R.vtp */,
+				432D246615379CF000FB65D2 /* inferior_colliculus_L.vtp */,
+				432D246715379CF000FB65D2 /* inferior_cerebellar_peduncle_R.vtp */,
+				432D246815379CF000FB65D2 /* inferior_cerebellar_peduncle_L.vtp */,
+				432D246915379CF000FB65D2 /* hypothalamus.vtp */,
+				432D246A15379CF000FB65D2 /* hypoglossal_nerve_R.vtp */,
+				432D246B15379CF000FB65D2 /* hypoglossal_nerve_L.vtp */,
+				432D246C15379CF000FB65D2 /* hippocampus_R.vtp */,
+				432D246D15379CF000FB65D2 /* hippocampus_L.vtp */,
+				432D246E15379CF000FB65D2 /* hemispheric_white_matter.vtp */,
+				432D246F15379CF000FB65D2 /* glossopharyngeal_nerve_R.vtp */,
+				432D247015379CF000FB65D2 /* glossopharyngeal_nerve_L.vtp */,
+				432D247115379CF000FB65D2 /* globus_pallidus_R.vtp */,
+				432D247215379CF000FB65D2 /* globus_pallidus_L.vtp */,
+				432D247315379CF000FB65D2 /* fourth_ventricle_aqueduct.vtp */,
+				432D247415379CF000FB65D2 /* fornix.vtp */,
+				432D247515379CF000FB65D2 /* facial_nerve_R.vtp */,
+				432D247615379CF000FB65D2 /* facial_nerve_L.vtp */,
+				432D247715379CF000FB65D2 /* eyeball_R.vtp */,
+				432D247815379CF000FB65D2 /* eyeball_L.vtp */,
+				432D247915379CF000FB65D2 /* external_capsule_R.vtp */,
+				432D247A15379CF000FB65D2 /* external_capsule_L.vtp */,
+				432D247B15379CF000FB65D2 /* dorsomedial_thalamic_nucleus_R.vtp */,
+				432D247C15379CF000FB65D2 /* dorsomedial_thalamic_nucleus_L.vtp */,
+				432D247D15379CF000FB65D2 /* dentate_nucleus_R.vtp */,
+				432D247E15379CF000FB65D2 /* dentate_nucleus_L.vtp */,
+				432D247F15379CF000FB65D2 /* corticospinal_tract_R.vtp */,
+				432D248015379CF000FB65D2 /* corticospinal_tract_L.vtp */,
+				432D248115379CF000FB65D2 /* corpus_callosum.vtp */,
+				432D248215379CF000FB65D2 /* cingulate_gyrus_R.vtp */,
+				432D248315379CF000FB65D2 /* cingulate_gyrus_L.vtp */,
+				432D248415379CF000FB65D2 /* cerebellar_white_matter.vtp */,
+				432D248515379CF000FB65D2 /* cerebellar_vermis.vtp */,
+				432D248615379CF000FB65D2 /* cerebellar_tonsil_R.vtp */,
+				432D248715379CF000FB65D2 /* cerebellar_tonsil_L.vtp */,
+				432D248815379CF000FB65D2 /* cerebellar_hemisphere_R.vtp */,
+				432D248915379CF000FB65D2 /* cerebellar_hemisphere_L.vtp */,
+				432D248A15379CF000FB65D2 /* centromedian_thalamic_nucleus_R.vtp */,
+				432D248B15379CF000FB65D2 /* centromedian_thalamic_nucleus_L.vtp */,
+				432D248C15379CF000FB65D2 /* caudate_nucleus_R.vtp */,
+				432D248D15379CF000FB65D2 /* caudate_nucleus_L.vtp */,
+				432D248E15379CF000FB65D2 /* axis.vtp */,
+				432D248F15379CF000FB65D2 /* atlas.vtp */,
+				432D249015379CF000FB65D2 /* anterior_thalamic_nucleus_R.vtp */,
+				432D249115379CF000FB65D2 /* anterior_thalamic_nucleus_L.vtp */,
+				432D249215379CF000FB65D2 /* anterior_substantia_perforata_R.vtp */,
+				432D249315379CF000FB65D2 /* anterior_substantia_perforata_L.vtp */,
+				432D249415379CF000FB65D2 /* anterior_commissure.vtp */,
+				432D249515379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_R.vtp */,
+				432D249615379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_L.vtp */,
+				432D249715379CF000FB65D2 /* amygdaloid_body_R.vtp */,
+				432D249815379CF000FB65D2 /* amygdaloid_body_L.vtp */,
+				432D249915379CF000FB65D2 /* accessory_nerve_R.vtp */,
+				432D249A15379CF000FB65D2 /* accessory_nerve_L.vtp */,
+				432D249B15379CF000FB65D2 /* abducent_nerve_R.vtp */,
+				432D249C15379CF000FB65D2 /* abducent_nerve_L.vtp */,
+			);
+			name = "brain atlas";
+			sourceTree = "<group>";
+		};
 		432DE16E13D15E8C000F8EC0 /* vtk libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +1009,8 @@
 		6F25E6F2137D88DD00BF4BCA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				432D23F615379CC800FB65D2 /* brain atlas */,
+				432D239C15379CB400FB65D2 /* can */,
 				437813A314E70DFC003E7931 /* cturtle.vtp */,
 				437813A414E70DFC003E7931 /* earth.jpg */,
 				437813A614E70DFC003E7931 /* textured_sphere.vtp */,
@@ -474,6 +1120,216 @@
 				437813A714E70DFC003E7931 /* cturtle.vtp in Resources */,
 				437813A814E70DFC003E7931 /* earth.jpg in Resources */,
 				437813AA14E70DFC003E7931 /* textured_sphere.vtp in Resources */,
+				432D23CA15379CC100FB65D2 /* can0043.vtp in Resources */,
+				432D23CB15379CC100FB65D2 /* can0042.vtp in Resources */,
+				432D23CC15379CC100FB65D2 /* can0041.vtp in Resources */,
+				432D23CD15379CC100FB65D2 /* can0040.vtp in Resources */,
+				432D23CE15379CC100FB65D2 /* can0039.vtp in Resources */,
+				432D23CF15379CC100FB65D2 /* can0038.vtp in Resources */,
+				432D23D015379CC100FB65D2 /* can0037.vtp in Resources */,
+				432D23D115379CC100FB65D2 /* can0036.vtp in Resources */,
+				432D23D215379CC100FB65D2 /* can0035.vtp in Resources */,
+				432D23D315379CC100FB65D2 /* can0034.vtp in Resources */,
+				432D23D415379CC100FB65D2 /* can0033.vtp in Resources */,
+				432D23D515379CC100FB65D2 /* can0032.vtp in Resources */,
+				432D23D615379CC100FB65D2 /* can0031.vtp in Resources */,
+				432D23D715379CC100FB65D2 /* can0030.vtp in Resources */,
+				432D23D815379CC100FB65D2 /* can0029.vtp in Resources */,
+				432D23D915379CC100FB65D2 /* can0028.vtp in Resources */,
+				432D23DA15379CC100FB65D2 /* can0027.vtp in Resources */,
+				432D23DB15379CC100FB65D2 /* can0026.vtp in Resources */,
+				432D23DC15379CC100FB65D2 /* can0025.vtp in Resources */,
+				432D23DD15379CC100FB65D2 /* can0024.vtp in Resources */,
+				432D23DE15379CC100FB65D2 /* can0023.vtp in Resources */,
+				432D23DF15379CC100FB65D2 /* can0022.vtp in Resources */,
+				432D23E015379CC100FB65D2 /* can0021.vtp in Resources */,
+				432D23E115379CC100FB65D2 /* can0020.vtp in Resources */,
+				432D23E215379CC100FB65D2 /* can0019.vtp in Resources */,
+				432D23E315379CC100FB65D2 /* can0018.vtp in Resources */,
+				432D23E415379CC100FB65D2 /* can0017.vtp in Resources */,
+				432D23E515379CC100FB65D2 /* can0016.vtp in Resources */,
+				432D23E615379CC100FB65D2 /* can0015.vtp in Resources */,
+				432D23E715379CC100FB65D2 /* can0014.vtp in Resources */,
+				432D23E815379CC100FB65D2 /* can0013.vtp in Resources */,
+				432D23E915379CC100FB65D2 /* can0012.vtp in Resources */,
+				432D23EA15379CC100FB65D2 /* can0011.vtp in Resources */,
+				432D23EB15379CC100FB65D2 /* can0010.vtp in Resources */,
+				432D23EC15379CC100FB65D2 /* can0009.vtp in Resources */,
+				432D23ED15379CC100FB65D2 /* can0008.vtp in Resources */,
+				432D23EE15379CC100FB65D2 /* can0007.vtp in Resources */,
+				432D23EF15379CC100FB65D2 /* can0006.vtp in Resources */,
+				432D23F015379CC100FB65D2 /* can0005.vtp in Resources */,
+				432D23F115379CC100FB65D2 /* can0004.vtp in Resources */,
+				432D23F215379CC100FB65D2 /* can0003.vtp in Resources */,
+				432D23F315379CC100FB65D2 /* can0002.vtp in Resources */,
+				432D23F415379CC100FB65D2 /* can0001.vtp in Resources */,
+				432D23F515379CC100FB65D2 /* can0000.vtp in Resources */,
+				432D249D15379CF000FB65D2 /* VPM_thalamic_nucleus_R.vtp in Resources */,
+				432D249E15379CF000FB65D2 /* VPM_thalamic_nucleus_L.vtp in Resources */,
+				432D249F15379CF000FB65D2 /* VPL_thalamic_nucleus_R.vtp in Resources */,
+				432D24A015379CF000FB65D2 /* VPL_thalamic_nucleus_L.vtp in Resources */,
+				432D24A115379CF000FB65D2 /* vestibulocochlear_nerve_R.vtp in Resources */,
+				432D24A215379CF000FB65D2 /* vestibulocochlear_nerve_L.vtp in Resources */,
+				432D24A315379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_R.vtp in Resources */,
+				432D24A415379CF000FB65D2 /* ventral_lateral_thalamic_nucleus_L.vtp in Resources */,
+				432D24A515379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_R.vtp in Resources */,
+				432D24A615379CF000FB65D2 /* ventral_anterior_thalamic_nucleus_L.vtp in Resources */,
+				432D24A715379CF000FB65D2 /* vagal_nerve_R.vtp in Resources */,
+				432D24A815379CF000FB65D2 /* vagal_nerve_L.vtp in Resources */,
+				432D24A915379CF000FB65D2 /* trochlearis_nerve_R.vtp in Resources */,
+				432D24AA15379CF000FB65D2 /* trochlearis_nerve_L.vtp in Resources */,
+				432D24AB15379CF000FB65D2 /* trigeminal_nerve_R.vtp in Resources */,
+				432D24AC15379CF000FB65D2 /* trigeminal_nerve_L.vtp in Resources */,
+				432D24AD15379CF000FB65D2 /* third_ventricle.vtp in Resources */,
+				432D24AE15379CF000FB65D2 /* temporal_pole_R.vtp in Resources */,
+				432D24AF15379CF000FB65D2 /* temporal_pole_L.vtp in Resources */,
+				432D24B015379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_R.vtp in Resources */,
+				432D24B115379CF000FB65D2 /* supramarginal_gyrus_inferior_parietal_lobule_L.vtp in Resources */,
+				432D24B215379CF000FB65D2 /* superior_temporal_gyrus_post_R.vtp in Resources */,
+				432D24B315379CF000FB65D2 /* superior_temporal_gyrus_post_L.vtp in Resources */,
+				432D24B415379CF000FB65D2 /* superior_temporal_gyrus_ant_R.vtp in Resources */,
+				432D24B515379CF000FB65D2 /* superior_temporal_gyrus_ant_L.vtp in Resources */,
+				432D24B615379CF000FB65D2 /* superior_parietal_lobule_R.vtp in Resources */,
+				432D24B715379CF000FB65D2 /* superior_parietal_lobule_L.vtp in Resources */,
+				432D24B815379CF000FB65D2 /* superior_medullar_velum.vtp in Resources */,
+				432D24B915379CF000FB65D2 /* superior_frontal_gyrus_R.vtp in Resources */,
+				432D24BA15379CF000FB65D2 /* superior_frontal_gyrus_L.vtp in Resources */,
+				432D24BB15379CF000FB65D2 /* superior_colliculus_R.vtp in Resources */,
+				432D24BC15379CF000FB65D2 /* superior_colliculus_L.vtp in Resources */,
+				432D24BD15379CF000FB65D2 /* superior_cerebellar_peduncle_R.vtp in Resources */,
+				432D24BE15379CF000FB65D2 /* superior_cerebellar_peduncle_L.vtp in Resources */,
+				432D24BF15379CF000FB65D2 /* substantia_nigra_R.vtp in Resources */,
+				432D24C015379CF000FB65D2 /* substantia_nigra_L.vtp in Resources */,
+				432D24C115379CF000FB65D2 /* skull_bone.vtp in Resources */,
+				432D24C215379CF000FB65D2 /* Skin.vtp in Resources */,
+				432D24C315379CF000FB65D2 /* septal_nucleus_R.vtp in Resources */,
+				432D24C415379CF000FB65D2 /* septal_nucleus_L.vtp in Resources */,
+				432D24C515379CF000FB65D2 /* red_nucleus_R.vtp in Resources */,
+				432D24C615379CF000FB65D2 /* red_nucleus_L.vtp in Resources */,
+				432D24C715379CF000FB65D2 /* putamen_R.vtp in Resources */,
+				432D24C815379CF000FB65D2 /* putamen_L.vtp in Resources */,
+				432D24C915379CF000FB65D2 /* pulvinar_R.vtp in Resources */,
+				432D24CA15379CF000FB65D2 /* pulvinar_L.vtp in Resources */,
+				432D24CB15379CF000FB65D2 /* precentral_gyrus_R.vtp in Resources */,
+				432D24CC15379CF000FB65D2 /* precentral_gyrus_L.vtp in Resources */,
+				432D24CD15379CF000FB65D2 /* posterior_substantia_perforata.vtp in Resources */,
+				432D24CE15379CF000FB65D2 /* posterior_commissure.vtp in Resources */,
+				432D24CF15379CF000FB65D2 /* postcentral_gyrus_R.vtp in Resources */,
+				432D24D015379CF000FB65D2 /* postcentral_gyrus_L.vtp in Resources */,
+				432D24D115379CF000FB65D2 /* pons.vtp in Resources */,
+				432D24D215379CF000FB65D2 /* pituitary_gland.vtp in Resources */,
+				432D24D315379CF000FB65D2 /* pineal_body.vtp in Resources */,
+				432D24D415379CF000FB65D2 /* pellucid_septum.vtp in Resources */,
+				432D24D515379CF000FB65D2 /* orbital_gyri_gyrus_rectus_R.vtp in Resources */,
+				432D24D615379CF000FB65D2 /* orbital_gyri_gyrus_rectus_L.vtp in Resources */,
+				432D24D715379CF000FB65D2 /* optic_tract_R.vtp in Resources */,
+				432D24D815379CF000FB65D2 /* optic_tract_L.vtp in Resources */,
+				432D24D915379CF000FB65D2 /* optic_radiation_R.vtp in Resources */,
+				432D24DA15379CF000FB65D2 /* optic_radiation_L.vtp in Resources */,
+				432D24DB15379CF000FB65D2 /* optic_nerve_R.vtp in Resources */,
+				432D24DC15379CF000FB65D2 /* optic_nerve_L.vtp in Resources */,
+				432D24DD15379CF000FB65D2 /* optic_chiasm.vtp in Resources */,
+				432D24DE15379CF000FB65D2 /* occulomotor_nerve_R.vtp in Resources */,
+				432D24DF15379CF000FB65D2 /* occulomotor_nerve_L.vtp in Resources */,
+				432D24E015379CF000FB65D2 /* occipital_lobe_R.vtp in Resources */,
+				432D24E115379CF000FB65D2 /* occipital_lobe_L.vtp in Resources */,
+				432D24E215379CF000FB65D2 /* nucleus_habenulae_R.vtp in Resources */,
+				432D24E315379CF000FB65D2 /* nucleus_habenulae_L.vtp in Resources */,
+				432D24E415379CF000FB65D2 /* nucleus_accumbens_R.vtp in Resources */,
+				432D24E515379CF000FB65D2 /* nucleus_accumbens_L.vtp in Resources */,
+				432D24E615379CF000FB65D2 /* model_info.txt in Resources */,
+				432D24E715379CF000FB65D2 /* middle_temporal_gyrus_R.vtp in Resources */,
+				432D24E815379CF000FB65D2 /* middle_temporal_gyrus_L.vtp in Resources */,
+				432D24E915379CF000FB65D2 /* middle_frontal_gyrus_R.vtp in Resources */,
+				432D24EA15379CF000FB65D2 /* middle_frontal_gyrus_L.vtp in Resources */,
+				432D24EB15379CF000FB65D2 /* middle_cerebellar_peduncle_R.vtp in Resources */,
+				432D24EC15379CF000FB65D2 /* middle_cerebellar_peduncle_L.vtp in Resources */,
+				432D24ED15379CF000FB65D2 /* midbrain.vtp in Resources */,
+				432D24EE15379CF000FB65D2 /* medulla_oblongata.vtp in Resources */,
+				432D24EF15379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_R.vtp in Resources */,
+				432D24F015379CF000FB65D2 /* medial_occipitotemporal_parahippocampal_gyrus_L.vtp in Resources */,
+				432D24F115379CF000FB65D2 /* medial_geniculate_body_R.vtp in Resources */,
+				432D24F215379CF000FB65D2 /* medial_geniculate_body_L.vtp in Resources */,
+				432D24F315379CF000FB65D2 /* mamillary_body_R.vtp in Resources */,
+				432D24F415379CF000FB65D2 /* mamillary_body_L.vtp in Resources */,
+				432D24F515379CF000FB65D2 /* lateral_ventricle_R.vtp in Resources */,
+				432D24F615379CF000FB65D2 /* lateral_ventricle_L.vtp in Resources */,
+				432D24F715379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_R.vtp in Resources */,
+				432D24F815379CF000FB65D2 /* lateral_posterior_thalamic_nucleus_L.vtp in Resources */,
+				432D24F915379CF000FB65D2 /* lateral_occipitotemporal_gyrus_R.vtp in Resources */,
+				432D24FA15379CF000FB65D2 /* lateral_occipitotemporal_gyrus_L.vtp in Resources */,
+				432D24FB15379CF000FB65D2 /* lateral_geniculate_body_R.vtp in Resources */,
+				432D24FC15379CF000FB65D2 /* lateral_geniculate_body_L.vtp in Resources */,
+				432D24FD15379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_R.vtp in Resources */,
+				432D24FE15379CF000FB65D2 /* lateral_dorsal_thalamic_nucleus_L.vtp in Resources */,
+				432D24FF15379CF000FB65D2 /* internal_medullar_lamina_R.vtp in Resources */,
+				432D250015379CF000FB65D2 /* internal_medullar_lamina_L.vtp in Resources */,
+				432D250115379CF000FB65D2 /* internal_capsule_R.vtp in Resources */,
+				432D250215379CF000FB65D2 /* internal_capsule_post_R.vtp in Resources */,
+				432D250315379CF000FB65D2 /* internal_capsule_post_L.vtp in Resources */,
+				432D250415379CF000FB65D2 /* internal_capsule_L.vtp in Resources */,
+				432D250515379CF000FB65D2 /* insula_R.vtp in Resources */,
+				432D250615379CF000FB65D2 /* insula_L.vtp in Resources */,
+				432D250715379CF000FB65D2 /* inferior_temporal_gyrus_R.vtp in Resources */,
+				432D250815379CF000FB65D2 /* inferior_temporal_gyrus_L.vtp in Resources */,
+				432D250915379CF000FB65D2 /* inferior_frontal_gyrus_R.vtp in Resources */,
+				432D250A15379CF000FB65D2 /* inferior_frontal_gyrus_L.vtp in Resources */,
+				432D250B15379CF000FB65D2 /* inferior_colliculus_R.vtp in Resources */,
+				432D250C15379CF000FB65D2 /* inferior_colliculus_L.vtp in Resources */,
+				432D250D15379CF000FB65D2 /* inferior_cerebellar_peduncle_R.vtp in Resources */,
+				432D250E15379CF000FB65D2 /* inferior_cerebellar_peduncle_L.vtp in Resources */,
+				432D250F15379CF000FB65D2 /* hypothalamus.vtp in Resources */,
+				432D251015379CF000FB65D2 /* hypoglossal_nerve_R.vtp in Resources */,
+				432D251115379CF000FB65D2 /* hypoglossal_nerve_L.vtp in Resources */,
+				432D251215379CF000FB65D2 /* hippocampus_R.vtp in Resources */,
+				432D251315379CF000FB65D2 /* hippocampus_L.vtp in Resources */,
+				432D251415379CF000FB65D2 /* hemispheric_white_matter.vtp in Resources */,
+				432D251515379CF000FB65D2 /* glossopharyngeal_nerve_R.vtp in Resources */,
+				432D251615379CF000FB65D2 /* glossopharyngeal_nerve_L.vtp in Resources */,
+				432D251715379CF000FB65D2 /* globus_pallidus_R.vtp in Resources */,
+				432D251815379CF000FB65D2 /* globus_pallidus_L.vtp in Resources */,
+				432D251915379CF000FB65D2 /* fourth_ventricle_aqueduct.vtp in Resources */,
+				432D251A15379CF000FB65D2 /* fornix.vtp in Resources */,
+				432D251B15379CF000FB65D2 /* facial_nerve_R.vtp in Resources */,
+				432D251C15379CF000FB65D2 /* facial_nerve_L.vtp in Resources */,
+				432D251D15379CF000FB65D2 /* eyeball_R.vtp in Resources */,
+				432D251E15379CF000FB65D2 /* eyeball_L.vtp in Resources */,
+				432D251F15379CF000FB65D2 /* external_capsule_R.vtp in Resources */,
+				432D252015379CF000FB65D2 /* external_capsule_L.vtp in Resources */,
+				432D252115379CF000FB65D2 /* dorsomedial_thalamic_nucleus_R.vtp in Resources */,
+				432D252215379CF000FB65D2 /* dorsomedial_thalamic_nucleus_L.vtp in Resources */,
+				432D252315379CF000FB65D2 /* dentate_nucleus_R.vtp in Resources */,
+				432D252415379CF000FB65D2 /* dentate_nucleus_L.vtp in Resources */,
+				432D252515379CF000FB65D2 /* corticospinal_tract_R.vtp in Resources */,
+				432D252615379CF000FB65D2 /* corticospinal_tract_L.vtp in Resources */,
+				432D252715379CF000FB65D2 /* corpus_callosum.vtp in Resources */,
+				432D252815379CF000FB65D2 /* cingulate_gyrus_R.vtp in Resources */,
+				432D252915379CF000FB65D2 /* cingulate_gyrus_L.vtp in Resources */,
+				432D252A15379CF000FB65D2 /* cerebellar_white_matter.vtp in Resources */,
+				432D252B15379CF000FB65D2 /* cerebellar_vermis.vtp in Resources */,
+				432D252C15379CF000FB65D2 /* cerebellar_tonsil_R.vtp in Resources */,
+				432D252D15379CF000FB65D2 /* cerebellar_tonsil_L.vtp in Resources */,
+				432D252E15379CF000FB65D2 /* cerebellar_hemisphere_R.vtp in Resources */,
+				432D252F15379CF000FB65D2 /* cerebellar_hemisphere_L.vtp in Resources */,
+				432D253015379CF000FB65D2 /* centromedian_thalamic_nucleus_R.vtp in Resources */,
+				432D253115379CF000FB65D2 /* centromedian_thalamic_nucleus_L.vtp in Resources */,
+				432D253215379CF000FB65D2 /* caudate_nucleus_R.vtp in Resources */,
+				432D253315379CF000FB65D2 /* caudate_nucleus_L.vtp in Resources */,
+				432D253415379CF000FB65D2 /* axis.vtp in Resources */,
+				432D253515379CF000FB65D2 /* atlas.vtp in Resources */,
+				432D253615379CF000FB65D2 /* anterior_thalamic_nucleus_R.vtp in Resources */,
+				432D253715379CF000FB65D2 /* anterior_thalamic_nucleus_L.vtp in Resources */,
+				432D253815379CF000FB65D2 /* anterior_substantia_perforata_R.vtp in Resources */,
+				432D253915379CF000FB65D2 /* anterior_substantia_perforata_L.vtp in Resources */,
+				432D253A15379CF000FB65D2 /* anterior_commissure.vtp in Resources */,
+				432D253B15379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_R.vtp in Resources */,
+				432D253C15379CF000FB65D2 /* angular_gyrus_inferior_parietal_lobule_L.vtp in Resources */,
+				432D253D15379CF000FB65D2 /* amygdaloid_body_R.vtp in Resources */,
+				432D253E15379CF000FB65D2 /* amygdaloid_body_L.vtp in Resources */,
+				432D253F15379CF000FB65D2 /* accessory_nerve_R.vtp in Resources */,
+				432D254015379CF000FB65D2 /* accessory_nerve_L.vtp in Resources */,
+				432D254115379CF000FB65D2 /* abducent_nerve_R.vtp in Resources */,
+				432D254215379CF000FB65D2 /* abducent_nerve_L.vtp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
