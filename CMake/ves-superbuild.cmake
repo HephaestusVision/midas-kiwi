@@ -85,6 +85,83 @@ macro(compile_vtk proj)
   )
 endmacro()
 
+
+
+#
+# libarchive fetch
+#
+macro(fetch_libarchive)
+  ExternalProject_Add(
+    libarchive-fetch
+    SOURCE_DIR ${source_prefix}/libarchive
+    GIT_REPOSITORY git://github.com/libarchive/libarchive.git
+    GIT_TAG origin/release
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    INSTALL_COMMAND ""
+  )
+endmacro()
+
+#
+# libarchive compile
+#
+macro(compile_libarchive tag)
+  set(proj libarchive-${tag})
+  ExternalProject_Add(
+    ${proj}
+    SOURCE_DIR ${source_prefix}/libarchive
+    DOWNLOAD_COMMAND ""
+    DEPENDS libarchive-fetch
+    CMAKE_ARGS
+      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+      -DBUILD_SHARED_LIBS:BOOL=OFF
+      -DENABLE_NETTLE:BOOL=OFF
+      -DENABLE_OPENSSL:BOOL=OFF
+      -DENABLE_TAR:BOOL=OFF
+      -DENABLE_TAR_SHARED:BOOL=OFF
+      -DENABLE_CPIO:BOOL=OFF
+      -DENABLE_CPIO_SHARED:BOOL=OFF
+      -DENABLE_XATTR:BOOL=OFF
+      -DENABLE_ACL:BOOL=OFF
+      -DENABLE_ICONV:BOOL=OFF
+      -DENABLE_TEST:BOOL=OFF
+  )
+
+  force_build(${proj})
+endmacro()
+
+
+#
+# libarchive crosscompile
+#
+macro(crosscompile_libarchive proj toolchain_file)
+  ExternalProject_Add(
+    ${proj}
+    SOURCE_DIR ${source_prefix}/libarchive
+    DOWNLOAD_COMMAND ""
+    DEPENDS libarchive-fetch
+    CMAKE_ARGS
+      -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${toolchain_dir}/${toolchain_file}
+      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+      -DBUILD_SHARED_LIBS:BOOL=OFF
+      -DENABLE_NETTLE:BOOL=OFF
+      -DENABLE_OPENSSL:BOOL=OFF
+      -DENABLE_TAR:BOOL=OFF
+      -DENABLE_TAR_SHARED:BOOL=OFF
+      -DENABLE_CPIO:BOOL=OFF
+      -DENABLE_CPIO_SHARED:BOOL=OFF
+      -DENABLE_XATTR:BOOL=OFF
+      -DENABLE_ACL:BOOL=OFF
+      -DENABLE_ICONV:BOOL=OFF
+      -DENABLE_TEST:BOOL=OFF
+  )
+
+  force_build(${proj})
+endmacro()
+
+
 macro(compile_ves proj)
   ExternalProject_Add(
     ${proj}
@@ -169,6 +246,8 @@ macro(crosscompile_ves proj tag toolchain_file)
       -DVTK_DIR:PATH=${build_prefix}/vtk-${tag}
       -DCURL_INCLUDE_DIR:PATH=${install_prefix}/curl-${tag}/include
       -DCURL_LIBRARY:PATH=${install_prefix}/curl-${tag}/lib/libcurl.a
+      -DLibArchive_LIBRARY:PATH=${install_prefix}/libarchive-${tag}/lib/libarchive.a
+      -DLibArchive_INCLUDE_DIR:PATH=${install_prefix}/libarchive-${tag}/include
       -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
       -DPYTHON_EXECUTABLE:FILEPATH=${PYTHON_EXECUTABLE}
   )
@@ -181,11 +260,14 @@ install_eigen()
 download_curl()
 compile_vtk(vtk-host)
 
+fetch_libarchive()
+
 if(VES_IOS_SUPERBUILD)
   foreach(target ios-simulator ios-device)
     crosscompile_vtk(vtk-${target} toolchain-${target}.cmake)
     crosscompile_curl(curl-${target} toolchain-${target}.cmake)
     crosscompile_ves(ves-${target} ${target} toolchain-${target}.cmake)
+    crosscompile_libarchive(libarchive-${target} toolchain-${target}.cmake)
   endforeach()
 endif()
 
@@ -193,6 +275,7 @@ if(VES_ANDROID_SUPERBUILD)
   crosscompile_vtk(vtk-android android.toolchain.cmake)
   crosscompile_curl(curl-android android.toolchain.cmake)
   crosscompile_ves(ves-android android android.toolchain.cmake)
+  crosscompile_libarchive(libarchive-android android.toolchain.cmake)
 endif()
 
 if(VES_HOST_SUPERBUILD)

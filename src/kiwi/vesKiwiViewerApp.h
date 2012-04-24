@@ -155,6 +155,7 @@ protected:
   bool loadCanSimulation(const std::string& filename);
   bool loadBlueMarble(const std::string& filename);
   bool loadKiwiScene(const std::string& filename);
+  bool loadArchive(const std::string& filename);
   void setDefaultBackgroundColor();
 
   void setErrorMessage(const std::string& errorTitle, const std::string& errorMessage);

@@ -275,6 +275,8 @@
 		437813A714E70DFC003E7931 /* cturtle.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 437813A314E70DFC003E7931 /* cturtle.vtp */; };
 		437813A814E70DFC003E7931 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 437813A414E70DFC003E7931 /* earth.jpg */; };
 		437813AA14E70DFC003E7931 /* textured_sphere.vtp in Resources */ = {isa = PBXBuildFile; fileRef = 437813A614E70DFC003E7931 /* textured_sphere.vtp */; };
+		439D252D153B1EA9003CC8D7 /* libarchive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 439D252C153B1EA9003CC8D7 /* libarchive.a */; };
+		439D2530153B22EF003CC8D7 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 439D252F153B22EF003CC8D7 /* libbz2.1.0.dylib */; };
 		43AA039B14C91469007001D3 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AA039A14C91469007001D3 /* libcurl.a */; };
 		43AA039E14C915A1007001D3 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 43AA039D14C915A1007001D3 /* libz.1.2.5.dylib */; };
 		43C1C1CE1410533A00A721F7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 43C1C1CD1410533A00A721F7 /* Default.png */; };
@@ -577,6 +579,8 @@
 		437813A314E70DFC003E7931 /* cturtle.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cturtle.vtp; sourceTree = "<group>"; };
 		437813A414E70DFC003E7931 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = earth.jpg; sourceTree = "<group>"; };
 		437813A614E70DFC003E7931 /* textured_sphere.vtp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = textured_sphere.vtp; sourceTree = "<group>"; };
+		439D252C153B1EA9003CC8D7 /* libarchive.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libarchive.a; path = "../../../../build/CMakeExternals/Install/libarchive-ios-device/lib/libarchive.a"; sourceTree = "<group>"; };
+		439D252F153B22EF003CC8D7 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = usr/lib/libbz2.1.0.dylib; sourceTree = SDKROOT; };
 		43AA039A14C91469007001D3 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../../../build/CMakeExternals/Install/curl-ios-device/lib/libcurl.a"; sourceTree = "<group>"; };
 		43AA039D14C915A1007001D3 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		43C1C1CD1410533A00A721F7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -658,6 +662,8 @@
 				43AA039E14C915A1007001D3 /* libz.1.2.5.dylib in Frameworks */,
 				43655C48153799710057ACB7 /* libvtkIOInfovis-6.0.a in Frameworks */,
 				43655C4B153799AF0057ACB7 /* libvtkInfovisCore-6.0.a in Frameworks */,
+				439D252D153B1EA9003CC8D7 /* libarchive.a in Frameworks */,
+				439D2530153B22EF003CC8D7 /* libbz2.1.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +999,8 @@
 		432DE16F13D15EA6000F8EC0 /* ves libs */ = {
 			isa = PBXGroup;
 			children = (
+				439D252F153B22EF003CC8D7 /* libbz2.1.0.dylib */,
+				439D252C153B1EA9003CC8D7 /* libarchive.a */,
 				43AA039D14C915A1007001D3 /* libz.1.2.5.dylib */,
 				43AA039A14C91469007001D3 /* libcurl.a */,
 				432A52181495B6D50010EB71 /* libvesShaders.a */,
@@ -1397,12 +1405,14 @@
 					"\"$(ves_build)/CMakeExternals/Build/vtk-ios-device/lib\"",
 					"\"$(ves_build)/CMakeExternals/Build/ves-ios-device/lib\"",
 					"\"$(ves_build)/CMakeExternals/Install/curl-ios-device/lib\"",
+					"\"$(ves_build)/CMakeExternals/Install/libarchive-ios-device/lib\"",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*][arch=*]" = (
 					"$(inherited)",
 					"\"$(ves_build)/CMakeExternals/Build/vtk-ios-simulator/lib\"",
 					"\"$(ves_build)/CMakeExternals/Build/ves-ios-simulator/lib\"",
 					"\"$(ves_build)/CMakeExternals/Install/curl-ios-simulator/lib\"",
+					"\"$(ves_build)/CMakeExternals/Install/libarchive-ios-simulator/lib\"",
 				);
 				PRODUCT_NAME = kiwi;
 				PROVISIONING_PROFILE = "";
@@ -1440,12 +1450,14 @@
 					"\"$(ves_build)/CMakeExternals/Build/vtk-ios-device/lib\"",
 					"\"$(ves_build)/CMakeExternals/Build/ves-ios-device/lib\"",
 					"\"$(ves_build)/CMakeExternals/Install/curl-ios-device/lib\"",
+					"\"$(ves_build)/CMakeExternals/Install/libarchive-ios-device/lib\"",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*][arch=*]" = (
 					"$(inherited)",
 					"\"$(ves_build)/CMakeExternals/Build/vtk-ios-simulator/lib\"",
 					"\"$(ves_build)/CMakeExternals/Build/ves-ios-simulator/lib\"",
 					"\"$(ves_build)/CMakeExternals/Install/curl-ios-simulator/lib\"",
+					"\"$(ves_build)/CMakeExternals/Install/libarchive-ios-simulator/lib\"",
 				);
 				PRODUCT_NAME = kiwi;
 				PROVISIONING_PROFILE = "";
@@ -1571,12 +1583,14 @@
 					"\"$(ves_build)/CMakeExternals/Build/vtk-ios-device/lib\"",
 					"\"$(ves_build)/CMakeExternals/Build/ves-ios-device/lib\"",
 					"\"$(ves_build)/CMakeExternals/Install/curl-ios-device/lib\"",
+					"\"$(ves_build)/CMakeExternals/Install/libarchive-ios-device/lib\"",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*][arch=*]" = (
 					"$(inherited)",
 					"\"$(ves_build)/CMakeExternals/Build/vtk-ios-simulator/lib\"",
 					"\"$(ves_build)/CMakeExternals/Build/ves-ios-simulator/lib\"",
 					"\"$(ves_build)/CMakeExternals/Install/curl-ios-simulator/lib\"",
+					"\"$(ves_build)/CMakeExternals/Install/libarchive-ios-simulator/lib\"",
 				);
 				PRODUCT_NAME = kiwi;
 				PROVISIONING_PROFILE = "";
