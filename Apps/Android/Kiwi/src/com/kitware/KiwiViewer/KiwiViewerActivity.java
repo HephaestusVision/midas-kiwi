@@ -435,9 +435,43 @@ public class KiwiViewerActivity extends Activity {
     }
 
 
+    public void doPVWeb() {
+
+      LayoutInflater factory = LayoutInflater.from(this);
+      final View pvwebDialog = factory.inflate(R.layout.pvweb_dialog, null);
+      new AlertDialog.Builder(KiwiViewerActivity.this)
+          .setIcon(R.drawable.paraview_logo)
+          .setTitle("Join a ParaView Web session:")
+          .setView(pvwebDialog)
+          .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int whichButton) {
+                EditText hostEdit = (EditText) pvwebDialog.findViewById(R.id.host_edit);
+                EditText sessionIdEdit = (EditText) pvwebDialog.findViewById(R.id.sessionid_edit);
+
+                String host = hostEdit.getText().toString();
+                String sessionId = sessionIdEdit.getText().toString();
+
+                showProgressDialog("Contacting ParaView Web...");
+                mView.doPVWeb(host, sessionId, KiwiViewerActivity.this);
+              }
+          })
+          .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int whichButton) {
+
+              }
+          })
+          .show();
+
+    }
+
     public void loadDataset(int builtinDatasetIndex) {
 
       String filename = KiwiNative.getDatasetFilename(builtinDatasetIndex);
+
+      if (filename.equals("pvweb")) {
+        doPVWeb();
+        return;
+      }
 
       // don't attempt to open large asset files on android api 8
       int sdkVersion = Build.VERSION.SDK_INT;
