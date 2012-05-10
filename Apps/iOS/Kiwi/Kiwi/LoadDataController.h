@@ -22,6 +22,7 @@
 
 @protocol LoadDataDelegate
 -(void)dataSelected:(int)index;
+-(void)openUrl;
 @end
 
 @interface LoadDataController : UITableViewController {

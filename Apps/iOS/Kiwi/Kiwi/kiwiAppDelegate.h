@@ -42,6 +42,13 @@
 @property (nonatomic, retain) IBOutlet GLViewController *viewController;
 @property (nonatomic, retain) LoadDataController *dataLoader;
 @property (nonatomic, retain) UIPopoverController *loadDataPopover;
+@property (nonatomic, retain) NSString *lastPVWebSessionId;
+@property (nonatomic, retain) NSString *lastPVWebHost;
+
+
+@property (nonatomic, retain) UIAlertView *pvwebDialog;
+@property (nonatomic, retain) UIAlertView *openUrlDialog;
+
 
 -(IBAction)reset:(UIButton*)sender;
 -(IBAction)information:(UIButton*)sender;
@@ -52,5 +59,6 @@
 -(void)dismissLoadDataView;
 
 - (BOOL)handleUrl:(NSURL *)url;
+-(void)openUrl;
 
 @end
