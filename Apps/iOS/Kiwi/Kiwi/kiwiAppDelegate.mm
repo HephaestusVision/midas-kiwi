@@ -33,6 +33,10 @@
 @synthesize viewController;
 @synthesize dataLoader = _dataLoader;
 @synthesize loadDataPopover = _loadDataPopover;
+@synthesize lastPVWebHost;
+@synthesize lastPVWebSessionId;
+@synthesize pvwebDialog;
+@synthesize openUrlDialog;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -48,6 +52,8 @@
 - (void)dealloc
 {
   self.loadDataPopover = nil;
+  self.pvwebDialog = nil;
+  self.openUrlDialog = nil;
 
   [window release];
   [glView release];
@@ -127,6 +133,76 @@
   [self showAlertDialogWithTitle:title message:message];
 }
 
+-(void)showBrainAtlasDialog
+{
+  NSString* title = @"SPL-PNL Brain Atlas";
+  NSString* message = @"The brain atlas is distributed under the Slicer license.  For more information please visit http://www.slicer.org/publications/item/view/1265\n\nInteractions:\n\n-single tap a model to hide it\n\n-double tap a model to single it out\n\n-long press anywhere to show all models again\n\n-touch and drag the clip plane to move it\n\n-touch and drag the handle to rotate the clip plane\n\n-tap the top left corner of the screen to hide/show the clip plane\n\n";
+  [self showAlertDialogWithTitle:title message:message];
+}
+
+-(void)showCanDialog
+{
+  NSString* title = @"Can";
+  NSString* message = @"About the can simulation";
+  [self showAlertDialogWithTitle:title message:message];
+}
+
+-(void)showPVWebDialog
+{
+  self.pvwebDialog = [[UIAlertView alloc] initWithTitle:@"Join ParaView Web session"
+                                             message:@"Enter host and session id:"
+                                             delegate:self
+                                             cancelButtonTitle:@"Cancel"
+                                             otherButtonTitles:@"Join",nil];
+  [self.pvwebDialog release];
+
+  self.pvwebDialog.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+  UITextField* hostTextField = [self.pvwebDialog textFieldAtIndex:0];
+  UITextField* sessionIdTextField = [self.pvwebDialog textFieldAtIndex:1];
+
+  hostTextField.keyboardType = UIKeyboardTypeURL;
+  hostTextField.placeholder = @"paraviewweb.kitware.com";
+  hostTextField.text = @"paraviewweb.kitware.com";
+  if (self.lastPVWebHost != nil && [self.lastPVWebHost length])
+    {
+    hostTextField.placeholder = self.lastPVWebHost;
+    hostTextField.text = self.lastPVWebHost;
+    }
+
+  sessionIdTextField.keyboardType = UIKeyboardTypeNumberPad;
+  sessionIdTextField.secureTextEntry = FALSE;
+  sessionIdTextField.placeholder = @"session id";
+  if (self.lastPVWebSessionId != nil && [self.lastPVWebSessionId length])
+    {
+    sessionIdTextField.placeholder = self.lastPVWebSessionId;
+    sessionIdTextField.text = self.lastPVWebSessionId;
+    }
+
+  [self.pvwebDialog show];
+}
+
+-(void)showOpenUrlDialog:(NSString*)defaultUrl
+{
+  self.openUrlDialog = [[UIAlertView alloc] initWithTitle:@"Open URL"
+                                             message:@"Enter http url:"
+                                             delegate:self
+                                             cancelButtonTitle:@"Cancel"
+                                             otherButtonTitles:@"Ok",nil];
+  [self.openUrlDialog release];
+
+  self.openUrlDialog.alertViewStyle = UIAlertViewStylePlainTextInput;
+  UITextField * alertTextField = [self.openUrlDialog textFieldAtIndex:0];
+  alertTextField.keyboardType = UIKeyboardTypeURL;
+  if (defaultUrl == nil)
+    {
+    defaultUrl = @"http://";
+    }
+
+  alertTextField.text = defaultUrl;
+
+  [self.openUrlDialog show];
+}
+
 -(void) showErrorDialog
 {
   vesKiwiViewerApp* app = [glView getApp];
@@ -168,7 +244,18 @@
   [self dismissWaitDialog];
   if (!result) {
     [self showErrorDialog];
-    }
+    return;
+  }
+
+  if ([filename hasSuffix:@"model_info.txt"]) {
+    [self showBrainAtlasDialog];
+  }
+  else if ([filename hasSuffix:@"can0000.vtp"]) {
+    [self showCanDialog];
+  }
+  else if ([filename hasSuffix:@"head.vti"]) {
+    [self showHeadImageDialog];
+  }
 }
 
 -(BOOL) loadDatasetWithPath:(NSString*)path builtinIndex:(int) index
@@ -204,6 +291,12 @@
   vesKiwiViewerApp* app = [self.glView getApp];
   NSString* datasetName = [NSString stringWithUTF8String:app->builtinDatasetFilename(index).c_str()];
 
+  if ([datasetName isEqualToString:@"pvweb"])
+    {
+    [self showPVWebDialog];
+    return;
+    }
+
   NSString* absolutePath = [[NSBundle mainBundle] pathForResource:datasetName ofType:nil];
   if (absolutePath == nil)
     {
@@ -224,9 +317,93 @@
   }
 }
 
+-(void)handleDownloadedFile:(NSString*) filename
+{
+  if (![filename length]) {
+    [self dismissWaitDialog];
+    [self showErrorDialog];
+  }
+  else {
+    [self loadDatasetWithPath:filename];
+  }
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 
+  if (alertView == self.pvwebDialog && buttonIndex == 1)
+    {
+    self.lastPVWebHost = [[alertView textFieldAtIndex:0] text];
+    self.lastPVWebSessionId = [[alertView textFieldAtIndex:1] text];
+    self.pvwebDialog = nil;
+
+    std::string host;
+    std::string sessionId;
+
+    if ([self.lastPVWebHost length])
+      {
+      host = [self.lastPVWebHost UTF8String];
+      }
+
+    if ([self.lastPVWebSessionId length])
+      {
+      sessionId = [self.lastPVWebSessionId UTF8String];
+      }
+
+    [self showWaitDialogWithMessage:@"Contacting ParaView Web..."];
+
+    vesKiwiViewerApp* app = [self.glView getApp];
+
+    dispatch_async(self->myQueue, ^{
+
+      [EAGLContext setCurrentContext:glView.context];
+      bool result = app->doPVWebTest(host, sessionId);
+      [self.glView resetView];
+
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self postLoadDataset:@"pvweb" result:result];
+      });
+    });
+
+
+
+    }
+  else if (alertView == self.openUrlDialog && buttonIndex == 1)
+    {
+    NSString* downloadUrl = [[alertView textFieldAtIndex:0] text];
+    self.openUrlDialog = nil;
+
+    if (![downloadUrl hasPrefix:@"http://"])
+      {
+      [self showAlertDialogWithTitle:@"URL Error" message:@"The url must begin with http://"];
+      return;
+      }
+
+    NSLog(@"downloading url: %@", downloadUrl);
+    NSLog(@"to directory: %@", [self documentsDirectory]);
+
+    [self showWaitDialogWithMessage:@"Downloading file..."];
+
+    vesKiwiViewerApp* app = [self.glView getApp];
+
+    dispatch_async(self->myQueue, ^{
+
+      [EAGLContext setCurrentContext:glView.context];
+      std::string newFile = app->downloadFile([downloadUrl UTF8String], [[self documentsDirectory] UTF8String]);
+      printf("got downloaded file: %s\n", newFile.c_str());
+
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [self handleDownloadedFile:[NSString stringWithUTF8String:newFile.c_str()]];
+      });
+    });
+
+    }
+}
+
+-(void)openUrl
+{
+  [self dismissLoadDataView];
+  [self showOpenUrlDialog:nil];
 }
 
 - (BOOL)handleUrl:(NSURL *)url;

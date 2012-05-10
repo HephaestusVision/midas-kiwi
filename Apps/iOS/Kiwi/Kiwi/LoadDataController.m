@@ -65,6 +65,7 @@
 
   [_helpStrings addObject:@"from DropBox."];
   [_helpStrings addObject:@"from email."];
+  [_helpStrings addObject:@"Open URL"];
 
 }
 
@@ -176,6 +177,9 @@
       }
       else if (label == @"from email.") {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://kitware.com/kiwiviewer/help/documentation.html#email"]];
+      }
+      else if (label == @"Open URL") {
+        [_delegate openUrl];
       }
     }
   }
