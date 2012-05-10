@@ -176,6 +176,7 @@ extern "C" {
   JNIEXPORT jstring JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getLoadDatasetErrorTitle(JNIEnv* env, jobject obj);
   JNIEXPORT jstring JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getLoadDatasetErrorMessage(JNIEnv* env, jobject obj);
 
+  JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_doPVWeb(JNIEnv* env, jobject obj, jstring host, jstring sessionId);
   JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_downloadAndOpenFile(JNIEnv* env, jobject obj, jstring url, jstring downloadDir);
 
   JNIEXPORT jint JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getNumberOfTriangles(JNIEnv* env, jobject obj);
@@ -324,6 +325,20 @@ JNIEXPORT void JNICALL Java_com_kitware_KiwiViewer_KiwiNative_checkForAdditional
     env->ReleaseStringUTFChars(storageDir, javaStr);
     app->checkForAdditionalData(storageDirStr);
   }
+}
+
+JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_doPVWeb(JNIEnv* env, jobject obj, jstring host, jstring sessionId)
+{
+  bool result = false;
+  const char *hostStr = env->GetStringUTFChars(host, NULL);
+  const char *sessionIdStr = env->GetStringUTFChars(sessionId, NULL);
+  if (hostStr && sessionIdStr) {
+    clearExistingDataset();
+    result = app->doPVWebTest(hostStr, sessionIdStr);
+    env->ReleaseStringUTFChars(host, hostStr);
+    env->ReleaseStringUTFChars(sessionId, sessionIdStr);
+  }
+  return result;
 }
 
 JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_downloadAndOpenFile(JNIEnv* env, jobject obj, jstring url, jstring downloadDir)

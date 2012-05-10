@@ -375,6 +375,24 @@ public class KiwiGLSurfaceView extends GLSurfaceView implements MultiTouchObject
 
     }
 
+    public void doPVWeb(final String host, final String sessionId, final KiwiViewerActivity loader) {
+
+      queueEvent(new Runnable() {
+        public void run() {
+
+          final boolean result = KiwiNative.doPVWeb(host, sessionId);
+          final String errorTitle = KiwiNative.getLoadDatasetErrorTitle();
+          final String errorMessage = KiwiNative.getLoadDatasetErrorMessage();
+
+          requestRender();
+
+          KiwiGLSurfaceView.this.post(new Runnable() {
+            public void run() {
+              loader.postLoadDataset("pvweb", result, errorTitle, errorMessage);
+            }});
+        }});
+    }
+
     public void resetCamera() {
       queueEvent(new Runnable() {
                    public void run() {
