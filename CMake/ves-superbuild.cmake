@@ -96,6 +96,7 @@ macro(fetch_libarchive)
     SOURCE_DIR ${source_prefix}/libarchive
     GIT_REPOSITORY git://github.com/libarchive/libarchive.git
     GIT_TAG origin/release
+    PATCH_COMMAND git apply ${ves_src}/CMake/libarchive_patch.diff
     CONFIGURE_COMMAND ""
     BUILD_COMMAND ""
     INSTALL_COMMAND ""
