@@ -31,7 +31,6 @@
 #include <vesBuiltinShaders.h>
 #include <vesKiwiTestHelper.h>
 
-
 class MyTestHelper : public vesKiwiTestHelper {
 public:
 
@@ -63,8 +62,8 @@ public:
     std::string dataRoot = this->sourceDirectory() + "/Apps/iOS/Kiwi/Kiwi/Data/";
     std::string filename = dataRoot + mKiwiApp->builtinDatasetFilename(index);
     mKiwiApp->loadDataset(filename);
-    mKiwiApp->applyBuiltinDatasetCameraParameters(index);
     mCurrentDataset = index;
+    this->resetView();
   }
 
   bool doTesting()
@@ -81,12 +80,6 @@ public:
     // Note, this loop renders but does not bother to swap buffers
     for (int i = 0; i < mKiwiApp->numberOfBuiltinDatasets(); ++i) {
       this->loadData(i);
-
-      // Enable the background image for the final image regression test
-      if (i == mKiwiApp->numberOfBuiltinDatasets()-1)
-        {
-        mKiwiApp->setBackgroundTexture(this->sourceDirectory() + "/Apps/iOS/Kiwi/Kiwi/Data/kiwi.png");
-        }
 
       // call the info methods, this helps coverage, though we're not testing the return values
       mKiwiApp->numberOfModelFacets();

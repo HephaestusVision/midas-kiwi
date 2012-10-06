@@ -24,6 +24,7 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
 #include <tr1/memory>
 
 
@@ -49,6 +50,8 @@ public:
   bool downloadObject(int objectIndex);
 
   bool pollSceneMetaData();
+
+  bool parseSceneMetaData(const std::stringstream& resp);
 
   jsonSharedPtr rpc(const std::string& method, cJSON* params=0);
 

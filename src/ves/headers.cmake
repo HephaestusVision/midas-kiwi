@@ -42,6 +42,7 @@ set(headers
   vesStateAttributeBits.h
   vesSourceData.h
   vesTexture.h
+  vesTransformInterface.h
   vesTransformNode.h
   vesUniform.h
   vesVertexAttribute.h

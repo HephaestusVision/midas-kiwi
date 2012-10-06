@@ -24,10 +24,12 @@
 #include <cstring>
 #include <cstdio>
 #include <iostream>
+#include <fstream>
 
 vesPVWebDataSet::vesPVWebDataSet() :
   m_id(0), m_part(0), m_layer(0), m_transparency(0),
   m_writePosition(0), m_bufferSize(0), m_buffer(NULL),
+  m_verts(NULL), m_indices(NULL), m_colors(NULL),
   m_numberOfVerts(0), m_numberOfIndices(0), m_datasetType(0)
 {
 }
@@ -114,6 +116,9 @@ void vesPVWebDataSet::initFromBuffer()
   int dataLength = *reinterpret_cast<int*>(this->m_buffer + 0);
   m_datasetType = this->m_buffer[4];
 
+  printf("data length: %d\n", dataLength);
+  printf("type: %c\n", m_datasetType);
+
   if (m_datasetType != 'M' && m_datasetType != 'L' && m_datasetType != 'P') {
     std::cout << "initFromBuffer: unexpected dataset type: " << m_datasetType << std::endl;
     return;
@@ -151,4 +156,32 @@ void vesPVWebDataSet::initFromBuffer()
     m_indices = new short[m_numberOfIndices];
     memcpy(m_indices, this->m_buffer+indicesOffset, indicesLength);
   }
+}
+
+vesPVWebDataSet::Ptr vesPVWebDataSet::loadDataSetFromFile(const std::string& filename)
+{
+  vesPVWebDataSet::Ptr dataset;
+
+  std::ifstream file(filename.c_str(), std::ios::in | std::ios::binary | std::ios::ate);
+
+  if(!file.is_open()) {
+    printf("error opening file: %s\n", filename.c_str());
+    return dataset;
+  }
+
+  size_t numberOfBytes = file.tellg();
+  file.seekg(0, std::ios::beg);
+
+  dataset = vesPVWebDataSet::Ptr(new vesPVWebDataSet);
+  dataset->m_buffer = static_cast<char*>(malloc(numberOfBytes));
+
+  if (!file.read(dataset->m_buffer, numberOfBytes)) {
+    printf("error reading file: %s\n", filename.c_str());
+    dataset.reset();
+  }
+
+  dataset->initFromBuffer();
+  free(dataset->m_buffer);
+  dataset->m_buffer = 0;
+  return dataset;
 }

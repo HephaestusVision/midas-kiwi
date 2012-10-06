@@ -23,6 +23,7 @@
 #define __vesKiwiCurlDownloader_h
 
 #include <string>
+#include <vesSharedPtr.h>
 
 typedef void CURL;
 
@@ -34,7 +35,20 @@ public:
 
   ~vesKiwiCurlDownloader();
 
-  bool downloadFile(const std::string& url, const std::string& destDir);
+  bool downloadUrlToFile(const std::string& url, const std::string& destFile);
+
+  std::string downloadUrlToDirectory(const std::string& url, const std::string& downloadDir);
+
+
+  class ProgressDelegate {
+    public:
+      virtual int downloadProgress(double totalToDownload, double nowDownloaded) = 0;
+  };
+
+  void setProgressDelegate(vesSharedPtr<ProgressDelegate> delegate)
+  {
+    this->mProgressDelegate = delegate;
+  }
 
   void setAttachmentFileName(const std::string filename)
   {
@@ -55,6 +69,13 @@ public:
   {
     return this->mErrorMessage;
   }
+
+  bool renameFile(const std::string& srcFile, const std::string& destFile);
+
+  // Computes the directory name from the given filename and creates the
+  // directory if it does not exist.  Returns false if the directory cannot
+  // be created.
+  bool createDirectoryForFile(const std::string& filename);
 
 protected:
 
@@ -80,6 +101,8 @@ private:
   std::string mAttachmentFileName;
 
   CURL* m_curl;
+
+  vesSharedPtr<ProgressDelegate> mProgressDelegate;
 };
 
 #endif

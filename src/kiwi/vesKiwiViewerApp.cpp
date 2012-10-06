@@ -54,6 +54,8 @@
 
 #include "vesKiwiArchiveUtils.h"
 
+#include "vesKiwiPVRemoteRepresentation.h"
+
 #include <vtkNew.h>
 #include <vtkPolyData.h>
 #include <vtkImageData.h>
@@ -204,6 +206,11 @@ vesKiwiViewerApp::vesKiwiViewerApp()
   this->Internal->BuiltinDatasetCameraParameters.back().setParameters(
     vesVector3f(1.,0.,0.), vesVector3f(0.,0.,-1.));
 
+  this->addBuiltinDataset("small_test", "Series06_Ax_FLASH_3D.mha");
+  this->addBuiltinDataset("med_test", "VF-CT-1001-1209.vtk");
+  this->addBuiltinDataset("large_test", "VF-CT-1250-2105.vtk");
+
+
   this->addBuiltinDataset("KiwiViewer Logo", "kiwi.png");
 
   this->addBuiltinDataset("SPL-PNL Brain Atlas", "model_info.txt");
@@ -215,6 +222,8 @@ vesKiwiViewerApp::vesKiwiViewerApp()
     vesVector3f(0.,1.,0.), vesVector3f(0.,0.,1.));
 
   this->addBuiltinDataset("ParaView Web", "pvweb");
+
+  this->addBuiltinDataset("ParaView Remote", "pvremote");
 
   this->initBlinnPhongShader(
     vesBuiltinShaders::vesBlinnPhong_vert(),
@@ -245,6 +254,13 @@ vesKiwiViewerApp::~vesKiwiViewerApp()
   delete this->Internal;
 }
 
+
+//----------------------------------------------------------------------------
+void vesKiwiViewerApp::addManagedDataRepresentation(vesKiwiDataRepresentation* rep)
+{
+  this->Internal->DataRepresentations.push_back(rep);
+}
+
 //----------------------------------------------------------------------------
 void vesKiwiViewerApp::initGL()
 {
@@ -252,10 +268,45 @@ void vesKiwiViewerApp::initGL()
   this->Internal->DataLoader.setErrorOnMoreThan65kVertices(!this->glSupport()->isSupportedIndexUnsignedInt());
 }
 
+//----------------------------------------------------------------------------
 bool vesKiwiViewerApp::checkForPVWebError(vesPVWebClient::Ptr client)
 {
   this->setErrorMessage(client->errorTitle(), client->errorMessage());
   return !client->errorMessage().empty();
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiViewerApp::loadPVWebDataSet(vesPVWebDataSet::Ptr dataset)
+{
+  if (!dataset)
+    return false;
+
+  if (dataset->m_datasetType == 'P')
+    return false;
+
+  if (dataset->m_layer != 0)
+    return false;
+
+  if (dataset->m_numberOfVerts == 0)
+    return false;
+
+  vesKiwiPolyDataRepresentation* rep = new vesKiwiPolyDataRepresentation();
+  rep->initializeWithShader(this->shaderProgram());
+  rep->setPVWebData(dataset);
+  rep->addSelfToRenderer(this->renderer());
+  this->addManagedDataRepresentation(rep);
+  return true;
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiViewerApp::loadPVWebDataSet(const std::string& filename)
+{
+  vesPVWebDataSet::Ptr dataset = vesPVWebDataSet::loadDataSetFromFile(filename);
+  if (!dataset) {
+    return false;
+  }
+
+  return this->loadPVWebDataSet(dataset);
 }
 
 //----------------------------------------------------------------------------
@@ -274,7 +325,7 @@ bool vesKiwiViewerApp::doPVWebTest(const std::string& host, const std::string& s
     }
 
     client->configureOff();
-    
+
     if (client->createView()) {
       client->executeCommand("Sphere");
       client->executeCommand("Show");
@@ -307,25 +358,36 @@ bool vesKiwiViewerApp::doPVWebTest(const std::string& host, const std::string& s
   }
 
   for (size_t i = 0; i < client->datasets().size(); ++i) {
-
-    const vesPVWebDataSet::Ptr dataset = client->datasets()[i];
-
-    if (dataset->m_datasetType == 'P')
-      continue;
-
-    if (dataset->m_layer != 0)
-      continue;
-
-    if (dataset->m_numberOfVerts == 0)
-      continue;
-
-    vesKiwiPolyDataRepresentation* rep = new vesKiwiPolyDataRepresentation();
-    rep->initializeWithShader(this->shaderProgram());
-    rep->setPVWebData(dataset);
-    rep->addSelfToRenderer(this->renderer());
-    this->Internal->DataRepresentations.push_back(rep);
+    vesPVWebDataSet::Ptr dataset = client->datasets()[i];
+    this->loadPVWebDataSet(dataset);
   }
 
+  this->resetView();
+
+  return true;
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiViewerApp::doPVRemote(const std::string& host, int port)
+{
+  this->resetScene();
+
+  vesKiwiPVRemoteRepresentation* rep = new vesKiwiPVRemoteRepresentation;
+  if (!rep->connectToServer(host, port)) {
+
+    std::stringstream errorMessage;
+    errorMessage << "Failed to connect to " << host << ":" << port;
+    this->setErrorMessage("Connection failed", errorMessage.str());
+    delete rep;
+    return false;
+  }
+
+  rep->initializeWithShader(this->shaderProgram());
+  rep->addSelfToRenderer(this->renderer());
+
+  this->Internal->DataRepresentations.push_back(rep);
+
+  this->setBackgroundColor(0.0, 0.0, 0.0);
   this->resetView();
 
   return true;
@@ -335,47 +397,12 @@ bool vesKiwiViewerApp::doPVWebTest(const std::string& host, const std::string& s
 std::string vesKiwiViewerApp::downloadFile(const std::string& url, const std::string& downloadDir)
 {
   vesKiwiCurlDownloader downloader;
-  const std::string destFile = downloadDir + "/kiwiviewer_download.temp";
-
-  if (!downloader.downloadFile(url, destFile)) {
+  std::string result = downloader.downloadUrlToDirectory(url, downloadDir);
+  if (!result.size()) {
     this->setErrorMessage(downloader.errorTitle(), downloader.errorMessage());
-    return std::string();
   }
 
-  std::string newName = downloader.attachmentFileName();
-  if (newName.empty()) {
-    newName = vtksys::SystemTools::GetFilenameName(url);
-  }
-
-  if (newName.empty()) {
-    this->setErrorMessage("Download Error", "Could not determine filename from URL.");
-    return std::string();
-  }
-
-  newName = downloadDir + "/" + newName;
-
-  if (!this->renameFile(destFile, newName)) {
-    return std::string();
-  }
-
-  return newName;
-}
-
-//----------------------------------------------------------------------------
-bool vesKiwiViewerApp::renameFile(const std::string& srcFile, const std::string& destFile)
-{
-  std::string destDir = vtksys::SystemTools::GetFilenamePath(destFile);
-  if (!vtksys::SystemTools::MakeDirectory(destDir.c_str())) {
-    this->setErrorMessage("File Error", "Failed to create directory: " + destDir);
-    return false;
-  }
-
-  if (rename(srcFile.c_str(), destFile.c_str()) != 0) {
-    this->setErrorMessage("File Error", "Failed to rename file: " + srcFile);
-    return false;
-  }
-
-  return true;
+  return result;
 }
 
 //----------------------------------------------------------------------------
@@ -391,6 +418,12 @@ vesSharedPtr<vesShaderProgram> vesKiwiViewerApp::shaderProgram()
 }
 
 //----------------------------------------------------------------------------
+const std::vector<vesKiwiDataRepresentation*>& vesKiwiViewerApp::dataRepresentations() const
+{
+  return this->Internal->DataRepresentations;
+}
+
+//----------------------------------------------------------------------------
 int vesKiwiViewerApp::numberOfBuiltinDatasets() const
 {
   return static_cast<int>(this->Internal->BuiltinDatasetNames.size());
@@ -399,7 +432,8 @@ int vesKiwiViewerApp::numberOfBuiltinDatasets() const
 //----------------------------------------------------------------------------
 int vesKiwiViewerApp::defaultBuiltinDatasetIndex() const
 {
-  return 6;
+  //return 6;
+  return 12;
 }
 
 //----------------------------------------------------------------------------
@@ -868,7 +902,8 @@ void vesKiwiViewerApp::setBackgroundTexture(const std::string& filename)
 //----------------------------------------------------------------------------
 void vesKiwiViewerApp::setDefaultBackgroundColor()
 {
-  this->setBackgroundColor(63/255.0, 96/255.0, 144/255.0);
+  //this->setBackgroundColor(63/255.0, 96/255.0, 144/255.0);
+  this->setBackgroundColor(0,0,0);
 }
 
 //----------------------------------------------------------------------------
@@ -889,13 +924,15 @@ bool vesKiwiViewerApp::loadBrainAtlas(const std::string& filename)
   vesKiwiPlaneWidget* planeWidget = this->addPlaneWidget();
   rep->setClipPlane(planeWidget->plane());
 
-  this->setBackgroundColor(0., 0., 0.);
+  //this->setBackgroundColor(0., 0., 0.);
   return true;
 }
 
 //----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadCanSimulation(const std::string& filename)
 {
+  std::string baseDir = vtksys::SystemTools::GetFilenamePath(filename);
+  std::string geometryFile = baseDir + "/can0000.vtp";
   vesKiwiAnimationRepresentation* rep = new vesKiwiAnimationRepresentation();
   rep->initializeWithShader(this->shaderProgram(), this->Internal->TextureShader, this->Internal->GouraudTextureShader);
   rep->loadData(filename);
@@ -908,15 +945,23 @@ bool vesKiwiViewerApp::loadCanSimulation(const std::string& filename)
 //----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadBlueMarble(const std::string& filename)
 {
-  vtkSmartPointer<vtkPolyData> polyData = vtkPolyData::SafeDownCast(this->Internal->DataLoader.loadDataset(filename));
+  printf("load blue marble\n");
+  std::string baseDir = vtksys::SystemTools::GetFilenamePath(filename);
+
+  printf("Base dir is: %s\n", baseDir.c_str());
+
+  std::string geometryFilename = baseDir + "/textured_sphere.vtp";
+  std::string textureFilename = baseDir + "/earth.jpg";
+
+  printf("loading file: %s\n", geometryFilename.c_str());
+  vtkSmartPointer<vtkPolyData> polyData = vtkPolyData::SafeDownCast(this->Internal->DataLoader.loadDataset(geometryFilename));
   if (!polyData) {
     this->handleLoadDatasetError();
     return false;
   }
 
-  std::string textureFilename = vtksys::SystemTools::GetFilenamePath(filename) + "/earth.jpg";
+  printf("loading file: %s\n", textureFilename.c_str());
   vtkSmartPointer<vtkImageData> image = vtkImageData::SafeDownCast(this->Internal->DataLoader.loadDataset(textureFilename));
-
   if (!image) {
     this->handleLoadDatasetError();
     return false;
@@ -974,14 +1019,13 @@ bool vesKiwiViewerApp::loadKiwiScene(const std::string& sceneFile)
     std::cout << "url: " << url << std::endl;
 
     if (!url.empty() && !vtksys::SystemTools::FileExists(filename.c_str(), true)) {
-      std::string downloadedFile = this->downloadFile(url, baseDir);
-      if (downloadedFile.empty()) {
+
+      vesKiwiCurlDownloader downloader;
+      if (!downloader.downloadUrlToFile(url, filename)) {
+        this->setErrorMessage(downloader.errorTitle(), downloader.errorMessage());
         return false;
       }
 
-      if (!this->renameFile(downloadedFile, filename)) {
-        return false;
-      }
     }
 
     std::cout << "loading: " << filename << std::endl;
@@ -1031,7 +1075,7 @@ bool vesKiwiViewerApp::loadArchive(const std::string& archiveFile)
 
   const std::vector<std::string>& entries = archiveLoader.entries();
 
-  printf("have %d extracted entries\n", entries.size());
+  printf("have %lu extracted entries\n", entries.size());
 
   // load .kiwi file if it exists
   for (size_t i = 0; i < entries.size(); ++i) {
@@ -1041,31 +1085,33 @@ bool vesKiwiViewerApp::loadArchive(const std::string& archiveFile)
       }
   }
 
-  // load first file that is not a directory
+  // try to load all entries that are not directories
   for (size_t i = 0; i < entries.size(); ++i) {
       if (!vtksys::SystemTools::FileIsDirectory(entries[i].c_str())) {
-          return this->loadDataset(entries[i]);
+          this->loadDataset(entries[i]);
       }
   }
 
-  this->setErrorMessage("Load data error", "The archive did not contain a file to open.");
-  return false;
+  return true;
 }
 
 //----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename)
 {
-  if (vtksys::SystemTools::GetFilenameName(filename) == "model_info.txt") {
+  if (vtksys::SystemTools::GetFilenameName(filename) == "spl_pnl_brain_atlas.kiwi") {
     return loadBrainAtlas(filename);
   }
-  else if (vtksys::SystemTools::GetFilenameName(filename) == "can0000.vtp") {
+  else if (vtksys::SystemTools::GetFilenameName(filename) == "can_simulation.kiwi") {
     return loadCanSimulation(filename);
   }
-  if (vtksys::SystemTools::GetFilenameName(filename) == "textured_sphere.vtp") {
+  else if (vtksys::SystemTools::GetFilenameName(filename) == "nasa-blue-marble.kiwi") {
     return loadBlueMarble(filename);
   }
   else if (vtksys::SystemTools::GetFilenameLastExtension(filename) == ".kiwi") {
     return loadKiwiScene(filename);
+  }
+  else if (vtksys::SystemTools::GetFilenameLastExtension(filename) == ".pvwebgl") {
+    return loadPVWebDataSet(filename);
   }
   else if (vtksys::SystemTools::GetFilenameLastExtension(filename) == ".zip"
            || vtksys::SystemTools::GetFilenameLastExtension(filename) == ".gz") {
@@ -1078,8 +1124,6 @@ bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename
 //----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadDataset(const std::string& filename)
 {
-  this->resetScene();
-
   // this is a hook that can be used to load certain datasets using custom logic
   if (this->loadDatasetWithCustomBehavior(filename)) {
     return true;

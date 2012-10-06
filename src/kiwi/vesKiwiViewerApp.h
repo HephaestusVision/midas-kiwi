@@ -29,13 +29,13 @@
 
 // C++ includes
 #include <string>
+#include <vector>
 
 // Forward declarations
 class vesCamera;
 class vesKiwiCameraSpinner;
 class vesKiwiDataRepresentation;
 class vesKiwiPolyDataRepresentation;
-class vesKiwiImagePlaneDataRepresentation;
 class vesKiwiText2DRepresentation;
 class vesKiwiPlaneWidget;
 class vesRenderer;
@@ -43,10 +43,10 @@ class vesShaderProgram;
 class vesTexture;
 class vesUniform;
 class vesPVWebClient;
+class vesPVWebDataSet;
 
 class vtkDataSet;
 class vtkPolyData;
-class vtkImageData;
 
 class vesKiwiViewerApp : public vesKiwiBaseApp
 {
@@ -59,6 +59,10 @@ public:
   ~vesKiwiViewerApp();
 
   bool doPVWebTest(const std::string& host, const std::string& sessionId);
+  bool doPVRemote(const std::string& host, int port);
+
+  bool loadPVWebDataSet(const std::string& filename);
+  bool loadPVWebDataSet(vesSharedPtr<vesPVWebDataSet> dataset);
 
   /// Downloads a file using cURL.
   /// Returns the absolute path to the downloaded file if successful,
@@ -119,6 +123,7 @@ public:
   vesSharedPtr<vesShaderProgram> shaderProgram();
 
   /// Override superclass method in order to stop the camera spinner if needed.
+  using Superclass::resetView;
   virtual void resetView();
 
   /// Set/Get whether or not the app should use camera rotation inertia at the
@@ -131,6 +136,10 @@ public:
 
   /// Return the spinner instance used to implement camera rotation inertia.
   vesSharedPtr<vesKiwiCameraSpinner> cameraSpinner() const;
+
+  virtual void setDefaultBackgroundColor();
+
+  const std::vector<vesKiwiDataRepresentation*>& dataRepresentations() const;
 
 protected:
 
@@ -145,6 +154,8 @@ protected:
   void removeAllDataRepresentations();
   void addRepresentationsForDataSet(vtkDataSet* dataSet);
 
+  void addManagedDataRepresentation(vesKiwiDataRepresentation* rep);
+
   void setAnimating(bool animating);
 
   void resetScene();
@@ -158,15 +169,12 @@ protected:
   bool loadBlueMarble(const std::string& filename);
   bool loadKiwiScene(const std::string& filename);
   bool loadArchive(const std::string& filename);
-  void setDefaultBackgroundColor();
 
   void setErrorMessage(const std::string& errorTitle, const std::string& errorMessage);
   void resetErrorMessage();
   void handleLoadDatasetError();
 
   bool checkForPVWebError(vesSharedPtr<vesPVWebClient> client);
-
-  bool renameFile(const std::string& srcFile, const std::string& destFile);
 
 private:
 

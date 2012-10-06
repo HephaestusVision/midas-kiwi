@@ -14,6 +14,9 @@ set(tests
 set(tests
   TestKiwiViewer
   TestCap
+  TestStreamingDataRepresentation
+  TestPVWeb
+  TestKiwiMidas
   )
 
 find_package(GLUT REQUIRED)

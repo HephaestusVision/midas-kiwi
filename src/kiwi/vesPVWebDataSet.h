@@ -60,6 +60,8 @@ public:
 
   void initFromBuffer();
 
+  static vesPVWebDataSet::Ptr loadDataSetFromFile(const std::string& filename);
+
 private:
 
   float* m_verts;

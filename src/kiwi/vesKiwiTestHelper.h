@@ -99,7 +99,6 @@ public:
     this->app()->handleSingleTouchUp();
   }
 
-
   void handleMouseMotion(int x, int y)
   {
     if (mIsLeftClick) {
