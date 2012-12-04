@@ -176,6 +176,8 @@ extern "C" {
   JNIEXPORT jstring JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getLoadDatasetErrorTitle(JNIEnv* env, jobject obj);
   JNIEXPORT jstring JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getLoadDatasetErrorMessage(JNIEnv* env, jobject obj);
 
+  JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_downloadAndOpenFile(JNIEnv* env, jobject obj, jstring url, jstring downloadDir);
+
   JNIEXPORT jint JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getNumberOfTriangles(JNIEnv* env, jobject obj);
   JNIEXPORT jint JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getNumberOfLines(JNIEnv* env, jobject obj);
   JNIEXPORT jint JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getNumberOfVertices(JNIEnv* env, jobject obj);
@@ -323,6 +325,24 @@ JNIEXPORT void JNICALL Java_com_kitware_KiwiViewer_KiwiNative_checkForAdditional
     app->checkForAdditionalData(storageDirStr);
   }
 }
+
+JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_downloadAndOpenFile(JNIEnv* env, jobject obj, jstring url, jstring downloadDir)
+{
+  std::string filename;
+  const char *urlStr = env->GetStringUTFChars(url, NULL);
+  const char *downloadDirStr = env->GetStringUTFChars(downloadDir, NULL);
+  if (urlStr && downloadDirStr) {
+    filename = app->downloadFile(urlStr, downloadDirStr);
+    env->ReleaseStringUTFChars(url, urlStr);
+    env->ReleaseStringUTFChars(downloadDir, downloadDirStr);
+  }
+
+  if (!filename.empty()) {
+    return loadDataset(filename, -1);
+  }
+  return false;
+}
+
 
 JNIEXPORT jstring JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getLoadDatasetErrorTitle(JNIEnv* env, jobject obj)
 {

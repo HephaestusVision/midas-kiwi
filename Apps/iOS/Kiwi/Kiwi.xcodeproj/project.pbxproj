@@ -21,6 +21,8 @@
 		432A52191495B6D50010EB71 /* libvesShaders.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 432A52181495B6D50010EB71 /* libvesShaders.a */; };
 		432DE16D13D15E1C000F8EC0 /* libves.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 432DE16C13D15E1C000F8EC0 /* libves.a */; };
 		435026EF140E93C9000C315D /* caffeine.pdb in Resources */ = {isa = PBXBuildFile; fileRef = 435026ED140E93C9000C315D /* caffeine.pdb */; };
+		43655C48153799710057ACB7 /* libvtkIOInfovis-6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43655C47153799710057ACB7 /* libvtkIOInfovis-6.0.a */; };
+		43655C4B153799AF0057ACB7 /* libvtkInfovisCore-6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43655C4A153799AF0057ACB7 /* libvtkInfovisCore-6.0.a */; };
 		436B34B413C802D500C5726C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 436B34AF13C802D500C5726C /* Default-Landscape~ipad.png */; };
 		436B34B513C802D500C5726C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 436B34B013C802D500C5726C /* Default-Portrait~ipad.png */; };
 		436B34B613C802D500C5726C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 436B34B113C802D500C5726C /* icon.png */; };
@@ -111,6 +113,8 @@
 		432A52181495B6D50010EB71 /* libvesShaders.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libvesShaders.a; path = "../../../../build/CMakeExternals/Build/ves-ios-device/lib/libvesShaders.a"; sourceTree = "<group>"; };
 		432DE16C13D15E1C000F8EC0 /* libves.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libves.a; path = "../CMakeBuild/build/CMakeExternals/Build/ves-ios-device/lib/libves.a"; sourceTree = "<group>"; };
 		435026ED140E93C9000C315D /* caffeine.pdb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = caffeine.pdb; sourceTree = "<group>"; };
+		43655C47153799710057ACB7 /* libvtkIOInfovis-6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libvtkIOInfovis-6.0.a"; path = "../../../../build/CMakeExternals/Build/vtk-ios-device/lib/libvtkIOInfovis-6.0.a"; sourceTree = "<group>"; };
+		43655C4A153799AF0057ACB7 /* libvtkInfovisCore-6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libvtkInfovisCore-6.0.a"; path = "../../../../build/CMakeExternals/Build/vtk-ios-device/lib/libvtkInfovisCore-6.0.a"; sourceTree = "<group>"; };
 		436B34AF13C802D500C5726C /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		436B34B013C802D500C5726C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		436B34B113C802D500C5726C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				437239F71618F0B900F99013 /* libvtkIOXMLParser-6.0.a in Frameworks */,
 				43AA039B14C91469007001D3 /* libcurl.a in Frameworks */,
 				43AA039E14C915A1007001D3 /* libz.1.2.5.dylib in Frameworks */,
+				43655C48153799710057ACB7 /* libvtkIOInfovis-6.0.a in Frameworks */,
+				43655C4B153799AF0057ACB7 /* libvtkInfovisCore-6.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +308,8 @@
 			children = (
 				437239F61618F0B900F99013 /* libvtkIOXMLParser-6.0.a */,
 				437239F41618F08400F99013 /* libvtkIOLegacy-6.0.a */,
+				43655C4A153799AF0057ACB7 /* libvtkInfovisCore-6.0.a */,
+				43655C47153799710057ACB7 /* libvtkIOInfovis-6.0.a */,
 				436C94341533E5BA00682255 /* libvtkParallelCore-6.0.a */,
 				436C94351533E5BA00682255 /* libvtktiff-6.0.a */,
 				436C94361533E5BA00682255 /* libvtkRenderingFreeType-6.0.a */,

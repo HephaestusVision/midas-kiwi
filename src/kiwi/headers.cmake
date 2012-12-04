@@ -5,6 +5,7 @@ set(headers
   vesKiwiBrainAtlasRepresentation.h
   vesKiwiCameraInteractor.h
   vesKiwiCameraSpinner.h
+  vesKiwiCurlDownloader.h
   vesKiwiDataConversionTools.h
   vesKiwiDataLoader.h
   vesKiwiDataRepresentation.h

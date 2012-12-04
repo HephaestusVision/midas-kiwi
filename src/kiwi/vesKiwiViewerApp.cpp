@@ -20,6 +20,7 @@
 
 #include "vesKiwiViewerApp.h"
 #include "vesKiwiCameraSpinner.h"
+#include "vesKiwiCurlDownloader.h"
 #include "vesKiwiDataConversionTools.h"
 #include "vesKiwiDataLoader.h"
 #include "vesKiwiDataRepresentation.h"
@@ -53,6 +54,8 @@
 #include <vtkPolyData.h>
 #include <vtkImageData.h>
 #include <vtkPointData.h>
+#include <vtkDelimitedTextReader.h>
+#include <vtkTable.h>
 
 
 #include <vtksys/SystemTools.hxx>
@@ -237,6 +240,53 @@ void vesKiwiViewerApp::initGL()
 {
   this->vesKiwiBaseApp::initGL();
   this->Internal->DataLoader.setErrorOnMoreThan65kVertices(!this->glSupport()->isSupportedIndexUnsignedInt());
+}
+
+//----------------------------------------------------------------------------
+std::string vesKiwiViewerApp::downloadFile(const std::string& url, const std::string& downloadDir)
+{
+  vesKiwiCurlDownloader downloader;
+  const std::string destFile = downloadDir + "/kiwiviewer_download.temp";
+
+  if (!downloader.downloadFile(url, destFile)) {
+    this->setErrorMessage(downloader.errorTitle(), downloader.errorMessage());
+    return std::string();
+  }
+
+  std::string newName = downloader.attachmentFileName();
+  if (newName.empty()) {
+    newName = vtksys::SystemTools::GetFilenameName(url);
+  }
+
+  if (newName.empty()) {
+    this->setErrorMessage("Download Error", "Could not determine filename from URL.");
+    return std::string();
+  }
+
+  newName = downloadDir + "/" + newName;
+
+  if (!this->renameFile(destFile, newName)) {
+    return std::string();
+  }
+
+  return newName;
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiViewerApp::renameFile(const std::string& srcFile, const std::string& destFile)
+{
+  std::string destDir = vtksys::SystemTools::GetFilenamePath(destFile);
+  if (!vtksys::SystemTools::MakeDirectory(destDir.c_str())) {
+    this->setErrorMessage("File Error", "Failed to create directory: " + destDir);
+    return false;
+  }
+
+  if (rename(srcFile.c_str(), destFile.c_str()) != 0) {
+    this->setErrorMessage("File Error", "Failed to rename file: " + srcFile);
+    return false;
+  }
+
+  return true;
 }
 
 //----------------------------------------------------------------------------
@@ -795,6 +845,88 @@ bool vesKiwiViewerApp::loadBlueMarble(const std::string& filename)
 }
 
 //----------------------------------------------------------------------------
+bool vesKiwiViewerApp::loadKiwiScene(const std::string& sceneFile)
+{
+  std::string baseDir = vtksys::SystemTools::GetFilenamePath(sceneFile);
+
+  vtkNew<vtkDelimitedTextReader> reader;
+  reader->SetFileName(sceneFile.c_str());
+  reader->SetHaveHeaders(true);
+  reader->Update();
+
+  vtkSmartPointer<vtkTable> table = reader->GetOutput();
+
+  if (!table->GetNumberOfRows()
+      || !table->GetColumnByName("filename"))
+    {
+    this->setErrorMessage("Error reading file", "There was an error reading the file: " + sceneFile);
+    return false;
+    }
+
+  const bool haveColor = (table->GetColumnByName("r")
+                           && table->GetColumnByName("g")
+                           && table->GetColumnByName("b"));
+
+  const bool haveAlpha = (table->GetColumnByName("a") != NULL);
+
+  for (int i = 0; i < table->GetNumberOfRows(); ++i) {
+
+    std::string filename = table->GetValueByName(i, "filename").ToString();
+    filename = baseDir + "/" + filename;
+    std::string url;
+
+    if (table->GetColumnByName("url")) {
+      url = table->GetValueByName(i, "url").ToString();
+    }
+
+    std::cout << "filename: " << filename << std::endl;
+    std::cout << "url: " << url << std::endl;
+
+    if (!url.empty() && !vtksys::SystemTools::FileExists(filename.c_str(), true)) {
+      std::string downloadedFile = this->downloadFile(url, baseDir);
+      if (downloadedFile.empty()) {
+        return false;
+      }
+
+      if (!this->renameFile(downloadedFile, filename)) {
+        return false;
+      }
+    }
+
+    std::cout << "loading: " << filename << std::endl;
+
+    vtkSmartPointer<vtkDataSet> dataSet = this->Internal->DataLoader.loadDataset(filename);
+    if (!dataSet) {
+      this->handleLoadDatasetError();
+      return false;
+    }
+
+    if (vtkPolyData::SafeDownCast(dataSet)) {
+      vesKiwiPolyDataRepresentation* polyDataRep = this->addPolyDataRepresentation(vtkPolyData::SafeDownCast(dataSet), this->shaderProgram());
+
+      vesVector4f color(1.0, 1.0, 1.0, 1.0);
+      if (haveColor) {
+        color[0] = table->GetValueByName(i, "r").ToFloat();
+        color[1] = table->GetValueByName(i, "g").ToFloat();
+        color[2] = table->GetValueByName(i, "b").ToFloat();
+      }
+      if (haveAlpha) {
+        color[3] = table->GetValueByName(i, "a").ToFloat();
+        if (color[3] != 1.0) {
+          polyDataRep->setBinNumber(5);
+        }
+      }
+      polyDataRep->setColor(color[0], color[1], color[2], color[3]);
+    }
+    else {
+      this->addRepresentationsForDataSet(dataSet);
+    }
+  }
+
+  return true;
+}
+
+//----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename)
 {
   // These demos are currently disabled because they depend on external data 
@@ -806,6 +938,9 @@ bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename
   //}
   if (vtksys::SystemTools::GetFilenameName(filename) == "textured_sphere.vtp") {
     return loadBlueMarble(filename);
+  }
+  else if (vtksys::SystemTools::GetFilenameLastExtension(filename) == ".kiwi") {
+    return loadKiwiScene(filename);
   }
 
   return false;
