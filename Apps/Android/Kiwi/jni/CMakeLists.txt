@@ -7,6 +7,8 @@ include(${VTK_USE_FILE})
 find_package(VES REQUIRED)
 include_directories(${VES_INCLUDE_DIRS})
 
+find_package(ZLIB REQUIRED)
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 set(sources
@@ -17,6 +19,7 @@ set(deps
   GLESv2
   log
   ${VES_LIBRARIES}
+  ${ZLIB_LIBRARIES}
 )
 
 set(kiwi_lib KiwiNative)
