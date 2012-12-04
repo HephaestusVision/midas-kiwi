@@ -1,5 +1,6 @@
 set(headers
   vesKiwiAnimationRepresentation.h
+  vesKiwiArchiveUtils.h
   vesKiwiBaseApp.h
   vesKiwiBaselineImageTester.h
   vesKiwiBrainAtlasRepresentation.h

@@ -53,6 +53,8 @@
 #include "vesPVWebClient.h"
 #include "vesPVWebDataSet.h"
 
+#include "vesKiwiArchiveUtils.h"
+
 #include <vtkNew.h>
 #include <vtkPolyData.h>
 #include <vtkImageData.h>
@@ -1011,6 +1013,41 @@ bool vesKiwiViewerApp::loadKiwiScene(const std::string& sceneFile)
 }
 
 //----------------------------------------------------------------------------
+bool vesKiwiViewerApp::loadArchive(const std::string& archiveFile)
+{
+  std::string baseDir = vtksys::SystemTools::GetFilenamePath(archiveFile);
+
+  vesKiwiArchiveUtils archiveLoader;
+
+  bool result = archiveLoader.extractArchive(archiveFile, baseDir);
+  if (!result) {
+    this->setErrorMessage(archiveLoader.errorTitle(), archiveLoader.errorMessage());
+  }
+
+  const std::vector<std::string>& entries = archiveLoader.entries();
+
+  printf("have %d extracted entries\n", entries.size());
+
+  // load .kiwi file if it exists
+  for (size_t i = 0; i < entries.size(); ++i) {
+      printf("extracted entry:  %s\n", entries[i].c_str());
+      if (vtksys::SystemTools::GetFilenameLastExtension(entries[i]) == ".kiwi") {
+          return this->loadDataset(entries[i]);
+      }
+  }
+
+  // load first file that is not a directory
+  for (size_t i = 0; i < entries.size(); ++i) {
+      if (!vtksys::SystemTools::FileIsDirectory(entries[i].c_str())) {
+          return this->loadDataset(entries[i]);
+      }
+  }
+
+  this->setErrorMessage("Load data error", "The archive did not contain a file to open.");
+  return false;
+}
+
+//----------------------------------------------------------------------------
 bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename)
 {
   // These demos are currently disabled because they depend on external data 
@@ -1025,6 +1062,10 @@ bool vesKiwiViewerApp::loadDatasetWithCustomBehavior(const std::string& filename
   }
   else if (vtksys::SystemTools::GetFilenameLastExtension(filename) == ".kiwi") {
     return loadKiwiScene(filename);
+  }
+  else if (vtksys::SystemTools::GetFilenameLastExtension(filename) == ".zip"
+           || vtksys::SystemTools::GetFilenameLastExtension(filename) == ".gz") {
+    return loadArchive(filename);
   }
 
   return false;
