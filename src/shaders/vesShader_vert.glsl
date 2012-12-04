@@ -27,6 +27,7 @@ uniform mediump vec3 lightDirection;
 uniform highp mat4   modelViewMatrix;
 uniform mediump mat3 normalMatrix;
 uniform lowp int     primitiveType;
+uniform lowp int     pointSize;
 uniform highp mat4 projectionMatrix;
 
 // Vertex attributes.
@@ -60,6 +61,6 @@ void main()
     varColor = vec4(varColor.xyz * nDotL, varColor.w);
   }
 
-  gl_PointSize = 1.0;
+  gl_PointSize = float(pointSize);
   gl_Position = position;
 }

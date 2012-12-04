@@ -10,15 +10,20 @@ set(headers
   vesKiwiDataConversionTools.h
   vesKiwiDataLoader.h
   vesKiwiDataRepresentation.h
+  vesKiwiFPSCounter.h
   vesKiwiImagePlaneDataRepresentation.h
   vesKiwiImageWidgetRepresentation.h
   vesKiwiPlaneWidget.h
   vesKiwiPolyDataRepresentation.h
+  vesKiwiPVRemoteRepresentation.h
   vesKiwiStreamingDataRepresentation.h
   vesKiwiTestHelper.h
   vesKiwiText2DRepresentation.h
   vesKiwiViewerApp.h
   vesKiwiWidgetRepresentation.h
+  vesMidasClient.h
+  vesPVWebClient.h
+  vesPVWebDataSet.h
   )
 
 set(header_dirs

@@ -23,6 +23,9 @@ set(sources
   vesKiwiViewerApp.cpp
   vesKiwiWidgetRepresentation.cpp
 
+
+  vesMidasClient.cpp
+  vesKiwiPVRemoteRepresentation.cpp
   vesPVWebClient.cpp
   vesPVWebDataSet.cpp
   cJSON.c

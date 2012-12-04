@@ -20,6 +20,7 @@
 
 #include <vesKiwiViewerApp.h>
 #include <vesKiwiTestHelper.h>
+#include <vesKiwiFPSCounter.h>
 
 class MyTestHelper : public vesKiwiTestHelper {
 public:
@@ -42,6 +43,18 @@ public:
       mCurrentDataset = (mCurrentDataset + 1) % mKiwiApp->numberOfBuiltinDatasets();
       this->loadData(mCurrentDataset);
     }
+    else if (key == 'o') {
+      mKiwiApp->setPointSize(mKiwiApp->pointSize() - 1);
+    }
+    else if (key == 'p') {
+      mKiwiApp->setPointSize( mKiwiApp->pointSize() + 1);
+    }
+    else if (key == 'k') {
+      mKiwiApp->setLineWidth(mKiwiApp->lineWidth() - 1);
+    }
+    else if (key == 'l') {
+      mKiwiApp->setLineWidth(mKiwiApp->lineWidth() + 1);
+    }
     else {
       vesKiwiTestHelper::handleKeyboard(key, x, y);
     }
@@ -52,6 +65,7 @@ public:
     mCurrentDataset = index;
     std::string dataRoot = this->sourceDirectory() + "/Apps/iOS/Kiwi/Kiwi/Data/";
     std::string filename = dataRoot + mKiwiApp->builtinDatasetFilename(index);
+    mKiwiApp->resetScene();
     mKiwiApp->loadDataset(filename);
     this->resetView();
   }
@@ -75,14 +89,22 @@ public:
       if (!this->performBaselineImageTest(testName)) {
         allTestsPassed = false;
       }
-
     }
 
     return allTestsPassed;
   }
 
+  void render()
+  {
+    this->vesKiwiTestHelper::render();
+
+    mFPSCounter.update();
+  }
+
   int mCurrentDataset;
   vesKiwiViewerApp::Ptr mKiwiApp;
+
+  vesKiwiFPSCounter mFPSCounter;
 };
 
 

@@ -51,6 +51,8 @@ public:
   vtkSmartPointer<vtkScalarsToColors> ColorMap;
   vtkSmartPointer<vtkUnsignedCharArray> TextureData;
   vtkSmartPointer<vtkPolyData> ImagePlane;
+
+  vtkSmartPointer<vtkImageData> ImageData;
 };
 
 //----------------------------------------------------------------------------
@@ -66,11 +68,18 @@ vesKiwiImagePlaneDataRepresentation::~vesKiwiImagePlaneDataRepresentation()
 }
 
 //----------------------------------------------------------------------------
+vtkImageData* vesKiwiImagePlaneDataRepresentation::imageData() const
+{
+  return this->Internal->ImageData;
+}
+
+//----------------------------------------------------------------------------
 void vesKiwiImagePlaneDataRepresentation::setImageData(vtkImageData* imageData)
 {
   vtkSmartPointer<vtkPolyData> imagePlane = this->polyDataForImagePlane(imageData);
   this->setPolyData(imagePlane);
   this->Internal->ImagePlane = imagePlane;
+  this->Internal->ImageData = imageData;
 
   vesSharedPtr<vesTexture> texture = this->texture();
   if (!texture) {
@@ -131,8 +140,15 @@ void vesKiwiImagePlaneDataRepresentation::setTextureFromImage(
   vtkSmartPointer<vtkUnsignedCharArray> pixels = vtkUnsignedCharArray::SafeDownCast(image->GetPointData()->GetScalars());
 
   if (!pixels) {
+
+    if (!this->colorMap()) {
+      double* scalarRange = image->GetPointData()->GetScalars()->GetRange();
+      this->setGrayscaleColorMap(scalarRange);
+    }
     vtkScalarsToColors* map = this->colorMap();
     assert(map);
+    //printf("mapping scalars to unsigned char array...\n");
+    //printf("my table range: %f %f\n", vtkLookupTable::SafeDownCast(map)->GetTableRange()[0],  vtkLookupTable::SafeDownCast(map)->GetTableRange()[1]);
     pixels = vesKiwiDataConversionTools::MapScalars(image->GetPointData()->GetScalars(), map);
   }
 

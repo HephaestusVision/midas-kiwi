@@ -41,6 +41,7 @@ public:
   ~vesKiwiImagePlaneDataRepresentation();
 
   void setImageData(vtkImageData* imageData);
+  vtkImageData* imageData() const;
 
   vtkPolyData* imagePlanePolyData();
 

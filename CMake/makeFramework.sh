@@ -46,4 +46,4 @@ make_vtk_framework ()
 }
 
 make_ves_framework
-make_vtk_framework
+#make_vtk_framework

@@ -283,6 +283,7 @@ public class KiwiViewerActivity extends Activity {
           for(int i = 0; i < numberOfDatasets; ++i) {
             mBuiltinDatasetNames.add(KiwiNative.getDatasetName(i));
           }
+          mBuiltinDatasetNames.add(getString(R.string.pvremote_text));
           mBuiltinDatasetNames.add(getString(R.string.download_file_text));
           mBuiltinDatasetNames.add(getString(R.string.midas_text));
       }
@@ -464,6 +465,35 @@ public class KiwiViewerActivity extends Activity {
 
     }
 
+    public void doPVRemote() {
+
+      LayoutInflater factory = LayoutInflater.from(this);
+      final View pvremoteDialog = factory.inflate(R.layout.pvremote_dialog, null);
+      new AlertDialog.Builder(KiwiViewerActivity.this)
+          .setIcon(R.drawable.paraview_logo)
+          .setTitle("Setup ParaView Remote:")
+          .setView(pvremoteDialog)
+          .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int whichButton) {
+                EditText hostEdit = (EditText) pvremoteDialog.findViewById(R.id.host_edit);
+                EditText sessionIdEdit = (EditText) pvremoteDialog.findViewById(R.id.sessionid_edit);
+
+                String host = hostEdit.getText().toString();
+                int port =  Integer.parseInt(sessionIdEdit.getText().toString());
+
+                showProgressDialog("Connecting to ParaView...");
+                mView.doPVRemote(host, port, KiwiViewerActivity.this);
+              }
+          })
+          .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int whichButton) {
+
+              }
+          })
+          .show();
+
+    }
+
     public void loadDataset(int builtinDatasetIndex) {
 
       String filename = KiwiNative.getDatasetFilename(builtinDatasetIndex);
@@ -567,6 +597,9 @@ public class KiwiViewerActivity extends Activity {
         }
         else if (mBuiltinDatasetNames.get(offset).equals(getString(R.string.download_file_text))) {
           showDownloadFileDialog(new String());
+        }
+        else if (mBuiltinDatasetNames.get(offset).equals(getString(R.string.pvremote_text))) {
+          doPVRemote();
         }
         else {
           datasetToOpen = offset;

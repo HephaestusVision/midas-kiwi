@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PVRemoteHost</key>
+	<string></string>
+	<key>EnableMultisampling</key>
+	<true/>
+	<key>Username</key>
+	<string></string>
+	<key>Password</key>
+	<string></string>
+	<key>PointSize</key>
+	<integer>1</integer>
+	<key>LineWidth</key>
+	<integer>1</integer>
+</dict>
+</plist>

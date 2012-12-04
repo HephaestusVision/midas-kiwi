@@ -39,7 +39,34 @@ public:
   vesKiwiImageWidgetRepresentation();
   ~vesKiwiImageWidgetRepresentation();
 
+  enum {
+    PLANE_YZ, // x axis
+    PLANE_XZ, // y axis
+    PLANE_XY, // z axis
+  };
+
   void setImageData(vtkImageData* imageData);
+  vtkImageData* imageData() const;
+
+  double* imageBounds();
+
+
+  int numberOfSlices(int planeIndex) const;
+
+  void scheduleSetSliceIndex(int planeIndex, int sliceIndex);
+
+  // note- performs clamping on sliceIndex
+  void setSliceIndex(int planeIndex, int sliceIndex);
+
+  int sliceIndex(int planeIndex) const;
+
+  double window() const;
+  double level() const;
+
+  void resetWindowLevel();
+  void setWindowLevel(double window, double level);
+  void invertTable();
+
   void initializeWithShader(vesSharedPtr<vesShaderProgram> geometryShader,
                             vesSharedPtr<vesShaderProgram> textureShader);
 
@@ -53,22 +80,38 @@ public:
 
   virtual void willRender(vesSharedPtr<vesRenderer> renderer);
 
+  void setInteractionIsEnabled(bool enabled);
+  bool interactionIsEnabled() const;
+
+  void setWindowLevelInteractionEnabled(bool enabled);
+  bool windowLevelInteractionEnabled() const;
+
   virtual bool interactionIsActive() const { return this->scrollSliceModeActive(); }
 
   bool scrollSliceModeActive() const;
 
+  void setPlaneVisibility(int planeIndex, bool visible);
+  bool planeVisibility(int planeIndex) const;
+
   virtual void setShaderProgram(vesSharedPtr<vesShaderProgram> shaderProgram);
   virtual vesSharedPtr<vesShaderProgram> shaderProgram() const;
 
-protected:
-
   void scrollImageSlice(double deltaX, double deltaY);
+  void setScrollSlice(int planeIndex);
+  void refreshTextures();
 
-  // note- performs clamping on sliceIndex
-  void setSliceIndex(int planeIndex, int sliceIndex);
+  void setOutlineVisible(bool visible);
+
+protected:
 
   vesKiwiImagePlaneDataRepresentation* newSliceRepresentation(vtkImageData* sliceImage);
   vesKiwiPolyDataRepresentation* newGeometryRepresentation(vtkPolyData* polyData);
+
+
+  double OriginalWindow;
+  double OriginalLevel;
+  double CurrentWindow;
+  double CurrentLevel;
 
 private:
 

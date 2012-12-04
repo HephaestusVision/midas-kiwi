@@ -31,6 +31,7 @@ class vtkUnsignedCharArray;
 class vtkDataArray;
 class vtkScalarsToColors;
 
+class vesPVWebDataSet;
 class vesGeometryData;
 class vesImage;
 class vesTexture;
@@ -62,6 +63,8 @@ public:
   /// Convert point and scalar data to VES format, it sacrifices generality for
   /// speed and conversion of specific types useful for point clouds.
   static vesSharedPtr<vesGeometryData> ConvertPoints(vtkPolyData* input);
+
+  static vesSharedPtr<vesGeometryData> ConvertPVWebData(vesSharedPtr<vesPVWebDataSet> dataset);
 
   static vtkUnsignedCharArray* FindRGBColorsArray(vtkDataSet* dataSet);
   static vtkDataArray* FindScalarsArray(vtkDataSet* dataSet);

@@ -23,6 +23,7 @@
 #include "vesRenderer.h"
 #include "vesCamera.h"
 #include "vesMapper.h"
+#include "vesActor.h"
 #include "vesKiwiDataConversionTools.h"
 #include "vesKiwiImagePlaneDataRepresentation.h"
 #include "vesKiwiPolyDataRepresentation.h"
@@ -37,6 +38,21 @@
 #include <vtkContourFilter.h>
 #include <vtkCellLocator.h>
 #include <vtkAppendPolyData.h>
+#include <vtkTimerLog.h>
+#include <vtkShortArray.h>
+#include <vtkUnsignedShortArray.h>
+#include <vtkCharArray.h>
+#include <vtkUnsignedCharArray.h>
+#include <vtkFloatArray.h>
+#include <vtkImagePermute.h>
+
+
+#include <vtkIntArray.h>
+#include <vtkUnsignedIntArray.h>
+#include <vtkDoubleArray.h>
+#include <vtkLongArray.h>
+#include <vtkUnsignedLongArray.h>
+#include <vtkIdTypeArray.h>
 
 #include <vector>
 #include <map>
@@ -60,6 +76,8 @@ public:
     this->OutlineRep = 0;
     this->UseContour = false;
     this->InteractionEnabled = true;
+    this->WindowLevelInteractionEnabled = false;
+    this->RefreshTextures = false;
   }
 
   ~vesInternal()
@@ -75,6 +93,8 @@ public:
   int ContourVis;
   bool UseContour;
   bool InteractionEnabled;
+  bool WindowLevelInteractionEnabled;
+  bool RefreshTextures;
   double ImageScalarRange[2];
 
   std::vector<vesKiwiDataRepresentation*> AllReps;
@@ -88,12 +108,24 @@ public:
   vtkSmartPointer<vtkExtractVOI> SliceFilter;
   vtkSmartPointer<vtkCellLocator> Locator;
   vtkSmartPointer<vtkAppendPolyData> AppendFilter;
+  vtkSmartPointer<vtkLookupTable> LookupTable;
+
+  vtkSmartPointer<vtkImageData> SliceImages[3];
+
+  std::vector<vtkSmartPointer<vtkImageData> > ZSlices;
+
+  vtkSmartPointer<vtkImageData> StoredImage;
 };
 
 //----------------------------------------------------------------------------
 vesKiwiImageWidgetRepresentation::vesKiwiImageWidgetRepresentation()
 {
   this->Internal = new vesInternal();
+
+  this->OriginalWindow           = 1.0;
+  this->OriginalLevel            = 0.5;
+  this->CurrentWindow            = 1.0;
+  this->CurrentLevel             = 0.5;
 }
 
 //----------------------------------------------------------------------------
@@ -116,16 +148,120 @@ void vesKiwiImageWidgetRepresentation::willRender(vesSharedPtr<vesRenderer> rend
 
     this->Internal->TargetSliceIndex.clear();
   }
+
+  if (this->Internal->RefreshTextures) {
+    for (int i = 0; i < 3; ++i) {
+      vtkImageData* imageData = this->Internal->SliceReps[i]->imageData();
+      if (imageData && this->planeVisibility(i)) {
+        this->Internal->SliceReps[i]->setImageData(imageData);
+      }
+    }
+    this->Internal->RefreshTextures = false;
+  }
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::refreshTextures()
+{
+  this->Internal->RefreshTextures = true;
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setInteractionIsEnabled(bool enabled)
+{
+  this->Internal->InteractionEnabled = enabled;
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiImageWidgetRepresentation::interactionIsEnabled() const
+{
+  return this->Internal->InteractionEnabled;
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setWindowLevelInteractionEnabled(bool enabled)
+{
+  this->Internal->WindowLevelInteractionEnabled = enabled;
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiImageWidgetRepresentation::windowLevelInteractionEnabled() const
+{
+  return this->Internal->WindowLevelInteractionEnabled;
+}
+
+//----------------------------------------------------------------------------
+vtkImageData* vesKiwiImageWidgetRepresentation::imageData() const
+{
+  return static_cast<vtkImageData*>(this->Internal->SliceFilter->GetInput());
+}
+
+//----------------------------------------------------------------------------
+double* vesKiwiImageWidgetRepresentation::imageBounds()
+{
+  return this->imageData()->GetBounds();
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setScrollSlice(int planeIndex)
+{
+  this->Internal->SelectedImageDimension = planeIndex;
 }
 
 //----------------------------------------------------------------------------
 void vesKiwiImageWidgetRepresentation::setImageData(vtkImageData* image)
 {
+
+  /*
+  vtkSmartPointer<vtkImagePermute> permute = vtkSmartPointer<vtkImagePermute>::New();
+  permute->SetInputData(image);
+  permute->SetFilteredAxes(0,2,1);
+  //permute->SetFilteredAxes(0,1,2);
+  permute->Update();
+  image = permute->GetOutput();
+  this->Internal->StoredImage = image;
+  */
+
   image->GetPointData()->GetScalars()->GetRange(this->Internal->ImageScalarRange);
-  vtkSmartPointer<vtkScalarsToColors> colorMap =
-    vesKiwiDataConversionTools::GetGrayscaleLookupTable(this->Internal->ImageScalarRange);
+
+
+  //vtkSmartPointer<vtkScalarsToColors> colorMap =
+  //  vesKiwiDataConversionTools::GetGrayscaleLookupTable(this->Internal->ImageScalarRange);
+
+  this->Internal->LookupTable = vtkSmartPointer<vtkLookupTable>::New();
+
+  this->Internal->LookupTable->SetNumberOfColors( 256);
+  this->Internal->LookupTable->SetHueRange( 0, 0);
+  this->Internal->LookupTable->SetSaturationRange( 0, 0);
+  this->Internal->LookupTable->SetValueRange( 0 ,1);
+  this->Internal->LookupTable->SetAlphaRange( 1, 1);
+
+  double range[2];
+  image->GetScalarRange(range);
+
+  this->Internal->LookupTable->SetTableRange(range[0],range[1]);
+  this->Internal->LookupTable->Build();
+
+  this->OriginalWindow = range[1] - range[0];
+  this->OriginalLevel = 0.5*(range[0] + range[1]);
+
+  if( fabs( this->OriginalWindow ) < 0.001 )
+    {
+    this->OriginalWindow = 0.001 * ( this->OriginalWindow < 0.0 ? -1 : 1 );
+    }
+  if( fabs( this->OriginalLevel ) < 0.001 )
+    {
+    this->OriginalLevel = 0.001 * ( this->OriginalLevel < 0.0 ? -1 : 1 );
+    }
+
+  this->setWindowLevel(this->OriginalWindow,this->OriginalLevel);
+  this->Internal->RefreshTextures = false;
+
+
+
+
   for (int i = 0; i < 3; ++i)
-    this->Internal->SliceReps[i]->setColorMap(colorMap);
+    this->Internal->SliceReps[i]->setColorMap(this->Internal->LookupTable);
 
 
   int dimensions[3];
@@ -137,6 +273,41 @@ void vesKiwiImageWidgetRepresentation::setImageData(vtkImageData* image)
   this->Internal->SliceFilter = vtkSmartPointer<vtkExtractVOI>::New();
   this->Internal->SliceFilter->SetInputData(image);
 
+
+
+
+  // prepare z slices
+  /*
+  printf("preparing z slices...\n");
+
+  for (size_t sliceIndex = 0; sliceIndex < dimensions[2]; ++sliceIndex) {
+
+    printf("%d...\n", sliceIndex);
+    vtkSmartPointer<vtkImageData> sliceImage = vtkSmartPointer<vtkImageData>::New();
+    this->Internal->ZSlices.push_back(sliceImage);
+    sliceImage->SetOrigin(this->imageData()->GetOrigin());
+    sliceImage->SetSpacing(this->imageData()->GetSpacing());
+    sliceImage->SetDimensions(dimensions[0], dimensions[1], 1);
+    sliceImage->AllocateScalars(VTK_SHORT, 1);
+
+    vtkShortArray* dataArray = vtkShortArray::SafeDownCast(sliceImage->GetPointData()->GetScalars());
+    short* data = dataArray->GetPointer(0);
+    short* pixels = vtkShortArray::SafeDownCast(this->imageData()->GetPointData()->GetScalars())->GetPointer(0);
+
+    const size_t z = sliceIndex;
+    for (size_t x = 0; x < dimensions[0]; ++x) {
+      for (size_t y = 0; y < dimensions[1]; ++y) {
+
+        data[y*dimensions[0] + x] = pixels[(z * dimensions[1] + y) * dimensions[0] + x];
+        //data[y*dimensions[0] + x] = pixels[(z * (dimensions[0]*dimensions[1])) + (y*dimensions[0]) + x];
+      }
+    }
+  }
+  */
+
+
+
+
   for (int i = 0; i < 3; ++i)
     this->setSliceIndex(i, this->Internal->CurrentSliceIndices[i]);
 
@@ -146,7 +317,7 @@ void vesKiwiImageWidgetRepresentation::setImageData(vtkImageData* image)
   this->Internal->OutlineRep->setPolyData(outline->GetOutput());
   this->Internal->OutlineRep->setColor(0.5, 0.5, 0.5, 0.5);
 
-  if (image->GetNumberOfPoints() < 600000) {
+  if (false && image->GetNumberOfPoints() < 600000) {
     vtkNew<vtkContourFilter> contour;
     contour->SetInputData(image);
     // contour value hardcoded for head image dataset
@@ -162,6 +333,74 @@ void vesKiwiImageWidgetRepresentation::setImageData(vtkImageData* image)
     this->Internal->UseContour = true;
   }
 }
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::invertTable()
+{
+
+  int index = this->Internal->LookupTable->GetNumberOfTableValues();
+  unsigned char swap[4];
+  size_t num = 4*sizeof(unsigned char);
+  vtkUnsignedCharArray* table = this->Internal->LookupTable->GetTable();
+  for ( int count = 0; count < --index; count++ )
+    {
+    unsigned char *rgba1 = table->GetPointer(4*count);
+    unsigned char *rgba2 = table->GetPointer(4*index);
+    memcpy( swap,  rgba1, num );
+    memcpy( rgba1, rgba2, num );
+    memcpy( rgba2, swap,  num );
+    }
+
+  // force the lookuptable to update its InsertTime to avoid
+  // rebuilding the array
+  this->Internal->LookupTable->SetTableValue(0, this->Internal->LookupTable->GetTableValue(0));
+
+}
+
+//----------------------------------------------------------------------------
+double vesKiwiImageWidgetRepresentation::window() const
+{
+  return this->CurrentWindow;
+}
+
+//----------------------------------------------------------------------------
+double vesKiwiImageWidgetRepresentation::level() const
+{
+  return this->CurrentLevel;
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::resetWindowLevel()
+{
+  this->setWindowLevel(this->OriginalWindow, this->OriginalLevel);
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setWindowLevel(double window, double level)
+{
+  if (this->CurrentWindow == window && this->CurrentLevel == level)
+    {
+    return;
+    }
+
+  // if the new window is negative and the old window was positive invert table
+  if (   ( window < 0 && this->CurrentWindow > 0 )
+      || ( window > 0 && this->CurrentWindow < 0 ))
+    {
+    this->invertTable();
+    }
+
+  this->CurrentWindow = window;
+  this->CurrentLevel = level;
+
+
+  double rmin = this->CurrentLevel - 0.5*fabs( this->CurrentWindow );
+  double rmax = rmin + fabs( this->CurrentWindow );
+  this->Internal->LookupTable->SetTableRange( rmin, rmax );
+
+  this->Internal->RefreshTextures = true;
+}
+
 
 //----------------------------------------------------------------------------
 void vesKiwiImageWidgetRepresentation::initializeWithShader(
@@ -191,9 +430,32 @@ void vesKiwiImageWidgetRepresentation::initializeWithShader(
 }
 
 //----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setOutlineVisible(bool visible)
+{
+  if (this->Internal->OutlineRep) {
+    this->Internal->OutlineRep->actor()->setVisible(visible);
+  }
+}
+
+//----------------------------------------------------------------------------
 bool vesKiwiImageWidgetRepresentation::scrollSliceModeActive() const
 {
   return (this->Internal->SelectedImageDimension >= 0);
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setPlaneVisibility(int planeIndex, bool visible)
+{
+  assert(planeIndex >= 0 && planeIndex <= 2);
+
+  this->Internal->SliceReps[planeIndex]->actor()->setVisible(visible);
+}
+
+//----------------------------------------------------------------------------
+bool vesKiwiImageWidgetRepresentation::planeVisibility(int planeIndex) const
+{
+  assert(planeIndex >= 0 && planeIndex <= 2);
+  return this->Internal->SliceReps[planeIndex]->actor()->isVisible();
 }
 
 //----------------------------------------------------------------------------
@@ -253,15 +515,14 @@ void vesKiwiImageWidgetRepresentation::scrollImageSlice(double deltaX, double de
   }
 
   int sliceIndex = this->Internal->CurrentSliceIndices[flatDimension] + sliceDelta;
-  this->Internal->TargetSliceIndex[flatDimension] = sliceIndex;
-  this->Internal->CurrentSliceIndices[flatDimension] = sliceIndex;
+  this->scheduleSetSliceIndex(flatDimension, sliceIndex);
 }
 
 //----------------------------------------------------------------------------
-void vesKiwiImageWidgetRepresentation::setSliceIndex(int planeIndex, int sliceIndex)
+void vesKiwiImageWidgetRepresentation::scheduleSetSliceIndex(int planeIndex, int sliceIndex)
 {
   int dimensions[3];
-  vtkImageData::SafeDownCast(this->Internal->SliceFilter->GetInput())->GetDimensions(dimensions);
+  this->imageData()->GetDimensions(dimensions);
 
   if (sliceIndex < 0) {
     sliceIndex = 0;
@@ -270,21 +531,159 @@ void vesKiwiImageWidgetRepresentation::setSliceIndex(int planeIndex, int sliceIn
     sliceIndex = dimensions[planeIndex] - 1;
   }
 
+  this->Internal->TargetSliceIndex[planeIndex] = sliceIndex;
+  this->Internal->CurrentSliceIndices[planeIndex] = sliceIndex;
+}
+
+
+//vtkIdType GetLinearIndex(const int i, const int j, const int k, const int N1, const int N2 )
+//{
+//  return( (k*N2+j)*N1+i );
+//}
+
+//----------------------------------------------------------------------------
+int vesKiwiImageWidgetRepresentation::numberOfSlices(int planeIndex) const
+{
+  assert(planeIndex >= 0 && planeIndex <= 2);
+  return this->imageData()->GetDimensions()[planeIndex];
+}
+
+//----------------------------------------------------------------------------
+int vesKiwiImageWidgetRepresentation::sliceIndex(int planeIndex) const
+{
+  assert(planeIndex >= 0 && planeIndex <= 2);
+  return this->Internal->CurrentSliceIndices[planeIndex];
+}
+
+
+template <typename VTKARRAYTYPE, typename PRIMITIVETYPE>
+void extractSliceExecute(vtkImageData *inImage, vtkImageData *sliceImage, int planeIndex, int sliceIndex)
+{
+  PRIMITIVETYPE* pixels = VTKARRAYTYPE::SafeDownCast(inImage->GetPointData()->GetScalars())->GetPointer(0);
+  PRIMITIVETYPE* data = VTKARRAYTYPE::SafeDownCast(sliceImage->GetPointData()->GetScalars())->GetPointer(0);
+
+  int dimensions[3];
+  double origin[3];
+  double spacing[3];
+  inImage->GetOrigin(origin);
+  inImage->GetSpacing(spacing);
+  inImage->GetDimensions(dimensions);
+
+
   if (planeIndex == 0) {
-    this->Internal->SliceFilter->SetVOI(sliceIndex, sliceIndex, 0, dimensions[1], 0, dimensions[2]);
+
+    // x axis, yz plane
+    const vtkIdType x = sliceIndex;
+    for (vtkIdType y = 0; y < dimensions[1]; ++y) {
+      for (vtkIdType z = 0; z < dimensions[2]; ++z) {
+        //data[z*dimensions[1] + y] = pixels[(z * dimensions[1] + y) * dimensions[0] + x];
+        data[z*dimensions[1] + y] = pixels[(z * (dimensions[0]*dimensions[1])) + (y*dimensions[0]) + x];
+      }
+    }
+
   }
   else if (planeIndex == 1) {
-    this->Internal->SliceFilter->SetVOI(0, dimensions[0], sliceIndex, sliceIndex, 0, dimensions[2]);
+
+    // y axis, xz plane
+    const size_t y = sliceIndex;
+    for (size_t x= 0; x < dimensions[0]; ++x) {
+      for (size_t z = 0; z < dimensions[2]; ++z) {
+        //data[z*dimensions[0] + x] = pixels[(z * dimensions[1] + y) * dimensions[0] + x];
+        data[z*dimensions[0] + x] = pixels[(z * (dimensions[0]*dimensions[1])) + (y*dimensions[0]) + x];
+      }
+    }
+
   }
   else {
-    this->Internal->SliceFilter->SetVOI(0, dimensions[0], 0, dimensions[1], sliceIndex, sliceIndex);
+
+    // z axis, xy plane
+    const size_t z = sliceIndex;
+    for (size_t x = 0; x < dimensions[0]; ++x) {
+      for (size_t y = 0; y < dimensions[1]; ++y) {
+        //data[y*dimensions[0] + x] = pixels[(z * dimensions[1] + y) * dimensions[0] + x];
+        data[y*dimensions[0] + x] = pixels[(z * (dimensions[0]*dimensions[1])) + (y*dimensions[0]) + x];
+      }
+    }
+
   }
 
-  this->Internal->SliceFilter->Update();
-  vtkImageData* sliceImage = this->Internal->SliceFilter->GetOutput();
+  origin[planeIndex] = origin[planeIndex] + sliceIndex*spacing[planeIndex];
+  sliceImage->SetOrigin(origin);
+
+}
+
+//----------------------------------------------------------------------------
+void vesKiwiImageWidgetRepresentation::setSliceIndex(int planeIndex, int sliceIndex)
+{
+  int dimensions[3];
+  this->imageData()->GetDimensions(dimensions);
+
+  if (sliceIndex < 0) {
+    sliceIndex = 0;
+  }
+  else if (sliceIndex >= dimensions[planeIndex]) {
+    sliceIndex = dimensions[planeIndex] - 1;
+  }
+
+  //printf("scalars type: %s\n", this->imageData()->GetPointData()->GetScalars()->GetClassName());
+
+  // allocate images if needed
+  if (planeIndex == 0) {
+    if (!this->Internal->SliceImages[0]) {
+      this->Internal->SliceImages[0] = vtkSmartPointer<vtkImageData>::New();
+      this->Internal->SliceImages[0]->SetOrigin(this->imageData()->GetOrigin());
+      this->Internal->SliceImages[0]->SetSpacing(this->imageData()->GetSpacing());
+      this->Internal->SliceImages[0]->SetDimensions(1, dimensions[1], dimensions[2]);
+      this->Internal->SliceImages[0]->AllocateScalars(this->imageData()->GetScalarType(), 1);
+    }
+  }
+  else if (planeIndex == 1) {
+    if (!this->Internal->SliceImages[1]) {
+      this->Internal->SliceImages[1] = vtkSmartPointer<vtkImageData>::New();
+      this->Internal->SliceImages[1]->SetOrigin(this->imageData()->GetOrigin());
+      this->Internal->SliceImages[1]->SetSpacing(this->imageData()->GetSpacing());
+      this->Internal->SliceImages[1]->SetDimensions(dimensions[0], 1, dimensions[2]);
+      this->Internal->SliceImages[1]->AllocateScalars(this->imageData()->GetScalarType(), 1);
+    }
+  }
+  else {
+    if (!this->Internal->SliceImages[2]) {
+      this->Internal->SliceImages[2] = vtkSmartPointer<vtkImageData>::New();
+      this->Internal->SliceImages[2]->SetOrigin(this->imageData()->GetOrigin());
+      this->Internal->SliceImages[2]->SetSpacing(this->imageData()->GetSpacing());
+      this->Internal->SliceImages[2]->SetDimensions(dimensions[0], dimensions[1], 1);
+      this->Internal->SliceImages[2]->AllocateScalars(this->imageData()->GetScalarType(), 1);
+    }
+  }
+
+  vtkImageData* sliceImage = this->Internal->SliceImages[planeIndex];
+
+  #define mycall(vtktypename, vtkarraytype, primitivetype)   \
+    case vtktypename: extractSliceExecute<vtkarraytype, primitivetype>(this->imageData(), sliceImage, planeIndex, sliceIndex); break;
+
+  switch (this->imageData()->GetScalarType())
+    {
+      mycall(VTK_CHAR, vtkCharArray, char);
+      mycall(VTK_UNSIGNED_CHAR, vtkUnsignedCharArray, unsigned char);
+      mycall(VTK_SHORT, vtkShortArray, short);
+      mycall(VTK_UNSIGNED_SHORT,vtkUnsignedShortArray, unsigned short);
+      mycall(VTK_INT, vtkIntArray, int);
+      mycall(VTK_UNSIGNED_INT,vtkUnsignedIntArray, unsigned int);
+      mycall(VTK_LONG, vtkLongArray, long);
+      mycall(VTK_UNSIGNED_LONG,vtkUnsignedLongArray, unsigned long);
+      mycall(VTK_FLOAT, vtkFloatArray, float);
+      mycall(VTK_DOUBLE, vtkDoubleArray, double);
+      mycall(VTK_ID_TYPE, vtkIdTypeArray, vtkIdType);
+    default:
+      vtkGenericWarningMacro("Execute: Unknown input ScalarType");
+      return;
+    }
+
+
 
   vesKiwiImagePlaneDataRepresentation* rep = this->Internal->SliceReps[planeIndex];
   rep->setImageData(sliceImage);
+
   this->Internal->AppendFilter->GetInput(planeIndex)->DeepCopy(rep->imagePlanePolyData());
   this->Internal->CurrentSliceIndices[planeIndex] = sliceIndex;
 }
@@ -296,7 +695,12 @@ bool vesKiwiImageWidgetRepresentation::handleSingleTouchPanGesture(double deltaX
     return false;
   }
 
-  this->scrollImageSlice(deltaX, deltaY);
+  if (this->Internal->WindowLevelInteractionEnabled) {
+    this->setWindowLevel(this->CurrentWindow + deltaX, this->CurrentLevel+deltaY);
+  }
+  else {
+    this->scrollImageSlice(deltaX, deltaY);
+  }
   return true;
 }
 
@@ -328,9 +732,23 @@ bool vesKiwiImageWidgetRepresentation::handleSingleTouchDown(int displayX, int d
   rayDirection *= 1000.0;
   rayPoint1 += rayDirection;
 
+
+  vtkNew<vtkAppendPolyData> appendFilter;
+  std::vector<int> cellIdToPlaneId;
+
+  for (int i = 0; i < 3; ++i) {
+    if (this->planeVisibility(i)) {
+      appendFilter->AddInputData(this->Internal->SliceReps[i]->imagePlanePolyData());
+      cellIdToPlaneId.push_back(i);
+    }
+  }
+
+  appendFilter->Update();
+
   vtkNew<vtkCellLocator> locator;
-  this->Internal->AppendFilter->Update();
-  locator->SetDataSet(this->Internal->AppendFilter->GetOutput());
+  //this->Internal->AppendFilter->Update();
+  //locator->SetDataSet(this->Internal->AppendFilter->GetOutput());
+  locator->SetDataSet(appendFilter->GetOutput());
   locator->BuildLocator();
 
   double p0[3] = {rayPoint0[0], rayPoint0[1], rayPoint0[2]};
@@ -344,7 +762,7 @@ bool vesKiwiImageWidgetRepresentation::handleSingleTouchDown(int displayX, int d
 
   int result = locator->IntersectWithLine(p0, p1, 0.0, t, pickPoint, paramCoords, subId, cellId);
   if (result == 1) {
-    this->Internal->SelectedImageDimension = cellId;
+    this->Internal->SelectedImageDimension = cellIdToPlaneId[cellId];
     this->interactionOn();
   }
   else {
@@ -358,13 +776,16 @@ bool vesKiwiImageWidgetRepresentation::handleSingleTouchDown(int displayX, int d
 //----------------------------------------------------------------------------
 bool vesKiwiImageWidgetRepresentation::handleDoubleTap(int displayX, int displayY)
 {
+  return false;
+
   vesNotUsed(displayX);
   vesNotUsed(displayY);
 
   if (!this->Internal->UseContour) {
 
-    this->Internal->InteractionEnabled = !this->Internal->InteractionEnabled;
-    return true;
+    //this->Internal->InteractionEnabled = !this->Internal->InteractionEnabled;
+    //return true;
+    return false;
   }
 
   this->Internal->ContourVis = (this->Internal->ContourVis + 1) % 3;

@@ -87,7 +87,7 @@ public:
 
   virtual bool initTesting()
   {
-    return false;
+    return true;
   }
 
   virtual bool doTesting()

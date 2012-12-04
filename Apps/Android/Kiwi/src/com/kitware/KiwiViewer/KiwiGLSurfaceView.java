@@ -393,6 +393,24 @@ public class KiwiGLSurfaceView extends GLSurfaceView implements MultiTouchObject
         }});
     }
 
+    public void doPVRemote(final String host, final int port, final KiwiViewerActivity loader) {
+
+      queueEvent(new Runnable() {
+        public void run() {
+
+          final boolean result = KiwiNative.doPVRemote(host, port);
+          final String errorTitle = KiwiNative.getLoadDatasetErrorTitle();
+          final String errorMessage = KiwiNative.getLoadDatasetErrorMessage();
+
+          requestRender();
+
+          KiwiGLSurfaceView.this.post(new Runnable() {
+            public void run() {
+              loader.postLoadDataset("pvremote", result, errorTitle, errorMessage);
+            }});
+        }});
+    }
+
     public void resetCamera() {
       queueEvent(new Runnable() {
                    public void run() {

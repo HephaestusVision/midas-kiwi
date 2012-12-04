@@ -81,6 +81,7 @@ bool loadDataset(const std::string& filename, int builtinDatasetIndex)
   appState.currentDataset = filename;
   appState.builtinDatasetIndex = builtinDatasetIndex;
 
+  app->resetScene();
   bool result = app->loadDataset(filename);
   if (result) {
     resetView();
@@ -135,6 +136,7 @@ bool setupGraphics(int w, int h)
   app->resizeView(w, h);
 
   if (isResume && !appState.currentDataset.empty()) {
+    app->resetScene();
     app->loadDataset(appState.currentDataset);
     restoreCameraState();
   }
@@ -177,6 +179,7 @@ extern "C" {
   JNIEXPORT jstring JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getLoadDatasetErrorMessage(JNIEnv* env, jobject obj);
 
   JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_doPVWeb(JNIEnv* env, jobject obj, jstring host, jstring sessionId);
+  JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_doPVRemote(JNIEnv* env, jobject obj, jstring host, jint port);
   JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_downloadAndOpenFile(JNIEnv* env, jobject obj, jstring url, jstring downloadDir);
 
   JNIEXPORT jint JNICALL Java_com_kitware_KiwiViewer_KiwiNative_getNumberOfTriangles(JNIEnv* env, jobject obj);
@@ -337,6 +340,20 @@ JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_doPVWeb(JNIEnv
     result = app->doPVWebTest(hostStr, sessionIdStr);
     env->ReleaseStringUTFChars(host, hostStr);
     env->ReleaseStringUTFChars(sessionId, sessionIdStr);
+  }
+  return result;
+}
+
+JNIEXPORT jboolean JNICALL Java_com_kitware_KiwiViewer_KiwiNative_doPVRemote(JNIEnv* env, jobject obj, jstring host, jint port)
+{
+  bool result = false;
+  const char *hostStr = env->GetStringUTFChars(host, NULL);
+  if (hostStr) {
+    clearExistingDataset();
+
+    LOGI("doPVRemote(%s, %d)", hostStr, port);
+    result = app->doPVRemote(hostStr, port);
+    env->ReleaseStringUTFChars(host, hostStr);
   }
   return result;
 }

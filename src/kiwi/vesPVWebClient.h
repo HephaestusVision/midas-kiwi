@@ -24,6 +24,7 @@
 
 #include <vector>
 #include <string>
+#include <sstream>
 #include <tr1/memory>
 
 
@@ -49,6 +50,8 @@ public:
   bool downloadObject(int objectIndex);
 
   bool pollSceneMetaData();
+
+  bool parseSceneMetaData(const std::stringstream& resp);
 
   jsonSharedPtr rpc(const std::string& method, cJSON* params=0);
 
@@ -84,6 +87,9 @@ public:
 
   const std::vector<std::tr1::shared_ptr<vesPVWebDataSet> >& datasets() const;
 
+  const std::vector<double>& lookAt() const;
+  const std::vector<double>& backgroundColor() const;
+
 private:
 
   int m_id;
@@ -93,6 +99,8 @@ private:
   CURL* m_curl;
 
   std::vector<std::tr1::shared_ptr<vesPVWebDataSet> > m_datasets;
+  std::vector<double> m_lookAt;
+  std::vector<double> m_backgroundColor;
 
   std::string mErrorTitle;
   std::string mErrorMessage;

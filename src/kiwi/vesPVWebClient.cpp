@@ -176,6 +176,76 @@ bool vesPVWebClient::downloadObject(int objectIndex)
   return true;
 }
 
+bool vesPVWebClient::parseSceneMetaData(const std::stringstream& resp)
+{
+  strPrint("poll scene response", resp.str());
+  jsonSharedPtr respJson = makeShared(cJSON_Parse(resp.str().c_str()));
+
+  if (respJson) {
+
+    // parse renderer
+    cJSON* renderersJson = cJSON_GetObjectItem(respJson.get(), "Renderers");
+
+    m_lookAt.clear();
+    m_backgroundColor.clear();
+
+    if (renderersJson) {
+
+      cJSON* rendererJson = cJSON_GetArrayItem(renderersJson, 0);
+
+      cJSON* lookAtJson = cJSON_GetObjectItem(rendererJson, "LookAt");
+      if (lookAtJson) {
+        for (int i = 0; i < 10; ++i) {
+          m_lookAt.push_back(cJSON_GetArrayItem(lookAtJson, i)->valuedouble);
+        }
+      }
+
+      cJSON* backgroundJson = cJSON_GetObjectItem(rendererJson, "Background1");
+      if (backgroundJson) {
+        for (int i = 0; i < 3; ++i) {
+          m_backgroundColor.push_back(cJSON_GetArrayItem(backgroundJson, i)->valuedouble);
+        }
+      }
+
+      backgroundJson = cJSON_GetObjectItem(rendererJson, "Background2");
+      if (backgroundJson) {
+        for (int i = 0; i < 3; ++i) {
+          m_backgroundColor.push_back(cJSON_GetArrayItem(backgroundJson, i)->valuedouble);
+        }
+      }
+    }
+
+
+    // parse objects
+    cJSON* objectsJson = cJSON_GetObjectItem(respJson.get(), "Objects");
+
+    int numberOfObjects = cJSON_GetArraySize(objectsJson);
+
+    printf("parsing %d objects\n", numberOfObjects);
+
+    for (int i = 0; i < numberOfObjects; ++i) {
+      cJSON* objectJson = cJSON_GetArrayItem(objectsJson, i);
+      int parts = cJSON_GetObjectItem(objectJson, "parts")->valueint;
+      for (int part = 0; part < parts; ++part) {
+        vesPVWebDataSet::Ptr dataset = vesPVWebDataSet::Ptr(new vesPVWebDataSet());
+        dataset->m_id = static_cast<long long>(cJSON_GetObjectItem(objectJson, "id")->valuedouble);
+        dataset->m_layer = cJSON_GetObjectItem(objectJson, "layer")->valueint;
+        dataset->m_md5 = cJSON_GetObjectItem(objectJson, "md5")->valuestring;
+        dataset->m_transparency = cJSON_GetObjectItem(objectJson, "transparency")->valueint;
+        dataset->m_part = part;
+        this->m_datasets.push_back(dataset);
+      }
+    }
+  }
+  else {
+    this->defaultResponseErrorMessage();
+    printf("response json parse error\n");
+    return false;
+  }
+
+  return true;
+}
+
 bool vesPVWebClient::pollSceneMetaData()
 {
   this->m_datasets.clear();
@@ -209,44 +279,13 @@ bool vesPVWebClient::pollSceneMetaData()
 
   CURLcode result = curl_easy_perform(m_curl);
   if (result == CURLE_OK) {
-
-    strPrint(resp.str(), "poll scene response");
-    jsonSharedPtr respJson = makeShared(cJSON_Parse(resp.str().c_str()));
-
-    if (respJson) {
-      cJSON* objectsJson = cJSON_GetObjectItem(respJson.get(), "Objects");
-
-      int numberOfObjects = cJSON_GetArraySize(objectsJson);
-
-      printf("parsing %d objects\n", numberOfObjects);
-
-      for (int i = 0; i < numberOfObjects; ++i) {
-        cJSON* objectJson = cJSON_GetArrayItem(objectsJson, i);
-        int parts = cJSON_GetObjectItem(objectJson, "parts")->valueint;
-        for (int part = 0; part < parts; ++part) {
-          vesPVWebDataSet::Ptr dataset = vesPVWebDataSet::Ptr(new vesPVWebDataSet());
-          dataset->m_id = static_cast<long long>(cJSON_GetObjectItem(objectJson, "id")->valuedouble);
-          dataset->m_layer = cJSON_GetObjectItem(objectJson, "layer")->valueint;
-          dataset->m_md5 = cJSON_GetObjectItem(objectJson, "md5")->valuestring;
-          dataset->m_transparency = cJSON_GetObjectItem(objectJson, "transparency")->valueint;
-          dataset->m_part = part;
-          this->m_datasets.push_back(dataset);
-        }
-      }
-    }
-    else {
-      this->defaultResponseErrorMessage();
-      printf("response json parse error\n");
-      return false;
-    }
+    return this->parseSceneMetaData(resp);
   }
   else {
     this->defaultCurlErrorMessage();
     printf("curl_easy_perform() returned an error code: %d\n", result);
     return false;
   }
-
-  return true;
 }
 
 
@@ -503,4 +542,14 @@ void vesPVWebClient::setSessionId(const std::string& sessionId)
 const std::vector<std::tr1::shared_ptr<vesPVWebDataSet> >& vesPVWebClient::datasets() const
 {
   return this->m_datasets;
+}
+
+const std::vector<double>& vesPVWebClient::lookAt() const
+{
+  return m_lookAt;
+}
+
+const std::vector<double>& vesPVWebClient::backgroundColor() const
+{
+  return m_backgroundColor;
 }
