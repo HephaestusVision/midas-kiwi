@@ -1,11 +1,10 @@
-if(NOT VES_HOST_SUPERBUILD AND NOT VES_ANDROID_SUPERBUILD AND NOT VES_IOS_SUPERBUILD)
-  return()
-endif()
-
 project(VES_SUPERBUILD NONE)
 
 include(ExternalProject)
 
+option(VES_HOST_SUPERBUILD "Build VES and dependent subprojects for host architecture" OFF)
+option(VES_ANDROID_SUPERBUILD "Build VES and dependent subprojects for Android" OFF)
+option(VES_IOS_SUPERBUILD "Build VES and dependent subprojects for iOS" OFF)
 
 set(base "${CMAKE_BINARY_DIR}/CMakeExternals")
 set_property(DIRECTORY PROPERTY EP_BASE ${base})
@@ -100,6 +99,7 @@ macro(compile_ves proj)
       -DBUILD_TESTING:BOOL=ON
       -DBUILD_SHARED_LIBS:BOOL=ON
       -DVES_USE_VTK:BOOL=ON
+      -DVES_NO_SUPERBUILD:BOOL=ON
       -DVES_USE_DESKTOP_GL:BOOL=ON
       -DVTK_DIR:PATH=${build_prefix}/vtk-host
       -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
@@ -140,6 +140,7 @@ macro(crosscompile_ves proj tag toolchain_file)
       -DCMAKE_CXX_FLAGS:STRING=${VES_CXX_FLAGS}
       -DBUILD_SHARED_LIBS:BOOL=OFF
       -DVES_USE_VTK:BOOL=ON
+      -DVES_NO_SUPERBUILD:BOOL=ON
       -DVTK_DIR:PATH=${build_prefix}/vtk-${tag}
       -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
       -DPYTHON_EXECUTABLE:FILEPATH=${PYTHON_EXECUTABLE}
@@ -166,8 +167,6 @@ endif()
 if(VES_HOST_SUPERBUILD)
   compile_ves(ves-host)
 endif()
-
-set(ves_superbuild_enabled ON)
 
 
 # CTestCustom.cmake needs to be placed at the top level build directory
