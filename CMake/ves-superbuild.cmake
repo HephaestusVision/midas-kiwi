@@ -38,11 +38,13 @@ set(module_defaults
   -DModule_vtkIOXML:BOOL=ON
   -DModule_vtkIOImage:BOOL=ON
   -DModule_vtkIOPLY:BOOL=ON
+  -DModule_vtkIOInfovis:BOOL=ON
   -DModule_vtkImagingCore:BOOL=ON
   -DModule_vtkParallelCore:BOOL=ON
   -DModule_vtkRenderingCore:BOOL=ON
   -DModule_vtkRenderingFreeType:BOOL=ON
 )
+
 
 macro(force_build proj)
   ExternalProject_Add_Step(${proj} forcebuild
@@ -87,27 +89,6 @@ macro(compile_vtk proj)
   )
 endmacro()
 
-macro(compile_ves proj)
-  ExternalProject_Add(
-    ${proj}
-    SOURCE_DIR ${ves_src}
-    DOWNLOAD_COMMAND ""
-    DEPENDS vtk-host eigen
-    CMAKE_ARGS
-      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
-      -DCMAKE_BUILD_TYPE:STRING=${build_type}
-      -DBUILD_TESTING:BOOL=ON
-      -DBUILD_SHARED_LIBS:BOOL=ON
-      -DVES_USE_VTK:BOOL=ON
-      -DVES_NO_SUPERBUILD:BOOL=ON
-      -DVES_USE_DESKTOP_GL:BOOL=ON
-      -DVTK_DIR:PATH=${build_prefix}/vtk-host
-      -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
-      -DCMAKE_CXX_FLAGS:STRING=${VES_CXX_FLAGS}
-  )
-
-  force_build(${proj})
-endmacro()
 
 macro(crosscompile_vtk proj toolchain_file)
   ExternalProject_Add(
@@ -126,6 +107,31 @@ macro(crosscompile_vtk proj toolchain_file)
       -C ${toolchain_dir}/TryRunResults.cmake
   )
 endmacro()
+
+
+macro(compile_ves proj)
+  set(tag host)
+  ExternalProject_Add(
+    ${proj}
+    SOURCE_DIR ${ves_src}
+    DOWNLOAD_COMMAND ""
+    DEPENDS vtk-${tag} eigen
+    CMAKE_ARGS
+      -DCMAKE_INSTALL_PREFIX:PATH=${install_prefix}/${proj}
+      -DCMAKE_BUILD_TYPE:STRING=${build_type}
+      -DBUILD_TESTING:BOOL=ON
+      -DBUILD_SHARED_LIBS:BOOL=OFF
+      -DVES_USE_VTK:BOOL=ON
+      -DVES_NO_SUPERBUILD:BOOL=ON
+      -DVES_USE_DESKTOP_GL:BOOL=ON
+      -DVTK_DIR:PATH=${build_prefix}/vtk-${tag}
+      -DEIGEN_INCLUDE_DIR:PATH=${install_prefix}/eigen
+      -DCMAKE_CXX_FLAGS:STRING=${VES_CXX_FLAGS} -fPIC
+  )
+
+  force_build(${proj})
+endmacro()
+
 
 macro(crosscompile_ves proj tag toolchain_file)
   ExternalProject_Add(
@@ -153,10 +159,10 @@ install_eigen()
 compile_vtk(vtk-host)
 
 if(VES_IOS_SUPERBUILD)
-  crosscompile_vtk(vtk-ios-simulator toolchain-ios-simulator.cmake)
-  crosscompile_vtk(vtk-ios-device toolchain-ios-device.cmake)
-  crosscompile_ves(ves-ios-simulator ios-simulator toolchain-ios-simulator.cmake)
-  crosscompile_ves(ves-ios-device ios-device toolchain-ios-device.cmake)
+  foreach(target ios-simulator ios-device)
+    crosscompile_vtk(vtk-${target} toolchain-${target}.cmake)
+    crosscompile_ves(ves-${target} ${target} toolchain-${target}.cmake)
+  endforeach()
 endif()
 
 if(VES_ANDROID_SUPERBUILD)
