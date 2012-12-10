@@ -77,13 +77,16 @@
 
 -(IBAction)onCreateAccount:(id)sender
 {
-  const std::string midasHost = "http://midas3.kitware.com/midas";
+    const std::string midasHost = "http://dpbld04a.cs.unc.edu/midas";
+  //const std::string midasHost = "http://midas3.kitware.com/midas";
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithUTF8String:midasHost.c_str()]]];
 }
 
 -(IBAction)onSkipLogin:(id)sender
 {
-  const std::string midasHost = "http://midas3.kitware.com/midas";
+
+    const std::string midasHost = "http://dpbld04a.cs.unc.edu/midas";
+ // const std::string midasHost = "http://midas3.kitware.com/midas";
 
   client = vesMidasClient::Ptr(new vesMidasClient);
   client->setHost(midasHost);
@@ -104,7 +107,8 @@
     return;
   }
 
-  const std::string midasHost = "http://midas3.kitware.com/midas";
+    const std::string midasHost = "http://dpbld04a.cs.unc.edu/midas";
+  //const std::string midasHost = "http://midas3.kitware.com/midas";
 
   client = vesMidasClient::Ptr(new vesMidasClient);
   client->setHost(midasHost);

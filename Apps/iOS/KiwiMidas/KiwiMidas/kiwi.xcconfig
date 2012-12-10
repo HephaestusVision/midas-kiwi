@@ -1,2 +1,5 @@
-ves_src = /source/ves/ves
-ves_build = /source/ves/build
+ves_src = /Users/fferro/VES3/ves/src/ves
+ves_build = /Users/fferro/VES3/ves/apps/ios/cmakebuild/build
+
+//ves_src = /source/ves/ves
+//ves_build = /source/ves/build

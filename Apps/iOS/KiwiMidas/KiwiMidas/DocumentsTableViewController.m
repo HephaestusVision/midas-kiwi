@@ -178,7 +178,8 @@ namespace {
     ++nSections;
     [self listLocalFiles:[self documentsDirectory]];
 
-    const bool enableApps = true;
+    //const bool enableApps = true;
+      const bool enableApps = false;
     if (enableApps) {
       self->demoAppSection = nSections;
       ++nSections;
